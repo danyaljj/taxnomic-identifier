@@ -1,0 +1,300 @@
+\subsection{Experiment Data and Setup}
+%We first evaluate our approach solely to experience the accuracy of our on-the-fly relation detector.
+To evaluate our approach in identifying ancestor and cousin relationships between entities, we use the data of 40 target classes of almost 11,000 instances in \cite{citeulike:1587018}. Each target class is an incomplete set of representative instances. Table \ref{table:class-instance} shows a snippet of this dataset. Interestingly, we have both types of closed word class (e.g. ChemicalElem, Country), and open word class (e.g. BasicFood, Hurricane). Moreover, there are classes with common nouns (e.g. BasicFood with {\em rice}, {\em milk}, {\em eggs}), and there are also classes with proper nouns (e.g. Actor with {\em Mel Gibson}, {\em Sharon Stone}).
+
+\begin{table}[h]
+  \centering
+{\small
+  \begin{tabular}{|r|l|}
+    \hline
+    Class (Size) & Examples of Instances \\
+    \hline
+    \hline
+    BasicFood (155) & rice, milk, eggs, beans, fish \\
+    \hline
+    ChemicalElem (118) & lead, copper, aluminum, calcium \\
+    \hline
+    City (589) & San Francisco, Dubai, Chicago, \\
+    \hline
+    Disease (209) & arthritis, hypertension, influenza \\
+    \hline
+    Actor (1500) & Kate Hudson, Mel Gibson \\
+    \hline
+  \end{tabular}
+  \caption{This table shows a snippet of 40 target classes with instances.}
+}
+  \label{table:class-instance}
+\end{table}
+
+We create experiment data by the following guidelines.
+
+\begin{itemize}
+\item Examples of ancestor relation: we randomly pair a class with one of its instances. The order of the class and the instance in the example defines the direction of the relation.
+\item Examples of cousin relation: we randomly pair two instances in a class.
+\item 3 types of negative examples (i.e. examples with two entities having no ancestor or cousin relation): we can randomly pair either: (1) a class and another class, (2) a class and an instance of another class, or (3) an instance in one class and instances in other classes.
+\end{itemize}
+
+Both classes and instances are considered entities in the experiments.
+Table \ref{table:examples} shows some examples in our test data.
+
+\begin{table}[ht]
+  \centering
+  {\small
+  \begin{tabular}{|r|l|l|}
+    \hline
+    {\bf Entity 1} & {\bf Entity 2} & {\bf Relation}                     \\
+    \hline
+    \hline
+    Actor & Mel Gibson & A \\
+    BasicFood & rice & A \\
+    Wine & Champagne & A \\
+    \hline
+    Paris & Dubai & C\{City\} \\
+    copper & oxygen & C\{ChemElem\} \\
+    Nile & Volga & C\{River\} \\
+    \hline
+    Roja & C++ & N \\
+    egg & Vega & N \\
+    HotBot & autism & N \\
+    \hline
+  \end{tabular}
+  \caption{Some examples in the test data. A, C, and N denote ancestor relation, cousin relation, and no relation, respectively. The entities in curly brackets are the target class.}
+  }
+  \label{table:examples}
+\end{table}
+
+We set up three experiments two evaluate our algorithms in Section \ref{sec:algorithms}.
+
+\begin{enumerate}
+\item Experiment 1: Evaluating the ancestor identifier ({\em see} Algorithm \ref{algAncestorIdentifying}). Positive examples are those of the ancestor relations. Cousin examples are considered negative examples and added into the test set with other types of negative examples. The identifier is correct if positive examples are recognized having ancestor relation, and no relation for other examples  
+\item Experiment 2: Evaluating the cousin relation identifier. Positive examples are those of the cousin relations and all types of negative examples are used to evaluate the cousin identifier. We do not use examples which have ancestor relation in this example. Given that the cousin identifier is going after the ancestor one in the decision tree as described in Algorithm \ref{algRelationIdentifying}, we take out the ancestor examples so that we can measure the upper bound in accuracy of the cousin identifier.
+%The identifier is correct if positive examples are identified having cousin relation.
+If the identifier recognize two entities are cousins, it will also output a list of possible class of the entities.   
+
+%If an example is positive (i.e. two entities have cousin relation), the detector returns a list of possible target classes of the two entities. Among the returned target class, if there exists a class that one expects to be the correct target class of the two entities, the detector is correct. We propose this experiment to evaluate the true accuracy of our cousin detector, because a pair of cousin entities may have one or more target classes. For example, consider the example ({\em Mel Gibson}, {\em Tom Cruise}, {\bf S}\{{\em actor}\}). If the detector cannot discover that these two entities are actors, but film directors, it is still counted as correct. 
+
+\item Experiment 3: Evaluating the overall algorithm to identify relations. In this experiment, we evaluate the performance of the relation identifier described in Algorithm \ref{algRelationIdentifying}. All kind of examples including ancestor examples, cousin examples, and all types of negative examples are used in this experiment.
+
+\end{enumerate}
+
+Beside these three experiments, we also report other evaluations which can be found in Section \ref{sec:result}.
+In our experiments, all systems, including the baseline system described in Section \ref{sec:baseline}, use 2 as the maxinum level of ancestor in the hierarchical structure one can go up from an entity.
+We use the Apache Lucene Information Retrieval library\footnote{http://lucene.apache.org} to implement the search engine to search for the Wikipedia articles having titles that contain the input entities. Lucene is a high-performance text search library that is written in Java and is a widely used off-the-shelf IR system.
+
+\subsection{Baseline system}
+\label{sec:baseline}
+We compare our system with the baseline system that uses the extended WordNet in the work of \cite{Snow2006} as the background knowledge to infer relationships of entities. Starting from WordNet-2.1 \cite{Fellbaum98}, the extended WordNet has augmented 400,000 synsets so far. Words that are added into the extended WordNet can be common nouns or proper nouns.
+
+The baseline system identifies a pair of entities having ancestor relation if one of the entities is the $k$-th hypernym of the other one in the extended WordNet hierarchical tree. Two entities are cousins if they share common ancestors (synsets in WordNet) within at most the maximum level of ancestor in the WordNet tree, which is 2 in our setting. Similar to our framework in Algorithm \ref{algRelationIdentifying}, the cousin identifier goes after the ancestor one in the decision tree to recognize the relation between entities. If both ancestor and cousin identifiers fail to recognize the relation of a pair, the pair is decided as having no relation. 
+
+
+\subsection{Results}
+\label{sec:result}
+
+In experiment 1 that evaluates the accuracy of our ancestor identifier, we use all 10,894 instances with their class to be the positive data. We automatically generate 10,000 negative examples including 2,000 cousin examples and 8,000 pairs of all types of negative examples. Table \ref{table:exp1} shows the precision, recall, and the accuracy of our algorithm compare to the baseline system that uses the extended WordNet as source of knowledge.
+
+\begin{table}[ht]
+{\small
+  \centering
+  \begin{tabular}{|l|c|c|c|}
+    \hline
+    {\bf System} & {\bf Precision} & {\bf Recall} & {\bf Accuracy} \\
+    \hline
+    \hline
+    Baseline	& 73.3 & 50.0 & 63.8 \\
+    \hline
+    Ours	& {\bf 98.6} & {\bf 75.0} & {\bf 86.4} \\
+    \hline
+  \end{tabular}
+  \caption{Performance of the ancestor relation identifier of both baseline and our systems.}
+  \label{table:exp1}
+  }
+\end{table}
+
+Our ancestor identifier outperforms the baseline system with almost 23\% of improvement in accuracy. Especially, our ancestor relation identifier has very high precision, which indicates that it can serve as a very reliable filter for our whole relation identification system.
+
+Next, we evaluate our cousin relation identifier separately with the ancestor one. In this experiment, we randomly generate three sets of testing data. Each test set contains 2,000 positive examples (i.e. cousin examples), and 2,000 negative. We do not use the ancestor examples in this experiment. Table \ref{table:exp2} presents the average precision, recall, and accuracy over three test sets of our system and the baseline.
+
+\begin{table}[ht]
+  \centering
+{\small
+  \begin{tabular}{|l|c|c|c|}
+    \hline
+    {\bf System} & {\bf Precision} & {\bf Recall} & {\bf Accuracy} \\
+    \hline
+    \hline
+	Baseline   &    {\bf 74.3}  &  31.5  &    60.3  \\
+	\hline
+	Ours  &     68.2  &  {\bf 74.1}  &    {\bf 69.8}  \\
+    \hline
+  \end{tabular}
+  \caption{Average precision, recall and accuracy of the cousin relation identifier of both the baseline and our system. Note that the ancestors examples are not included in the test sets of this experiment.}
+  \label{table:exp2}
+  }
+\end{table}
+
+
+
+\begin{table*}[ht]
+	\centering
+	{\small
+	\begin{tabular}{|l||c|c||c|c||c|c||c|c|c|}
+	\hline
+                &    \multicolumn{2}{|c|}{{\bf Set 1}}  &   \multicolumn{2}{|c|}{{\bf Set 2}}    &   \multicolumn{2}{|c|}{{\bf Set 3}}  &  \multicolumn{3}{|c|}{{\bf Average}}   \\
+                &    Prec.  &    Rec.  &    Prec.  &    Rec.  &    Prec.  &    Rec.  &    Prec.  &     Rec.  &  F1-Score  \\
+	\hline
+\hline
+ {\bf Baseline}  &           &          &           &          &           &          &           &           &            \\
+ $\qquad$Ancestor       &  49.1  &  38.75  &  48.7  &  39.8  &  48.7  &   40.2  &  48.8  &  39.6  &   43.7  \\
+ $\qquad$Cousin         &  31.9  &  10.35  &  31.9  &  10.2  &  32.6  &  10.2  &  32.2  &  10.2  &   15.5  \\
+ $\qquad$None    &  46.6  &   87.9  &  47.1  &  87.8  &  47.5  &  88.5  &  47.0  &  88.0  &   61.3  \\
+\hline
+	\hline
+{\bf Ours}           &           &          &           &          &           &          &           &           &            \\
+ $\qquad$Ancestor       &  95.5  &   66.1  &  96.2  &  66.4  &  94.9  &  66.7  &  95.5  &  66.4  &   {\bf 78.3}  \\
+ $\qquad$Cousin         &  62.1  &  74.35  &  60.5  &  74.0  &  61.8  &   75.2  &  61.4  &    74.5  &   {\bf 67.3}  \\
+ $\qquad$None    &  59.9  &   66.5  &  59.8  &  65.1  &  60.8  &   65.7  &  60.2  &   65.75  &   {\bf 62.8}  \\
+	\hline
+	\end{tabular}
+	}
+	\caption{Performance of our relation identification system and the baseline in details. {\em Ancestor}, and {\em Cousin} denote the performance of the ancestor and the cousin identifiers, respectively. {\em None} denotes no relation.}
+	\label{table:exp3}
+\end{table*}
+
+
+The baseline system is better in the precision, but our system outperforms the baseline in general with almost 10\% improvement in accuracy.
+
+After experiencing our identifiers separately, we are going to evaluate them together in the framework ({\em see} Algorithm \ref{algRelationIdentifying}) that can detect whether a pair of entities has ancestor relation, cousin relation, or neither of them.  In this experiment, we follow the second experiment by generating 3 sets of testing data. Each test set has 6,000 examples including 2,000 ancestor examples, 2,000 cousin examples, and 2,000 negative examples of all types. We report the details of the evaluation in Table \ref{table:exp3}.
+Our system achieves significant improvements over the baseline system, in both the ancestor and cousin identifiers. Our ancestor identifier gets a 34.6\% improvement in average F1-score over the baseline ancestor identifier; and our cousin detector significantly outperforms the baseline system by over 50\% in average F1-score in the overall system. Combining with the F1-score on identifying examples having no relation, our system achieves a significant improvement of over 29\% in average F1-score from the baseline system.
+
+We go one more step further to evaluate the baseline and our system against a test set where all entities and classes exist in the extended WordNet, which is the knowledge source the baseline uses. Out of 10,894 entities in the 40 class data set, we first extract all entities which exist in the extended WordNet. Moreover, for classes whose the name does not exist in the extended WordNet, we remove those classes and their instances. After this step, we have 9,158 (about 84\% of the whole data set) entities remaining in the data set. We randomly generate positive and negative examples for ancestor and cousin relations. After generating the test set, we have 780 positive examples for ancestor relation, 780 positive examples for cousin relation, and 1000 negative examples.
+Both the baseline and our system are evaluated on this test set. Note that all entities in this test set are guaranteed to exist in the extended WordNet. Table \ref{table:exp4} shows the results of this experiment.
+
+\begin{table}[h]
+	{\small
+	\centering
+	\begin{tabular}{|l||c|c|c|}
+	\hline
+                &    Precision  &    Recall  &    F1-Score \\
+	\hline
+	\hline
+ {\bf Baseline} & & & \\
+ $\qquad$Ancestor & 48.9 & 44.1 & 46.4\\
+ $\qquad$Cousin   & 39.9 & 13.6 & 20.3 \\
+ $\qquad$None & 58.4 & 92.9 & 71.7  \\
+\hline
+	\hline
+{\bf Ours} & & &       \\
+ $\qquad$Ancestor & 99.4 & 64.2 & {\bf 78.0} \\
+ $\qquad$Cousin & 67.6 & 76.2 & {\bf 71.6} \\
+ $\qquad$None  & 73.8 & 86.9 & {\bf 79.8} \\
+	\hline
+	\end{tabular}
+	\caption{Performance of our system and the baseline in details.
+	%{\em Ancestor}, and {\em Cousin} denote the performance of the ancestor and the cousin identifiers, respectively. {\em None} denotes no relation.
+	In this experiment, entities are guaranteed to be covered in the extended WordNet.}
+	}
+	\label{table:exp4}
+\end{table}
+ 
+From the results of this experiment and the experiments above, it is clearly shown that our approach significantly outperforms the extended WordNet, which is one of the popular large  scale knowledge bases.  
+ 
+%For each experiment we have described above, three test data sets are automatically generated with the human judgement on the negative examples. We evaluate our approach on all test sets and report the average accuracy.
+
+%Tabel \ref{table:exp1} shows the results of Experiment 1.
+
+%\begin{table*}[ht]
+%  \centering
+%  \begin{tabular}{|l|c|c||c|c|c|}
+%    \hline
+%    {\bf Test set} & {\bf Baseline 1} & {\bf Baseline 2} & {\bf Our Precision} & {\bf Our Recall} & {\bf Our F-score} \\
+%    \hline
+%    \hline
+%    Test set 1 & & & & & \\
+%    Test set 2 & & & & & \\
+%    Test set 3 & & & & & \\
+%    \hline
+%    Average & & & & & \\
+%    \hline
+%  \end{tabular}
+%  \caption{This table shows the performance of the parent/child relation detector.}
+%  \label{table:exp1}
+%\end{table*}
+
+%Tabel \ref{table:exp2} shows the results of Experiment 2.
+
+%\begin{table*}[ht]
+%  \centering
+%  \begin{tabular}{|l|c|c||c|c|c|}
+%    \hline
+%    {\bf Test set} & {\bf Baseline 1} & {\bf Baseline 2} & {\bf Our Precision} & {\bf Our Recall} & {\bf Our F-score} \\
+%    \hline
+%    \hline
+%    Test set 1 & & & & & \\
+%    Test set 2 & & & & & \\
+%    Test set 3 & & & & & \\
+%    \hline
+%    Average & & & & & \\
+%    \hline
+%  \end{tabular}
+%  \caption{This table shows the performance of the cousin relation detector with the target class information.}
+%  \label{table:exp2}
+%\end{table*}
+
+%Tabel \ref{table:exp3} shows the results of Experiment 3.
+
+%\begin{table*}[ht]
+%  \centering
+%  \begin{tabular}{|l|c|c||c|c|c|}
+%    \hline
+%    {\bf Test set} & {\bf Baseline 1} & {\bf Baseline 2} & {\bf Our Precision} & {\bf Our Recall} & {\bf Our F-score} \\
+%    \hline
+%    \hline
+%    Test set 1 & & & & & \\
+%    Test set 2 & & & & & \\
+%    Test set 3 & & & & & \\
+%    \hline
+%    Average & & & & & \\
+%    \hline
+%  \end{tabular}
+%  \caption{This table shows the performance of the cousin relation detector without the target class information. Human judgement is used to evaluate the result.}
+%  \label{table:exp3}
+%\end{table*}
+
+%
+%Tabel \ref{table:exp4} shows the results of Experiment 4.
+
+%\begin{table*}[ht]
+%  \centering
+%  \begin{tabular}{|l|c|c||c|}
+%    \hline
+%    {\bf Test set} & {\bf Baseline 1} & {\bf Baseline 2} & {\bf Our Accuracy} \\
+%    \hline
+%    \hline
+%    Test set 1 & & & \\
+%    Test set 2 & & & \\
+%    Test set 3 & & & \\
+%    \hline
+%    Average & & & \\
+%    \hline
+%  \end{tabular}
+%  \caption{This table shows the performance of the relation detector. All relations are evaluated in this single experiment. The pairs of cousin entities are provided the target class information. The accuracy is the percentage of the number of correctly predicted examples over the number of incorrectly predicted examples.}
+%  \label{table:exp4}
+%\end{table*}
+
+%\subsection{Experiment on Examples in the RTE Challenge}
+%In this section, we evaluate our relation detector on the entities in the RTE corpora. We manually extract all RTE examples that contain pairs of entities which have parent/child or cousin relation. We construct the positive examples (i.e. the pairs that have parent/child or cousin relation between two entities) from these pairs and provide the target class for the cousin pairs. For negative examples, we pair the entities in the text and the hypothesis of randomly chosen examples in RTE corpora. We construct a test set with XXXXXXXX positive examples and YYYYYY negative examples. We call this test set RTE\_EVAL. Table \ref{table:expRTE} report the performance of our relation detector compared to two baseline systems.
+
+%\begin{table*}[ht]
+%  \centering
+%  \begin{tabular}{|l|c|c||c|}
+%    \hline
+%    {\bf Test set} & {\bf Baseline 1} & {\bf Baseline 2} & {\bf Our Accuracy} \\
+%    \hline
+%    \hline
+%    RTE\_EVAL & & & \\
+%    \hline
+%  \end{tabular}
+%  \caption{This table shows the performance of our approach on the examples constructed from the entities in RTE corpora. We report our accuracy along with the accuracy using two baseline systems.}
+%  \label{table:expRTE}
+%\end{table*}

@@ -1,0 +1,323 @@
+First, we give an overview of our {\bf T}axonomic {\bf RE}lation {\bf
+  I}dentification ({\bf TREI}) algorithm addressing the problem of
+identifying taxonomic relation between concepts. We define a {\em
+  concept} as a single word or phrase that refers to an entity, such
+as {\em mountain}, {\em George W. Bush}, {\em Empire State building}.
+We focus on classifying four fundamental taxonomic relations between
+two concept $X$ and $Y$: (1) $X$ is an {\em ancestor} of $Y$, denoted
+by $X \leftarrow Y$; (2) $X$ is a {\em child} of $Y$, denoted by $X
+\rightarrow Y$; (3) $X$ and $Y$ are {\em siblings}, denoted by $X
+\leftrightarrow Y$; and (4) $X$ and $Y$ have {\em no relation},
+denoted by $X \nleftrightarrow Y$.
+
+\ignore{Inputs of our algorithm are a pair of target concepts ($X$,
+  $Y$) and a trained taxonomic relation classifier $\mathcal{R}$,
+  which is used to provide a distribution of confidences over all
+  possible taxonomic relations between any two concepts.}
+
+Given two concepts, we use Wikipedia and a learned classifier in an
+inference model to predict the kind of taxonomic relation between
+these two. As a motivation for the inference model, while the learned
+classifier by itself can predict the relation between two concepts, we
+observe that in the presence of additional related concepts, we can
+create concept networks of relations among the input and additional
+concepts where relational constraints can be enforced to make a
+coherent final prediction. We call the outcome of the inference model
+the global prediction.
+
+In the big picture of our approach, we first learn a classifier to
+identify taxonomic relations (Sec. \ref{sec:learning}) to use in our
+inference model (Sec. \ref{sec:inference}). The input of the learning
+component is a set of annotated examples, each of which consists of
+two concepts and the taxonomic relation between them.
+
+\ignore{Inputs of our algorithm are a pair of target concepts ($X$,
+  $Y$), a Wikipedia index $\mathcal{W}$, which is created from
+  Wikipedia pages and used by a local search engine\footnote{In our
+    work, we use Lucene search engine.}, and a trained local
+  classifier $\mathcal{R}$, which is used to predict the confidence
+  distribution over all possible taxonomic relations between $X$ and
+  $Y$.}
+
+
+\ignore{The algorithm's output is the
+taxonomic relation between $X$ and $Y$, which can be (1) $X$ is an
+{\em ancestor} of $Y$, denoted by $X \leftarrow Y$; (2) $X$ is a {\em
+  child} of $Y$, denoted by $X \rightarrow Y$; (3) $X$ and $Y$ are
+{\em siblings}, denoted by $X \leftrightarrow Y$; or (4) $X$ and $Y$
+have {\em no relation}, denoted by $X \nleftrightarrow Y$.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ignore{Input of our problem is a pair of concepts ($X$, $Y$), and output is
+their taxonomic relation which can be (1) $X$ is an {\em ancestor} of
+$Y$, denoted by $X \leftarrow Y$; (2) $X$ is a {\em child} of $Y$,
+denoted by $X \rightarrow Y$; (3) $X$ and $Y$ are {\em siblings},
+denoted by $X \leftrightarrow Y$; or (4) $X$ and $Y$ have {\em no
+  relation}, denoted by $X \nleftrightarrow Y$.}
+
+\ignore{
+\begin{enumerate}
+\item $X$ is an ancestor of $Y$, denoted by $X \leftarrow Y$.
+\item $X$ is a child of $Y$, denoted by $X \rightarrow Y$.
+\item $X$ and $Y$ are siblings, denoted by $X \leftrightarrow Y$.
+\item $X$ and $Y$ have no relation, denoted by $X \nleftrightarrow Y$.
+\end{enumerate}
+}
+
+\ignore{ Our approach consists of two key components: (1) a machine
+  learning-based algorithm to classify taxonomic relations; and (2) a
+  constraint-based inference model to make a final decision using
+  relational constraints of taxonomic relations.  }
+
+\ignore{
+\begin{enumerate}
+\item A machine learning-based algorithm to classify concept relations.
+\item A constraint-based inference model to make a final decision
+  using relational constraints enforced among concept relations.
+\end{enumerate}
+}
+
+\begin{figure}[!t]
+  \begin{centering}
+    {\scriptsize
+      \fbox{
+        \begin{minipage}{6in} 
+          \begin{tabbing}
+            % {\textsc{A. Learning local classifier
+            %     $\mathcal{R}$}~~~~~~~~~~~~~~~~~}\\
+            % \qquad {\textsc{Input}}: ~~~Training set \\
+            % \qquad \qquad \qquad \qquad $\mathcal{D}$ =
+            % \{taxonomic-relation-annotated concept pairs\} \\
+            % \qquad \qquad \qquad Wikipedia index $\mathcal{W}$ \\
+            % \qquad {\textsc{Output}}: A local taxonomic relation
+            % classifier $\mathcal{R}$ \\
+            % \\
+            % \qquad 1. ~~~~$\mathcal{R} \leftarrow train(\mathcal{D},
+            % \mathcal{W})$ \\
+            % \\
+            {{\bf Taxonomic RElation Identification (TREI)}~~~~~~~~~~~~~~~~~~~~~~}\\ \\
+            \qquad {\textsc{Input}}: ~~~A concept pair ($X$, $Y$) \\
+            \qquad \qquad \qquad A learned taxonomic relation classifier $\mathcal{R}$ \\
+            % \qquad \qquad \qquad \qquad used to make local
+            % prediction. \\
+            \qquad \qquad \qquad Wikipedia $\mathcal{W}$ \\
+            \qquad {\textsc{Output}}: Taxonomic relation $r^*$ between $X$ and $Y$ \\
+            \\
+            %\qquad 1. ~~~~If \texttt{isNotWikipediaConcept($X$,  $\mathcal{W}$)}, then \\
+            %\qquad \qquad \qquad $X \leftarrow \texttt{findReplacement}(X, Y)$ \\
+            %\qquad End if \\
+            %\qquad \qquad If \texttt{isNotWikipediaConcept($Y$,  $\mathcal{W}$)}, then \\
+            %\qquad \qquad \qquad $Y \leftarrow \texttt{findReplacement}(Y, X)$ \\
+            %\qquad End if \\
+            \qquad 1. ~~~$(X, Y) \leftarrow NormalizeToWikipedia(X,Y)$ \\
+            \\     
+            \qquad 2. ~~~$\mathcal{Z} \leftarrow ExtractRelatedConcepts(X,Y)$ \\
+            \\
+            \qquad 3. ~~~$r^* = ConstraintbasedInference(X,Y,\mathcal{Z},\mathcal{R},\mathcal{W})$ \\
+            \\
+            \qquad \textsc{Return}: $r^*$;
+          \end{tabbing}
+        \end{minipage}
+      } }
+\end{centering}
+\caption{TREI inference model.}
+\label{fig:rel-know-iden-alg}
+\end{figure}
+
+Our inference model is presented in Figure \ref{fig:rel-know-iden-alg},
+which consists of three steps.
+
+\begin{enumerate}
+\item Normalizing input concepts to Wikipedia: Although most commonly
+  used concepts have corresponding Wikipedia articles, there are still
+  a lot of concepts having no corresponding Wikipedia articles. For
+  input concepts that we can find corresponding Wikipedia pages, we
+  leave them as are. For a non-Wikipedia concept, we search the Web
+  and try to find a replacement for it. We wish to find a replacement
+  such that the taxonomic relation is unchanged. For example, for
+  input pair ({\em Lojze Kova\v{c}i\v{c}}, {\em Rudi \v{S}eligo}),
+  there is no English Wikipedia page for {\em Lojze Kova\v{c}i\v{c}},
+  but if we can find {\em Marjan Ro\v{z}anc} and use it as a
+  replacement of {\em Lojze Kova\v{c}i\v{c}} (two concepts are
+  siblings and refer to two writers), we can continue the process of
+  identifying the taxonomic relation of the pair ({\em Marjan
+    Ro\v{z}anc}, {\em Rudi \v{S}eligo}). Our method was motivated by
+  \cite{1321585}. We first make a query with two input concepts
+  (e.g. ``{\em Lojze Kova\v{c}i\v{c}}'' AND ``{\em Rudi \v{S}eligo}'')
+  to search for list-structure snippets in Web documents\footnote{We
+    use http://developer.yahoo.com/search/web/} such as ``... $\left <
+    delimiter \right >$ c$_a$ $\left < delimiter \right >$ c$_b$
+  $\left < delimiter \right >$ c$_c$ $\left < delimiter \right >$
+  ...'' (the two input concepts should be among c$_a$, c$_b$, c$_c$,
+  ...). The delimiter can be commas, periods, or
+  asterisks\footnote{Periods and asterisks capture enumerations.}. For
+  snippets that contain the patterns of interest, we extract $c_a$,
+  $c_b$, $c_c$ etc. as replacement candidates. To reduce noise, we
+  empirically constrain a list to contain at least 4 concepts that are
+  no longer than 20 characters each. The candidates are ranked based
+  on their occurrence frequency. The top candidate having Wikipedia
+  pages is used as a replacement.
+\item Extracting additional related concepts: In this step, we
+  leverage an existing knowledge base to extract additional concepts
+  related to the input concepts (Sec. \ref{sec:rel-con-ext},) which
+  are all used in the inference model in the next step.
+\item Making global prediction using relational constraints: We use
+  Wikipedia, the learned local classifier, and the extracted
+  additional concepts to enforce relational constraints among the
+  concept relations to make final global prediction on the taxonomic
+  relation between two input concepts
+  (Sec. \ref{sec:cons-prior-know}.)
+\end{enumerate}
+
+
+\ignore{The algorithm consists of two main components: (A) a machine
+  learning-based algorithm to learn a local taxonomic relation
+  classifier $\mathcal{R}$; and (B) a constraint-based inference model
+  that makes use of related concepts extracted for $X$ and $Y$ to make
+  a final decision on taxonomic relation between X and Y. Both
+  components use the same Wikipedia index $\mathcal{W}$ as the
+  background knowledge source to learn local classifier $\mathcal{R}$
+  and enforce constraints in the inference process.}
+
+\ignore{Both components use the same Wikipedia index as a knowledge
+  source to extract features of input concepts and related concepts to
+  learn the local classifier and do inference as well.}
+
+\ignore{The learning component (A) trains a local classifier,
+  $\mathcal{R}$, for the taxonomic relation identification, and is
+  described in Sec. \ref{sec:learning}. The input of this component is
+  a dataset of annotated examples consisting of two concepts $X$, $Y$
+  and relation $r$ between them.}
+
+\ignore{The identification component (B) makes prediction on the
+  taxonomic relation between $X$ and $Y$ using $\mathcal{R}$ as its
+  local classifier. The first step is to augment the two input
+  concepts. For each input concept, {\em augmentInputConcepts}
+  function uses the local search engine to search Wikipedia index
+  $\mathcal{W}$ for relevant articles by merely looking at the title
+  of the Wikipedia articles. Although most commonly used concepts have
+  corresponding Wikipedia pages, there are cases where no relevant
+  article in Wikipedia is found because the input concept does not
+  have a Wikipedia page. We call this kind of concept {\em
+    non-Wikipedia concept}.  For {\em non-Wikipedia concept}, the
+  function uses a web search engine\footnote{In our work, we use
+    Yahoo!  Web Search engine, http://developer.yahoo.com/search/web/}
+  to search the Web and tries to find a replacement, which is a
+  sibling of the {\em non-Wikipedia concept}. In this case, we assume
+  that the taxonomic relation to the replacement is the same as to the
+  original {\em non-Wikipedia concept}. For example, for input pair
+  ({\em Lojze Kova\v{c}i\v{c}}, {\em Rudi \v{S}eligo}), there is no
+  English Wikipedia page for concept {\em Lojze Kova\v{c}i\v{c}}, but
+  if we can find concept {\em Marjan Ro\v{z}anc} and use it as a
+  replacement of {\em Lojze Kova\v{c}i\v{c}} (two concepts are
+  siblings and refer to two writers), we can continue the process of
+  identifying the taxonomic relation for the pair ({\em Marjan
+    Ro\v{z}anc}, {\em Rudi \v{S}eligo}). Our method was motivated by
+  \cite{1321585}. We first use two input concepts (e.g. ``{\em Lojze
+    Kova\v{c}i\v{c}}'' AND ``{\em Rudi \v{S}eligo}'') to search for
+  the list structures in web documents such as ``... $\left <
+    delimiter \right >$ c$_a$ $\left < delimiter \right >$ c$_b$
+  $\left < delimiter \right >$ c$_c$ $\left < delimiter \right >$
+  ...'' ($X$ and $Y$ should be among c$_a$, c$_b$, c$_c$, ...). The
+  delimiter can be commas, periods, or asterisks. For text snippets
+  that contain the patterns of interest, we extract $c_a$, $c_b$,
+  $c_c$ etc. as replacement candidates. To reduce noise, we
+  empirically constrain the list structure to contain at least 4
+  concepts that are no longer than 20 characters each. The candidates
+  are ranked based on their occurrence frequency. The top candidate in
+  the Wikipedia concept space is used as replacement.}
+
+\ignore{Given two concepts $X$, and $Y$, function
+  \texttt{isNotWikipediaConcept} determines if they are {\em Wikipedia
+    concepts} or {\em non-Wikipedia concepts} by searching the concept
+  space in Wikipedia. If a concept is {\em non-Wikipedia} (i.e. it
+  does not have a Wikipedia page), the algorithm tries to find a
+  replacement for it by performing a web search via function
+  \texttt{findReplacement}. Replacing concepts are expected to be {\em
+    Wikipedia concepts} and in the same semantic class with the input
+  concepts.}
+
+\ignore{After that, function {\em extractRelatedConcepts} returns list
+  $\mathcal{Z}$ of additional concepts, from an external knowledge
+  base, which are related to augmented $X$ and $Y$
+  (Sec. \ref{sec:rel-con-ext}). The algorithm then passes the two
+  augmented input concepts, local classifier $\mathcal{R}$ and list
+  $\mathcal{Z}$ to function {\em constraintbasedInference}, which uses
+  relational constraints to enforce coherent predictions and returns
+  $r^*$ as the taxonomic relation between $X$ and $Y$
+  (Sec. \ref{sec:cons-prior-know}.)}
+
+\ignore{We then use two input concepts (or their
+  replacements) to build a list of Wikipedia articles that represents
+  each input. Following, a machine learning-based classifier is used
+  to identify the taxonomic relations between two concepts. Finally,
+  we make a final decision using an inference model within a
+  constraint-based framework that explores relational constraints
+  enforced among concepts involved.}
+
+
+\ignore{
+\begin{figure}[!t]
+  \begin{centering}
+    {\scriptsize \fbox{
+        \begin{minipage}{6in} 
+          \begin{tabbing}
+            {\textsc{On-the-fly Taxonomic Relation Identification}~~~~~~~~~~~~~~~~~~~~~~~~~~~~}\\
+            \qquad {\textsc{Input}}: A concept pair ($X$, $Y$) \\
+            \qquad {\textsc{Output}}: Relation between $X$ and $Y$ \\
+            \\
+            \qquad If $X$ is a {\em non-Wikipedia concept} then \\
+            \qquad \qquad $X \leftarrow \texttt{findReplacement}(X, Y)$ \\
+            %\qquad End if \\
+            \qquad If $Y$ is a {\em non-Wikipedia concept} then \\
+            \qquad \qquad $Y \leftarrow \texttt{findReplacement}(Y, X)$ \\
+            %\qquad End if \\
+            \\     
+            \qquad Building Wikipedia-article representation $F(X)$ and $F(Y)$ \\
+            \qquad $R = \texttt{classifyTaxonomicRelation}(F(X),F(Y))$ \\
+            \qquad $R^* = \texttt{inference}(X,Y,R)$ \\
+            \\
+            \qquad \textsc{Return}: $R^*$; \\
+          \end{tabbing}
+        \end{minipage}
+      } }
+\end{centering}
+\caption{On-the-fly taxonomic relation identification algorithm.}
+\label{fig:rel-know-iden-alg}
+\end{figure}
+}
+
+
+\ignore{In our work, we use Wikipedia as the main source of background
+  knowledge used to recognize concept relations.}
+
+\ignore{Functions \texttt{extractRelatedConcepts} and
+  \texttt{doInference} are described in details in
+  Sec. \ref{sec:inference}.}
+
+\ignore{Although most commonly used concepts can be found in
+  Wikipedia, there is still a need to cover the {\em non-Wikipedia
+    concepts} to improve the coverage of the algorithm. Briefly,
+  function \texttt{findReplacement}($X$, $Y$) takes a {\em
+    non-Wikipedia concept} $X$ and a supporting concept $Y$ as its
+  input. The function searches the web to find a {\em Wikipedia
+    concept} $X'$ which is in the same semantic class of $X$ to be its
+  replacement. Our method was motivated by \cite{1321585}.  In our
+  work, we use the Yahoo! Web Search
+  APIs\footnote{http://developer.yahoo.com/search/web/} to search for
+  list structures in web documents such as ``... $\left < delimiter
+  \right >$ c$_a$ $\left < delimiter \right >$ c$_b$ $\left <
+    delimiter \right >$ c$_c$ $\left < delimiter \right >$ ...'' ($X$
+  and $Y$ are among c$_a$, c$_b$, c$_c$, ...). For text snippets that
+  contain the patterns of interest, we extract $c_a$, $c_b$, etc. as
+  replacement candidates. To reduce noise, we constrain the list
+  structure to contain at least 4 concepts that are no longer than 20
+  characters each. The candidates are ranked based on their occurrence
+  frequency. The top candidate in the Wikipedia concept space is used
+  as replacement.}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "jupiter"
+%%% End: 

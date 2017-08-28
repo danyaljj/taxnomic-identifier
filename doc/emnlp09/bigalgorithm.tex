@@ -1,0 +1,101 @@
+In in section, we present our overall algorithm addressing the problem of
+identifying relational knowledge. The input of our problem is a pair
+of concept ($X$, $Y$), and the output is the relation
+between $X$ and $Y$. In this paper, we focus on addressing the
+following relational knowledge as the output of the problem:
+
+\begin{enumerate}
+\item $X$ is an ancestor of $Y$, denoted by $X \leftarrow Y$.
+\item $X$ is a child of $Y$, denoted by $X \rightarrow Y$.
+\item $X$ and $Y$ are siblings, denoted by $X \leftrightarrow Y$.
+\item $X$ and $Y$ have no relation, denoted by $X \nleftrightarrow Y$.
+\end{enumerate}
+
+Our approach consists of two key components:
+
+\begin{enumerate}
+\item A machine learning-based algorithm to classify concept relations.
+\item A constraint-based inference model to make final decision using
+  relational constraints enforced among concept relations.
+\end{enumerate}
+
+Given two concepts $X$, and $Y$, we first determine if they are {\em
+  Wikipedia concepts} or {\em non-Wikipedia concepts} by searching the
+concept space in Wikipedia. If they are {\em non-Wikipedia concepts},
+we use a web search to look for their replacements. The
+replacements are expected to be {\em Wikipedia concepts} and in the
+same semantic class with the input {\em non-Wikipedia concept}. We
+then use two input concepts (or their replacements) to disambiguate
+themselves. Following, a machine learning-based classifier is used to
+identify the concept relations. Finally, the constraint-based
+inference model is performed to make the final decision. Figure
+\ref{fig:rel-know-iden-alg} presents our overall algorithm.
+
+\begin{figure}[!hbt]
+  \begin{centering}
+    {\scriptsize
+      \fbox{
+        \begin{minipage}{6in} 
+          \begin{tabbing}
+            {\textsc{Relational Knowledge Identification Algorithm}} ~~~~~~~~~~~~~~~~~~\\
+            \qquad {\textsc{Input}}: A concept pair ($X$, $Y$) \\
+            \qquad {\textsc{Output}}: Relation of $X$ and $Y$ \\
+            \\
+            \qquad If $X$ is a {\em non-Wikipedia concept} then \\
+            \qquad \qquad $X \leftarrow \texttt{findReplacement}(X, Y)$ \\
+            \qquad End if \\
+            \qquad If $Y$ is a {\em non-Wikipedia concept} then \\
+            \qquad \qquad $Y \leftarrow \texttt{findReplacement}(Y, X)$ \\
+            \qquad End if \\
+            \\     
+            \qquad $(X,Y) \leftarrow \texttt{disambiguate}(X,Y)$ \\
+            \qquad $R = \texttt{classifyRelation}(X,Y)$ \\
+            \qquad $R^* = \texttt{inference}(X,Y,R)$ \\
+            \\
+            \qquad \textsc{Return}: $R^*$; \\
+          \end{tabbing}
+        \end{minipage}
+      }
+  }
+\end{centering}
+\caption{Relational Knowledge Identification Alg.}
+\label{fig:rel-know-iden-alg}
+\end{figure}
+
+\ignore{In our work, we use Wikipedia as the main source of background knowledge used
+to recognize concept relations.}
+
+Although most commonly used concepts can be found in Wikipedia, there
+is still a need to cover the {\em non-Wikipedia concepts} to improve
+the coverage of the algorithm.
+
+Function \texttt{findReplacement}($A$, $B$) takes a {\em non-Wikipedia
+  concept} $A$ and a supporting concept $B$ as its input. The function
+searches the web to find a {\em Wikipedia concept} $A'$ which is in
+the same semantic class of $A$ to be its replacement. Our method was
+motivated by \cite{1321585}.  In our work, we use the Yahoo! Web
+Search APIs\footnote{http://developer.yahoo.com/search/web/} to search
+for list structures in web documents such as ``... $\left < delimiter
+\right >$ c$_a$ $\left < delimiter \right >$ c$_b$ $\left < delimiter
+\right >$ c$_c$ $\left < delimiter \right >$ ...''.  The search query
+is ``A AND B'' (e.g. {\em ``bass''} AND {\em ``trout''}). The
+delimiters used in our experiments are comma(,), punctuation(.), and
+asterisk(*). For text snippets that contain the patterns of interest,
+we extract $c_a$, $c_b$, etc. as replacement candidates. To reduce
+noise from concepts extracted from the snippets, we constrain the list
+structure to contain at least 4 concepts that are no longer than 20
+characters each. Once a list of replacement candidates is extracted,
+the candidates are ranked based on their occurrence frequency. The top
+candidate in the Wikipedia concept space is used to replace
+$A$. To determine whether a concept is in the {\em Wikipedia concept}
+space, we use the concept disambiguation algorithm presented in
+Sec. \ref{sec:conc-disamb}.
+
+In the following sections, we describe other components of our
+algorithm in details.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "jupiter"
+%%% End: 

@@ -1,0 +1,14 @@
+%Discussion section. Open for anything to discuss about.
+
+%- Discuss about the Sibling relation recognition alone: why it bad, why it good.
+%- Discuss about the prominence doesn't work, move the algorithm to this section.
+
+%- Perhaps, a analysis subsection in Experiment section to show the problem of sibling detector with different type of pair (classclass, entityentity, etc.)
+
+%- Analysis on the detail accuracy of 40 classes
+
+%- Answer the question: Is it correct that 
+
+%While our ancestor relation identifier and our overall relation identification system significantly outperforms the baseline system, which uses the extended WordNet as the knowledge source, the precision of our cousin identifier needs to be improved. A detailed study shows that our cousin identifier tends to identify entity pairs as cousins. This can be explained by the noise in the Wikipedia data that make two irrelevant articles representing for two input entities may have common unexpected categories. Articles in Wikipedia are collaboratively created by many volunteers over the world. Therefore, maintaining a high quality of articles in the encyclopedia is not easy. This directly suggests a challenge of dealing with noise in this sort of knowledge source. We consider this as a challenge in our future work.
+
+We experienced that the data set of 40 classes of instances we are using in this work mostly contains unambiguous entities (i.e., entities that do not share meanings with many other entities). We do not have ambiguous entities such as {\em Bush} or {\em Ford} in this dataset. Therefore, the prominence-based search (described in Section \ref{sec:prominence}) did not have a chance to display its ability of disambiguating entities. We evaluated our ancestor identifier without prominence-based search on the same test set we used in Experiment 1. We got 86.2\% in accuracy, compared to the accuracy of 86.4\% of the identifier with prominence-based search. However, we manually selected a list of several commonly used name entities such as {\em Bush}, {\em Ford}, {\em Gates}, {\em Jobs}, etc., and tried our search engine on this list. We got the important people that we want to know about most of the time. This implies that our system potentially works well on other data sets which may contain ambiguous entities.

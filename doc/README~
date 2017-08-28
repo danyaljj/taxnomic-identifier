@@ -1,0 +1,101 @@
+By Mark Sammons, 6/29/15
+
+BACKGROUND
+
+This work is intended to revive a project by Quang Do that performs
+comparison of relations and identifies whether two relations are
+related, i.e. whether one relation entails the other.
+
+The project has been alternately called Jupiter, RelationIdentifier,
+and TAREC (an acronym for Taxonomic Relation Classifier). 
+
+The initial goal is to resurrect a live web demo (which historically
+did not use the full machine learning apparatus described in the
+paper (see http://cogcomp.cs.illinois.edu/page/publication_view/690)
+in the interest of speed.
+
+The project as was had some problems: 
+-- dependencies on large indexes and other resources
+-- hard-coded paths to some files, particularly in the learned LBJ  
+   classifier
+-- lack of detailed documentation describing how to run the software
+   to build indexes and train a classifier
+-- use of outdated project structure, with outdated dependency on LBJ
+   (now LBJava)
+
+
+
+
+
+TODO
+
+ FIXME: EntityCategorization.java
+   originally, this said 'plural = nounGroup.plural()'
+   but this method does not appear to exist in the yago code.
+
+
+
+* Create documentation. 
+** identify and describe dependencies, e.g. Descartes resources,
+   wikipedia dumps, etc.
+** explain process to compile Jupiter.jar
+** explain process to build indexes programmatically
+** explain process to train classifier
+
+* fix the build process
+** currently it wants to log into a server. Why? -- this really shouldn't be needed.
+** it needs to compile stuff like 
+  /src/edu/illinois/cs/cogcomp/cikm09/learning/Instance.java
+  and put it on the classpath before the lbj compilation step. 
+* organize dependency resources
+** specify a canonical way to store the dependencies locally
+** write scripts to run the Jupiter commands 
+
+* update LBJ dependency to LBJava
+
+* reorganize project as a Maven project, using standard Maven
+  directory structure
+
+* restore the web demo
+
+
+WHERE TO FIND EXISTING RESOURCES (ESP. INDEX FILES)
+
+/shared/trollope/ccg-demos/relation-identifier/
+/shared/austen/group-software/TAREC
+/shared/saruman/quangdo2/Descartes/
+
+
+PREREQUISITES
+
+you need Ant optional dependency jsch.jar (http://sourceforge.net/projects/jsch/files/latest/download)
+
+-- copy it into ~/.ant/lib/
+
+You will need some resource files built using Descartes, a different 
+project. Specifically, the conf/config.xml file refers to 
+
+Descartes/data/WNSimWUP/index.nounverb.score.filtered088
+Descartes/data/WNSimWUP/index.nounverb.uniqued
+
+
+
+
+CONFIGURATION
+
+To install and/or build indexes used by the relation identifier, you will
+need to change some parameters in configuration files: specifically,
+you must set the paths to various indexes to the appropriate values.
+This may require you to build the relevant indexes etc. first, using
+the appropriate commands/software.
+
+Sources of existing indexes are listed above.
+
+
+
+
+INSTALLATION
+
+>   ant -f make-jar.xml
+
+

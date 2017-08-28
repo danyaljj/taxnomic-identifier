@@ -1,0 +1,194 @@
+To the best of our knowledge, no previous study has directly addressed
+the problem we study here in this form: given two concepts, identify
+the relation between them. However, there are several lines of related
+work that we would like to mention and compare to.
+
+\ignore{Several lines of work share similarities to the work presented
+  here. One line of work makes use of the web and exploits the fact
+  that many relations are expressed explicitly and locally, typically
+  within a single sentence. It uses this to discover terms which have
+  hypernyms or coordinate relations \cite{citeulike:282193,Snow2006}
+  or to expand or refine members in a semantic class (given seeds or
+  the semantic class itself)
+  \cite{WangCohen09,VyasPantel09,kozareva-riloff-hovy:2008:ACLMain,4470258,banko-etzioni:2008:ACLMain}.
+  A second line of work attempts to classify pre-specified relations
+  \cite{citeulike:454000,Sekine06,RothYi04} and typically makes use of
+  supervised or semi-supervised learning techniques.
+
+  The later line of work is different from ours in terms of goals and
+  techniques. It considers relations such as ``SpouseOf" of ``BornIn"
+  and relies on the relation being expressed in close proximity,
+  typically within a sentence, and on training supervised classifiers.
+  The line of work which makes use of the web is similar to ours in
+  terms of the final task, but is different in its assumptions and
+  techniques---it mostly relies on the fact that due to redundancy of
+  information in the web, and presumes that many related terms will appear often
+  enough in some simple explicit form in close proximity.}
+
+In \cite{ilprints665}, the authors construct a hypernym-only
+classifier between concepts. The classifier builds on dependency path
+patterns discovered in sentences that contain noun pairs in hypernym
+and hyponym relations. The best system presented there is a
+hypernym-only classifier that is trained with hundreds of thousands of
+dependency paths extracted from Wikipedia. The system outperforms the
+best WordNet classifier in identifying coordinated terms,, improving
+the relative F-score by over 54\%. More recently, \cite{Snow2006}
+proposed a method to train their ($m$,$n$)-cousin relationship
+classifier (defined similarly to our {\em sibling} relation) to
+significantly increase coverage and improve the F-score by 23\%
+over the WordNet-2.1 hypernym classifier. The classifier is then
+applied to build the {\em extended WordNet} by augmenting WordNet-2.1
+with over $400,000$ synsets.  These works are different than ours
+because they largely build on the redundancy of information in the
+web---many related terms appear often enough in some simple explicit
+form in close proximity in a sentence. In our work, we relax this fact
+and identify relations between any two input concepts, exhibiting
+significantly better coverage and accuracy.
+
+\ignore{ They combine their hypernym-only classifier and the
+  ($m$,$n$)-cousin classifier with the evidence features to recognize
+  the hypernym and cousin relationships among nouns.  Their inferred
+  taxonomy achieves the best performance after adding 30,000 novel
+  hyponyms compared to those in WordNet-2.1.  They show that their
+  system relatively improves F-score by 23\% over the WordNet-2.1
+  hypernym classifier.}
+
+\ignore{ Using similar techniques to the aforementioned line of work,
+  there has been a large body of work on automatically expanding a set
+  of entities given some seeds that belong to a semantic class or the
+  class itself. A typical application of this research is that of
+  expanding, correcting or refining Google
+  Sets\footnote{http://labs.google.com/sets}.
+
+%
+  % The common input of systems in this direction is a set of seeds in
+  % a particular semantic class that one wishes to get other members
+  % of that class.
+%
+  Typically, these methods search the web for patterns around the
+  seeds and bootstrap to other semantically similar members of the
+  class~\cite{kozareva-riloff-hovy:2008:ACLMain,talukdar-EtAl:2006:CoNLL-X}.
+  Alternatively, \cite{4781230,4470258} use the surrounding contexts
+  of the seeds in semi-structured text to extract other members of the
+  set. Similarly,
+  \cite{citeulike:1587018,pacsca-vandurme:2008:ACLMain} automatically
+  acquire open-domain classes of entities and attributes by using
+  very little supervised seed information.
+  % Web documents and query logs are used in the acquisition process.
+}
+
+\ignore{The key difference between this line of work and the approach
+  we develop here is that we are given two concepts and must determine
+  the relation between them. The coverage of the aforementioned
+  methods is lacking since they rely on concepts appearing in close
+  proximity with specific patterns that reveal their relation. It is
+  likely, however, that our input concepts never occur together in a
+  given sentence even though they are clearly related. As we
+  show, we can robustly and accurately determine these relations,
+  significantly outperforming state of the art acquisition methods
+  such as \cite{Snow2006}.}
+
+Other related works attempts to build relational knowledge bases
+(semantic taxonomies and ontologies) that represent entities and
+relations among them. E.g. \cite{wikitaxo07} generates a taxonomy
+using Wikipedia as the knowledge source. They use the category system
+of Wikipedia as a conceptual network consisting of the subsumption
+({\em isa}) relation. Similarly \cite{suchanek2007WWW} presents the
+the YAGO ontology, which is automatically constructed using both
+Wikipedia and WordNet to mine entities and their relations. The YAGO
+approach builds on the {\em infoboxes} and {\em category pages} in
+Wikipedia and links to the clean taxonomy of concepts in WordNet. YAGO
+provides many useful relations between entities such as {\em
+  subClassOf}, {\em bornOnDate}, {\em locatedIn}, and {\em type}. One
+could possibly use the taxonomy in \cite{wikitaxo07} or the YAGO
+ontology, with some additional work, to find relation of two input
+concepts. Our work differs from this line of work in that we do not
+build an offline knowledge base, but rather directly identify
+relations between input concepts. Nevertheless, as we show, our
+approach has both better coverage and better accuracy.
+
+
+% % Story of previous work
+
+% % 1. Summarize the work on discovering terms which have hypernym or
+% % coordinate relation. E.g. the work of Marti Hearst 1992, Rion Snow
+% % 2006, Hovy 2005.
+
+% % 2. Summarize the work about expanding sets and refining set
+% % expansion. E.g. the work of Cohen 2007, 2008, 2009, Hovy 2007, Pasca
+% % 2007, 2008, Sarmento 2007, Pantel 2009
+
+% % 3. Perhaps also summarize the work of relation classifiercaiton. E.g. Zhu Zhang 2004, 
+
+% % 4. Claim that other work using supervised learning with pre-defined
+% % list of relation and domain dependency, we do different things: (a)
+% % supervised learning with arbitrary types of ancestor and cousin
+% % relations, (b) we are domain-independent: train on some domains and
+% % work well in other domains. This is also the contributions of this
+% % paper.
+
+% The task of relational knowledge identification can be seen as related
+% to the work on discovering terms which have hypernym or coordinate
+% relation \cite{citeulike:282193,Snow2006}, expanding or refining sets
+% of a semantic class from a list of given seeds or the semantic class
+% itself
+% \cite{WangCohen09,VyasPantel09,kozareva-riloff-hovy:2008:ACLMain,4470258},
+% or classifying pre-specified relations \cite{citeulike:454000}.
+
+% In \cite{ilprints665}, the authors construct a hypernym-only
+% classifier using the dependency path patterns discovered in the
+% sentences that contain noun pairs in hypernym and hyponym
+% relations. Furthermore, they show that using coordinate terms can help
+% improve the recall of the hypernym classifier. The best system in
+% their work is a hypernym-only classifier additionally trained with
+% hundred thousands of dependency paths extracted from the Wikipedia corpus.
+% The system outperforms the best WordNet classifier in identifying
+% coordinated terms by relatively improving F-score by over
+% 54\%. Recently, \cite{Snow2006} propose a method to train their
+% ($m$,$n$)-cousin relationship classifier. They combine their
+% hypernym-only classifier and the ($m$,$n$)-cousin classifier with the
+% evidence features to recognize the hypernym and cousin relationships
+% among nouns. Their inferred taxonomy achieves the best performance
+% after adding 30,000 novel hyponyms compared to those in
+% WordNet-2.1. They show that their system relatively improves F-score
+% by 23\% over the WordNet-2.1 hypernym classifier.
+
+% There has been a large body of work on automatically expand a set of
+% entities given some seeds of a semantic class or the class itself. A
+% typical application of this research is Google
+% Sets\footnote{http://labs.google.com/sets}. The common input of
+% systems in this direction is a set of seeds in a particular semantic
+% class that one wishes to get other members of that class.  The common
+% approach is to do bootstrapping on the input seeds to get the patterns
+% around the seeds in unstructured text by searching the Web, then
+% extract other semantically similar members of the class, and vice
+% versa
+% \cite{kozareva-riloff-hovy:2008:ACLMain,talukdar-EtAl:2006:CoNLL-X}. On
+% the other hand, \cite{4781230,4470258} use surrounding contexts of
+% seeds in semi-structured text to extract other members of the set.
+% \cite{citeulike:1587018,pacsca-vandurme:2008:ACLMain} proposed
+% approaches to automatically acquire open-domain classes of entities
+% and attributes by using very little supervised seed information. Web
+% documents and query logs are used in the acquisition process. Other
+% approaches in information extraction include constructing relation
+% classifiers on a pre-defined set of specific relations such as {\em
+%   People, Organization, and Location}, or exhaustively searching and
+% extracting all possible relations and related concepts
+% \cite{citeulike:454000,banko-etzioni:2008:ACLMain}.
+
+% In this paper, we solve the problem of relational knowledge
+% identification which is in a different context with other information
+% extraction problems. The key difference is that we address the problem
+% of identification which answers the question if two input concepts
+% hold an relation, whereas an expanding process tries to extract as
+% many semantically similar concepts as possible without any specific
+% concepts in mind. Although the latter task can produce many good sets
+% through the expansion process, there is no guarantee about the
+% completeness of the sets. Therefore, they are not useful in
+% identifying relations between two given concepts of interest.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "jupiter"
+%%% End: 

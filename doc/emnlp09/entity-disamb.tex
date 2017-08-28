@@ -1,0 +1,92 @@
+Our problem is different than other previous work on relation
+extraction. Most previous work focuses on extracting all possible
+entity pairs that follow some pre-defined relations (e.g. LocatedIn,
+BornInYear, AuthorOf, etc.) in big corpora [---CITES---]. Some other
+previous work extracting all possible entity pairs and relations from
+big corpora with a list of same class entities as the start point
+[---CITES---]. Another direction of relation extraction is to extract
+all possible instances of a given class, or in the same class of given
+instances.
+
+We are addressing the problem of identifying the most possible
+relation of two input entities. In this paper, we limit the interested
+relations to \emph{Ancestor}, \emph{Cousin}, or \emph{None} relations.
+By posing the problem as identifying relations, we face a problem of
+disambiguating the input entities. The more accurate in disambiguating
+the entities, the more precision we get in recognizing relations. For
+example, the entity \emph{ford} in the entity pair \emph{(bush, ford)}
+may refer to several concepts, such as \emph{Ford Motor Company},
+president \emph{Gerald Ford}, founder \emph{Henry Ford}, or
+\emph{Ford} city in Wisconsin - USA. However, we can take advantage
+from entity \emph{bush} to disambiguate entity \emph{ford} and vice
+versa. Eventually, we can put two concepts \emph{George W. Bush} and
+\emph{Gerald Ford} in the top ranked lists referring to \emph{bush}
+and \emph{ford}.
+
+We first use ESA [---CITES---] to generate a list of top relevant
+articles in Wikipedia to both entities. For each article in the top
+list, we extract and keep its Wikipedia categories. All categories are
+then tokenized to create a pool of tokens relevant to the two input
+entities.  We use TF-IDF score to weight the importance of each
+token. Only top important tokens, which are different from the two
+input entities, are kept to use in the next step of disambiguating.
+The general idea is that only the important tokens which are relevant
+to the two input entities are used to provide more information for the
+input entities so that we can determine the correct concepts to which
+they refer. Each input entity is then concatenated with the top
+important tokens to create a new query. We use the new queries to
+search in the title and text of Wikipedia articles to get top list of
+articles referring to each input entity. These lists of articles later
+are used to provide features for our relation classifiers.
+
+Figure \ref{fig:entity-disamb} provides pseudo codes for the whole
+procedure of disambiguating input entities. In this procegure, the
+function named $ESA(query)$ extracts the most relevant articles in
+Wikipedia to $query$.  All categories of a $set$ of articles are
+extracted by function $getCategories(set)$. The function
+$searchIndex(query)$ retrieves relevant Wikipedia articles to $query$
+by search $query$ in the articles' title and text.
+
+\begin{figure}[!hbt]
+  \begin{centering}
+ %   {\scriptsize
+      \fbox{
+        \begin{minipage}{6in} 
+          \begin{tabbing}
+            {\textsc{Entity Pair Disambiguation}} \\
+            \qquad {\textsc{Input}}: A pair of entity $(x,y)$ \\
+            \qquad {\textsc{Output}}: Lists of Wikipedia articles relevant to \\
+            \qquad \qquad \qquad ~~$x$ and $y$. \\
+            \\
+            \qquad Query $\mathcal{Q} \leftarrow $ Concatenating $x$ and $y$; \\
+            \qquad $\mathcal{S} = \text{ESA}(\mathcal{Q})$; \\
+            \\
+            \qquad $\mathcal{C} = \text{getCategories}(\mathcal{S})$; \\
+            \\
+            \qquad $\mathcal{T} = {\text{Tokenize}(\mathcal{C})}$; \\
+            \qquad $\mathcal{T}_{top} = \text{TopK}_{tfidf}(\mathcal{T})$; \\
+            \\
+            \qquad Query $\mathcal{Q}_x \leftarrow $ Concatenating $x$ and tokens from $\mathcal{T}_{top}$; \\
+            \qquad Query $\mathcal{Q}_y \leftarrow $ Concatenating $y$ and tokens from $\mathcal{T}_{top}$; \\
+            \\
+            \qquad $\mathcal{A}_x = \text{searchIndex}(\mathcal{Q}_x)$; \\
+            \qquad $\mathcal{A}_y = \text{searchIndex}(\mathcal{Q}_y)$; \\
+            \\
+            \qquad \textsc{Return}: $\mathcal{A}_x$, and $\mathcal{A}_y$; \\
+          \end{tabbing}
+        \end{minipage}
+      }
+%  }
+\end{centering}
+\caption{
+  \label{fig:entity-disamb}
+  Pseudo code for the procedure to disambiguate the two input
+  entities. After the procedure progresses, lists of Wikipedia
+  articles relevant to two input entities are discovered.  }
+\end{figure}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "jupiter"
+%%% End: 

@@ -1,0 +1,176 @@
+\newcommand{\ignore}[1]{}
+
+%The Introduction should contain the followings.
+%1. A meaningful example extracted from RTE data sets. This example demonstrates the need of relation detection applied directly to textual inference.
+%2. Open and traditional relation extraction and their limitation in natural language inference.
+%3. Natural logic for textual inference.
+%4. Our system.
+%5. Table of content of the paper.
+Inference in natural language requires the use of large amounts
+of background knowledge. For example, it may be important to
+know that a {\em blue Toyota} is not a {\em red Toyota} nor a
+{\em blue Honda} but that all are cars, and even Japanese made
+cars. This is a different problem than variations of relation
+extraction studied in the literature that aim at extracting
+relations between entities that co-occur in a given snippet of
+text. While the extraction of knowledge of this sort has also
+been discussed in the literature, it has been studied mostly in
+the context of large scale knowledge acquisition - extract all
+{\em easy to find} facts in a given
+corpus~\cite{banko-etzioni:2008:ACLMain,davidov-rappoport:2008:ACLMain2,pacsca-vandurme:2008:ACLMain,bunescu-mooney:2007:ACLMain}.
+This knowledge is typically existential; e.g., while it is true
+that A is of type B, say, it is not clear if it is commonly B;
+moreover, if the textual inference system needs to know if A
+and B are related, and how, this relation will appear in the
+acquired knowledge base only if A and B have occurred in close
+proximity in a sentence (and in a easy to understand way).
+Consequently, it is difficult for a textual inference system to
+benefit from the knowledge acquired this way. Indeed, we know
+of no successful application of the large scale existential
+knowledge acquisition efforts to textual inference.
+
+In the context of Textual Entailment, for
+example~\cite{DaganGlMa06,HaghighiNMa05,BGPRS05}, it has been
+argued, e.g., \cite{maccartney-manning:2008:PAPERS}) that many
+inferences are largely compositional and depend on the ability
+to recognize specific  relations between entities, noun
+phrases, verbs, adjectives etc. For example, it is often
+necessary to know of an {\em ancestor} relation (and its
+directionality) in order to deduce that a statement with
+respect to the {\em child} (e.g., George Bush) holds for an {\em ancestor}
+(e.g., a republican leader). This is illustrated in the
+following example, taken from the RTE4 test suite:
+
+{\small
+\begin{quote}
+
+{\bf T}: Nigeria's National Drug Law Enforcement Agency (NDLEA)
+has seized 80 metric tonnes of cannabis in one of its largest
+ever hauls, officials say.
+
+{\bf H}: Nigeria seizes 80 tonnes of drugs.
+\end{quote}
+}
+
+Similarly, it is often important to know of a {\em cousin}
+relation to infer that a statement about Sun may {\em
+contradict} an identical statement with respect to HP (at least
+without additional information) since these are {\em different}
+companies. This is illustrated in the following example (where
+inference requires both identifying a cousin and an
+ancestor relation):
+
+{\small
+\begin{quote}
+
+{\bf T}: A strong earthquake struck off the southern tip of
+Taiwan at 12:26 UTC, triggering a warning from Japan's
+Meteorological Agency that a 3.3 foot tsunami could be heading
+towards Basco, in the Philippines.
+
+{\bf H}: An earthquake strikes Japan.
+\end{quote}
+}
+
+This paper proposes to address the problem of relation
+identification and classification in a form that is directly
+applicable to textual inference.
+%
+Specifically, our system accepts two input arguments (entities
+or noun phrases) and detects the relation between them along
+with its possible label (e.g. {\em economic problems} is a
+possible class for {\em global warming} and {\em food crisis}).
+We focus here on the {\em ancestor} relation and the {\em
+cousin} relation, that were identified as key relations also
+in \cite{maccartney-manning:2008:PAPERS} (the {\em cousin}
+relation is call an {\em alternation} there, and the {\em ancestor} relation is call {\em forward entailment} and {\em backward entailment}). Following the
+inference logic developed there, we expect that the resource we
+develop in this work can be used compositionally  to support
+robust textual inference.
+
+\ignore{ Our approach can discover whether two input entities
+pose an alternation (or non-exhautive exclusion) relation ({\em
+red} $|$ {\em green}), forward entailment ({\em Mel Gibson}
+$\sqsubset$ {\em actor}), reverse entailment ({\em flower}
+$\sqsupset$ {\em lily}), or independence ({\em Boeing 747} $\#$
+{\em Valentine}). }
+
+We develop an approach that makes use of Wikipedia to recognize
+the classify the relations between a pair of arguments on the
+fly. While Wikipedia is vast resource that is rapidly being
+updated, our approach needs to take into account that it is
+developed by a large number of people, and is thus very noisy
+and non-uniform. Our algorithmic approach therefore treats
+Wikipedia and its category structure as an open resource and
+uses statistical text mining techniques to get robust
+information from this noisy resource.
+
+For example, the entity {\em Ford} appears many times in
+Wikipedia, and is part of a large number of categories. We need
+to disambiguate it and determine which category it belongs to
+and, within this category, which specific entity is intended.
+%For disambiguation, we make use of the context provided by the
+%pair - Ford in (Ford, Nixon) is probably different than the one
+%in (Ford, Chevrolet)  and possibly even in (Ford, Iacocca).
+We
+%also
+make use of a notion of prominence with respect to a given
+text collection (in this case, with respect to Wikipedia
+itself) under the assumption that in textual entailment
+applications we are in search of some notion of "common sense"
+knowledge.
+
+We evaluate our system by comparing its performance over a
+large number of pairs chosen from over 40 classes, with a large
+scale effort done in forming the extended WordNet \cite{Snow2006}. We show significantly better results in
+terms of coverage and accuracy.
+Furthermore, we show that even when all entities are covered by the extended WordNet, our system still significantly outperforms the baseline.
+%We also show examples for the
+%contribution our approach can make in the context of textual
+%entailment.
+
+The rest of this paper is organized as follows. In Section
+\ref{sec:relatedwork}, we briefly mention about previous work that inspires the proposal of our approach.
+Section \ref{sec:approach} formalizes the problem and describes our
+algorithmic approach to relation detection and classification.
+Our experiments and results are described in Section
+\ref{sec:experiments}. Discussion and future work are in
+Section \ref{sec:discussion}. We
+give the concluding remarks of our paper in Section \ref{sec:conclusion}.
+
+%
+%%The Introduction should contain the followings.
+%%1. A meaningful example extracted from RTE data sets. This example demonstrates the need of relation detection applied directly to textual inference.
+%%2. Open and traditional relation extraction and their limitation in natural language inference.
+%%3. Natural logic for textual inference.
+%%4. Our system.
+%%5. Table of content of the paper.
+
+%Many natural language processing applications require semantic inference which, in turn, demands a common framework for applied semantics. Recently, textual entailment has shown considerable promise as a framework to apply textual inference \cite{Dagan05thepascal}.
+
+%Among several approaches developed to achieve the ultimate goal of the textual entailment task, the approach based on a model of natural logic, which utilizes lexical entailment relations to do inference, has proved to be very promising \cite{maccartney-manning:2008:PAPERS}.
+
+%However, this approach requires an effective way to exploit the background knowledge that provides useful and accurate information to the inference process.  Most of the current approaches in relation extraction look at collections of text and extract all possible facts from these corpora \cite{banko-etzioni:2008:ACLMain,davidov-rappoport:2008:ACLMain2,pacsca-vandurme:2008:ACLMain,bunescu-mooney:2007:ACLMain}. However, it is difficult for a textual inference system to get benefit from this direction because of two difficulties: (1) the extracted knowledge may not be particularly well-suited for natural language inference and (2) knowledge about specific entities in focus may not be associated with the extracted facts due to the inherent characteristics of natural language.
+
+%Consider the following example, drawn from the RTE4 test suite (pair id=``74'').
+
+%\begin{quote}
+
+%{\bf T}: With tales of rising seas and talk of human solidarity, world leaders at the first United Nations climate summit sought Monday to put new urgency into global talks to reduce {\em global warming} emissions.
+
+%{\bf H}: UN summit targets global {\em food crisis}.
+
+%\end{quote}
+
+%This example, in the 2-way classification textual entailment task, is tagged as {\bf NO} entailment. One way to induce the answer for this example is that by looking at the pair of entities ({\em global warming}, {\em food crisis}), one can see that the entities are about two {\em economic problems}; and they share the alternation (or non-exhaustive exclusion) relation, which is obvious for human. This, therefore, ensures that {\bf T} and {\bf H} are talking about two different things so that {\bf T} cannot entail {\bf H}. 
+%\mnote{[QD:] This paragraph seems to be not clear enough. Revise needed.}
+%Nevertheless, it is difficult for an inference system itself to conclude that there are no relation between these two entities to induce a correct answer.
+
+%In this paper, we propose a novel approach that uses Wikipedia as the background knowledge to detect the relations between entities in real-time. We position the problem of relation detection in the context of the textual entailment task, where relations between entities are used to do textual inference. Our system accepts two input entities and detect the relation between them along with their possible classes (e.g. {\em economic problems} is a possible class for {\em global warming} and {\em food crisis}).
+%\mnote{[QD:] I don't like the way I express my idea here. The words that I am using are not interesting, professional, and convincing. I have not known how to make it better so far.}
+%Our approach can discover whether two input entities pose an alternation (or non-exhautive exclusion) relation ({\em red} $|$ {\em green}), forward entailment ({\em Mel Gibson} $\sqsubset$ {\em actor}), reverse entailment ({\em flower} $\sqsupset$ {\em lily}), or independence ({\em Boeing 747} $\#$ {\em Valentine}).
+%The experiments on the data of 40 classes of instances \cite{citeulike:1587018} show that our best system in relation detection achieve over 80\% of accuracy, which outperforms the baseline at more than 40\%.
+
+%Furthermore, we evaluate our system on the examples extracted from all RTE data sets and FraCaS test suite \cite{Cooper1996FraCaS}. The experiments also show that our system is very valuable for textual inference.
+
+%The rest of this paper is organized as follows. In Section \ref{sec:relationdetection}, we introduce the problem of relation detection and its role in natural logic inference. Section \ref{sec:approach} formalizes the problem and proposes our approach to relation detection. Our experiments and results are described in Section \ref{sec:experiments}. Discussion and related work are in Section \ref{sec:discussion}, and \ref{sec:relatedwork}. We give the concluding remarks of our paper and suggest future work in Section \ref{sec:conclusion}.

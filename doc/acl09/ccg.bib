@@ -1,0 +1,2884 @@
+% The file contains Dan Roth's and the Cognitive Computation Group papers
+%
+%
+% The key for an entry should be the concatenation of:
+%   (1) The full last name of the first author (first letter capitalized),
+%   (2) The first two characters of the last name of each following
+%           author (first letter capitalized),
+%   (3) The last two digits of the year of the publication, and
+%   (4) [Optional] A letter from "bcdefg..." or other text (e.g. volume
+%       number) if necessary to yield unique keys.
+%
+% Example: AhoHoUl74
+%
+% The entries in this file should be alphabetically sorted by key value.
+%
+% Entries with more than 3 authors should replace (1) and (2) with
+% the first letter of each author's last name, capitalized.
+
+
+
+% The bibfile has a number of extensions that are designed to work with
+% the DB update scripts and allow its use as a master file for multiple option on the
+% Cogcomp group web page.
+% Here is a list of the extension and what they do:
+%
+%    * url: a URL where the publication can be downloaded.
+%      All the papers are placed in the /home/roth/danr/public_html/Papers directory on l2r.
+%      Publications appear in reverse chronological order (years) and, within a year,
+%      in the order they appear in the bibfile.
+%    * projects: a list of space or comma-delimited keys for the projects related to the publication.
+%      The keys and their respective projects are listed in the projects section below.
+%    * funding: a list of keys for the grants which helped to produce the publication.
+%      The keys and their respective grants are listed at the top of the bibfile.
+%    * comment: a short comment which will be displayed in fixed-width type under the
+%      citation for the publication on the group website.
+%      This is a good place to put relevant keywords for the paper and to facilitate googling it.
+%    * invisible: a way to specify that this entry should not appear on the group web site.
+%      say: invisible = {true}. All other values will be assumed to be false.
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%        PROJECTS           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+@comment{FLKR = {Foundations: Learning, Knowledge Representations, Reasoning}}
+@comment{ML = {Machine Learning}}
+@comment{KR = {Knowledge Representation and Inference}}
+@comment{LnI = {Learning and Inference}}
+@comment{NLP = {Natural Language Processing}}
+@comment{IIA = {Intelligent Information Access}}
+%%
+%%                 FLKR
+%%                 |
+%%                 DPL MCR LCC LT LP KR
+%%
+%%                 LnI
+%%                 |
+%%                 SI ILP SM
+%%
+%%                 IIA
+%%                 |
+%%                 IE LV MIRROR NE QA KINDLE
+%%
+%%                 NLP
+%%                 |
+%%                 LNLP CSD SP
+@comment{CSD = {Context Sensitive Disambiguation}}
+@comment{DPL = {Discriminative and Probabilistic Learning}}
+@comment{LNLP = {Learning in NLP}}
+@comment{IE = {Information Extraction}}
+@comment{ILP = {Integer Linear Programming Inference}}
+@comment{KR = {Relational Knowledge Representations and Kernels}}
+@comment{LBP = {Learning Based Programming}}
+@comment{LCC = {Learning Coherent Concepts}}
+@comment{LINL = {Learning and Inference in Natural Language}}
+@comment{LV = {Learning for Visual Recognition}}
+@comment{LP = {Learning Protocols}}
+@comment{LT = {Learning Theory}}
+@comment{KINDLE = {Knowledge Representation and Inference for Natural Language using Feature Description Logic}}
+@comment{MCR = {Multiclass Classification and Ranking}}
+@comment{MIRROR = {Mirroring Entities: Name Identification and Tracing}}
+@comment{NE = {Named Entity Recognition}}
+@comment{NLP = {Natural Language Processing}}
+@comment{QA = {Question Answering Systems}}
+@comment{SI = {Sequential Inference}}
+@comment{SM = {Structural Mapping}}
+@comment{SP = {Semantic Parsing}}
+@comment{PHRASENET = {PhraseNet}}
+%% NEW PROJECTS (2008)
+@comment{USS = {Unsupervised and Semi-supervised Learning}}
+@comment{DC = {Dataless Classification}}
+@comment{AL = {Active and Interactive Learning}}
+@comment{RANK = {Learning to Rank}}
+@comment{ADAPT = {Adaptation}}
+@comment{PL = {Pipeline Models}}
+@comment{MC = {Multiclass Classification}}
+@comment{PASTML = {Past Projects}}
+@comment{FOPI = {First-order Probabilistic Inference}}
+@comment{KRNLP = {Knowledge Representation for Natural Language}}
+@comment{CCM = {Constrained Conditional Models}}
+@comment{LBP = {Learning Based Programming}}
+@comment{SRL = {Semantic Parsing (Semantic Role Labeling)}}
+@comment{TE = {Semantic Entailment and Question Answering}}
+@comment{COREF = {Cofereference Within and Across Documents}}
+@comment{DP = {Dependency Parsing}}
+@comment{COMP = {Natural Language Comprehension in Context}}
+@comment{PSYCHO = {Psycholinguistics}}
+@comment{TL = {Transliteration}}
+@comment{LS = {Lexical Semantics}}
+@comment{PASTNLP = {Past Projects}}
+@comment{IE = {Information Extraction}}
+@comment{NER = {Named Entities and Relations}}
+@comment{SEARCH = {NLP Based Search}}
+@comment{TRUST = {Trustworthiness}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%         GRANTS            %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% The key of a past projects is prefiexed by p-
+
+%%% NSF
+
+
+@comment{Psych = {Verb Learning and The Early Development of Sentence Comprehension:
+Experimental and Computational Studies}}
+% ACTIVE: NSF BCS-0620257
+% ACTIVE NIH grant R01-HD054448.
+@comment{SoD = {Learning Based Programming}}
+% ACTIVE: NSF SoD-HCER-0613885
+
+
+@comment{ITR-EDU = {Natural Language Processing Technology for Guided Study of Bioinformatics}}
+% NSF ITR IIS-0428472
+@comment{p-ITR-BI = {Multimodal Human Computer Interaction: Toward a Proactive Computer}}
+% NSF IIS -- 0085980
+@comment{p-ITR-MIT = {From Bits to Information: Statistical Learning Technologies for
+Digital Information Management and Search}}
+% NSF ITR IIS 0085836
+@comment{NSF-REU = (research experience for undergraduates)}
+@comment{p-CAREER = {Learning Coherent Concepts: Theory and Applications to Natural Language}}
+% NSF IIS 9984168
+@comment{p-KDI = {The Role of Experience in Natural Language}}
+% NSF SBR 9872450
+@comment{p-NSF98 = {Learning to Perform Knowledge Intensive Inferences}}
+% NSF IIS 9801638
+@comment{CLUSTER = {Programming Environments and Applications for Clusters and Grids}}
+%
+% Library of Congress ECHO Depository Index code: A60754 FOPAL: 490167-434040-191100
+@comment{Library = {Meta-Data}}
+
+
+
+
+%%%%
+%%% DOI
+@comment{p-KINDLE = {Knowledge and Inference via Description Logics for Natural Language}}
+%Advanced Research and Development Activity (ARDA)'s Advanced Question Answering for Intelligence (AQUAINT)
+@comment{p-REFLEX = {Named Entity Recognition and Transliteration for 50 Languages.}}
+@comment{p-LbR = {DARPA seedling for Learning by Reading.}}
+
+@comment{MIAS = {DHS-IDS-Center for Multimodal Information Access and Synthesis.}}
+%% ACTIVE:
+% Index code: A46411
+% CFOP: 491233-434040-191100
+% Title: Navy N00014-07-1-0151
+@comment{BL = {DARPA funding under the Bootstrap Learning Program.}}
+%% ACTIVE:
+
+%%% ONR
+@comment{p-MURI = {Decision Making Under Uncertainty}}
+@comment{p-TRECC = {Cross-Document Entity Identification \& Tracing.}}
+
+%%% Industry
+@comment{p-BOEING = {Machine Learning for Security: Digital Guards for Insider Threat Detection}}
+@comment{BOEING-L = {Focused Textual Entailment}}
+%% ACTIVE
+
+@comment{GOOGLE = {Textual Entailment}}
+%% ACTIVE: GIft
+
+@comment{MSR = {Textual Entailment}}
+%% ACTIVE: Gift
+%% Index code: 434U8K
+%% Title: Microsoft-Roth
+%% FOPAL: 630246-434028-191100
+
+
+
+@comment{p-MOTOROLA = {Business Intelligence Systems}}
+@comment{XPRESSMP = {XPress-MP Optimization Suite}}
+%Dash Optimization for the free academic use of Xpress-MP.
+@comment{p-IBM = {Context-Sensitive Natural Language Inferences}}
+
+%%% UIUC
+@comment{p-CRI = {The Role of Sensorimotor Function, Associative Memory and Reinforcement Learning in
+Automatic Acquisition of Spoken Language by an Autonomous Robot}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%        PACKAGES           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@comment{SNOW = {SNoW}}
+@comment{FEX = {FEX}}
+@comment{POS = {POS Tagger}}
+@comment{NE = {NE Tagger}}
+@comment{SP = {Shallow Parser}}
+@comment{SRL = {Semantic Role labeling}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%        JOURNALS           %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@string{AI = {Artificial Intelligence}}
+@string{CACM = {Communications of the ACM}}
+@string{CSL = {Computer Speech and Language}}
+@string{CL = {Computational Linguistics}}
+@string{InfCtrl = {Information and Control}}
+@string{IT = {IEEE Transactions on information theory}}
+@string{JACM = {Journal of the ACM}}
+@string{JAIR = {Journal of AI Research}}
+@string{JMLR = {Journal of Machine Learning Research}}
+@string{ML = {Machine Learning}}
+@string{NLE = {Journal of Natural Language Engineering}}
+@string{MM = {IEEE Transactions on Multimedia}}
+@string{PAMI = {IEEE Transactions on Pattern Analysis and Machine Intelligence}}
+@string{SIJAD = {SIAM Journal of Algebraic and Discrete Methods}}
+@string{SIJC = {SIAM Journal of Computing}}
+@string{TASSP = {IEEE Transactions on Acoustics, speech, and Signal Processing}}
+@string{TASSP = {IEEE Transactions on Acoustics, speech, and Signal Processing}}
+@string{TCS = {Theoretical Computer Science}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%       CONFERENCES         %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@string{AAAI= {Proceedings of the National Conference on Artificial Intelligence (AAAI)}}
+@string{ANLP = {Proc. of ACL Conference on Applied Natural Language Processing}}
+@string{ARPA = {Proc. of the ARPA Workshop on Human Language Technology}}
+@string{ACCV = {Proceedings of the Asian Conference on Computer Vision (ACCV)}}
+@string{AISTAT = {Proceedings of the International Workshop on Artificial Intelligence and Statistics}}
+@string{ALT = {Proc. of the International Workshop on Algorithmic Learning Theory (ALT)}}
+@string{COLING = {Proc.  the International Conference on Computational Linguistics (COLING)}}
+@string{ACL = {Proc. of the Annual Meeting of the ACL}}
+@string{COLT = {Proc. of the Annual ACM Workshop on Computational Learning Theory (COLT)}}
+@string{CoNLL = {Proc. of the Annual Conference on Computational Natural Language Learning (CoNLL)}}
+@string{CVPR = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}}
+@string{DARPA = {Proc. of the DARPA Workshop on Speech and Natural Language}}
+@string{ECML = {Proc. of the European Conference on Machine Learning (ECML)}}
+@string{FOCS = {IEEE Symp. of Foundation of Computer Science}}
+@string{ECCV = {Proc. of the European Conference on Computer Vision (ECCV)}}
+@string{IAAI= {Proceedings of the National Conference on Innovative Applications of Artificial Intelligence (IAAI)}}
+@string{ICML = {Proc. of the International Conference on Machine Learning (ICML)}}
+@string{ICASSP = {Proc. of ICASSP}}
+@string{IJCAI = {Proc. of the International Joint Conference on Artificial Intelligence (IJCAI)}}
+@string{IJCNLP = {Proc. of the International Joint Conference on Natural Language Processing (IJCNLP)}}
+@string{ILP =  {Proc. of the International Conference Inductive Logic Programming}}
+@string{IPW = {Proc. of the International Parsing Workshop}}
+@string{IWPT = {Proc. of the International Workshop of Parsing Technology}}
+@string{IT = {IEEE Transactions on Information Theory}}
+@string{ISMB = {The International Conference on Intelligent Systems for Molecular Biology}}
+@string{KR = {Proc. of the International Conference on the Principles of Knowledge Representation and Reasoning}}
+@string{NAACL = {Proc. of the Annual Meeting of the North American Association of Computational Linguistics (NAACL)}}
+@string{NIPS = {The Conference on Advances in Neural Information Processing Systems (NIPS)}}
+@string{SIGIR = {Proc. of International Conference on Research and Development in Information Retrieval, SIGIR}}
+@string{SIGDAT = {Proc. of the Conference on Empirical Methods for Natural Language Processing (EMNLP)}}
+@string{STOC = {ACM Symp. of the Theory of Computing}}
+@string{TMI = {Proc. of the International Conference on Theoretical and Methodological Issues in Machine Translation}}
+@string{UWOED = {Proc. of the Annual Conference of the UW Center for the New OED and Text Research}}
+@string{JACM = {Journal of the ACM}}
+@string{WWW = {The International World Wide Web Conference}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%       PUBLISHERS          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+@string{Cambridge = {Cambridge University Press}}
+@string{Benjamin = {Benjamin/Cummings Publishing Company, Inc.}}
+@string{MIT = {MIT Press}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Begin Publications List  %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%
+%%%  2009  %%%
+%%%%%%%%%%%%%%
+@inproceedings{CGRT09,
+    author=         {M. Chang and D. Goldwasser and D. Roth and Y. Tu},
+    title=          {Unsupervised Constraint Driven Learning For Transliteration Discovery},
+    booktitle=      {NAACL},
+    month=          {May},
+    pages=          {xx--yy},
+    year=           {2009},
+    url= URL = "http://l2r.cs.uiuc.edu/~danr/Papers/CGRT.pdf"
+    funding = {DARPA,SoD,MIAS},
+    projects = {CCM,TL}
+    comment  = {Transliteration; Constrained optimization; constrained conditional models,
+    unsupervised learning; named entity discovery; multilingual corpora; bootstrapping, romanization table,
+    feature selection for transliteration; Discriminative training of Objective function;
+    Dynamic Programming}
+}
+
+
+@inproceedings{PasternackRo09,
+ author= {J. Pasternack and D. Roth},
+ title= {Extracting Article Text from the Web with Maximum Subsequence Segmentation},
+ booktitle= WWW,
+ month= {April},
+ year= {2009},
+ comment= {A new global optimization technqiue, maximum subsequence, is used to accurately identify
+ and extract article text from HTML documents in linear time},
+ projects = {IE}
+ URL = "http://l2r.cs.uiuc.edu/~danr/Papers/PasternackRo09.pdf",
+ }
+
+@inproceedings{RothSmTi09,
+  author = {Dan Roth and Kevin Small and Ivan Titov},
+  title = {Sequential Learning of Classifiers for Structured Prediction Problems},
+  booktitle = AISTAT,
+  month= {April},
+  pages= {xx--yy},
+  year= {2009},
+  comment= {},
+  url= URL = "http://l2r.cs.uiuc.edu/~danr/Papers/RothSmTi09.pdf"
+  funding = {DARPA,MIAS},
+  projects = {CCM,USS,IE}
+}
+
+
+%%%%%%%%%%%%%%
+%%%  2008  %%%
+%%%%%%%%%%%%%%
+
+@incollection{KlementievRo08,
+    Author = {A. Klementiev and D. Roth},
+    Booktitle = {Learning Machine Translation},
+    Editor = {Cyril Goutte and Nicola Cancedda and Marc Dymetman and George Foster},
+    Keywords = {Transliteration, Machine Translation},
+    Publisher = {MIT Press},
+    Title = {Named Entity Transliteration and Discovery in Multilingual Corpora },
+    Year = {2008},
+    Projects = {REFLEX,USS,TL,ADAPT},
+    Funding = {KINDLE,REFLEX},
+    URL = "http://l2r.cs.uiuc.edu/~danr/Papers/KlementievRo08.pdf"}
+
+@inproceedings{GoldwasserRo08a,
+    author=         {D. Goldwasser and D. Roth},
+    title=          {Transliteration as Constrained Optimization},
+    booktitle=      EMNLP,
+    month=          {Oct},
+    pages=          {xx--yy},
+    year=       {2008},
+    url= "http://l2r.cs.uiuc.edu/~danr/Papers/GoldwasserRo08a.pdf",
+    funding = {DARPA,SoD},
+    projects = {CCM,TL}
+    comment  = {Transliteration; Constrained optimization;
+    Named entity discovery; bilingual corpora;
+    feature selection for transliteration;
+    Discriminative training of Objective function;
+    Integer Linear Programming;ILP; Hebrew transliteration }
+}
+
+@inproceedings{BengtsonRo08,
+    author=         {E. Bengtson and D. Roth},
+    title=          {Understanding the Value of Features for
+Coreference Resolution},
+    booktitle=      EMNLP,
+    month=          {Oct},
+    pages=          {xx--yy},
+    year=       {2008},
+    url= "http://l2r.cs.uiuc.edu/~danr/Papers/BengtsonRo08.pdf",
+    comment= {The importance of good features for coreference resolution,
+    leading to a simple but state of the art pairwise coreference system.
+    Entity Mention Matching; Within Document Coreference Resolution}
+    funding = {Boeing,SoD},
+    projects = {COREF,TE}
+}
+
+@inproceedings{KlementievRoSm08a,
+  author = {A. Klementiev and D. Roth and K. Small},
+  title = {A Framework for Unsupervised Rank Aggregation},
+  booktitle = {Proc. of the SIGIR Workshop on Learning to Rank for Information Retrieval},
+  month = {July},
+  year = {2008},
+  pages = {32-39},
+  url = "http://l2r.cs.uiuc.edu/~danr/Papers/KlementievRoSm08a.pdf",
+  projects = {USS,RANK},
+  funding = {ITR-EDU, BL, MIAS}
+}
+
+@inproceedings{ChangRaRo08,
+  author = {M. Chang and L. Ratinov and D. Roth},
+  title = {Constraints as Prior Knowledge},
+  booktitle = {ICML Workshop on Prior Knowledge for Text and Language Processing},
+  month = {July},
+  year = {2008},
+  pages = {32-39},
+  url = "http://l2r.cs.uiuc.edu/~danr/Papers/ChangRaRo08.pdf",
+  projects = {USS,IE,CCM},
+  funding = {SoD, LIBRARY, MIAS}
+}
+
+@techreport{RothSa08,
+author = {D. Roth and M. Sammons},
+title = {A Unified Representation and Inference Paradigm for Natural Language
+Processing},
+institution = "UIUC Computer Science Department",
+  number      = "UIUCDCS-R-2008-2969",
+  month       = "Jun",
+  year        = {2008},
+  projects = {TE},
+  funding = {Boeing},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/RothSa08.pdf",
+  comments = {Unified knowledge representation for natural language understanding;
+  inference by noisy unification; deferred canonicalization; natural language text representation;
+combining disparate NLP analysis; Textual Entailment},
+}
+
+
+@InProceedings{CGFR08,
+  author    = {M. Connor and Y. Gertner and C. Fisher and  D. Roth},
+  title     = {Baby SRL: Modeling Early Language Acquisition},
+  booktitle = CoNLL,
+  month     = {Aug},
+  year      = {2008},
+  pages     = {xx--yy},
+  comment   = {Evaluating the psycholinguistics structure-mapping assumption;
+  a semantic role labeling system with simple, psycholinguistically plausible features; language acquisition},
+  projects = {PSYCHO},
+  funding = {Psych},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/CGFR08.pdf",
+}
+
+
+@article{PunyakanokRoYi08,
+ author     = {V. Punyakanok and D. Roth and W. Yih},
+ title      = {The Importance of Syntactic Parsing and
+Inference in Semantic Role Labeling},
+ journal    = CL,
+ volume     = {34},
+ number      = {2},
+ year       = {2008},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRoYi07.pdf",
+ projects = {IE,LINL,SP,ILP,SRL},
+ funding = {KINDLE,REFLEX,MURI,XPRESSMP},
+}
+
+@article{DayaRoWi08,
+author=         {E. Daya, and D. Roth and S. Wintner},
+  title=          {Learning Hebrew Roots: Machine Learning with Linguistic Constraints},
+  journal    = CL,
+  volume     = {34},
+  number      = {3},
+  pages      = {},
+  year       = {2008},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/DayaRoWi08.pdf",
+  funding = {CAREER,MURI, REFLEX},
+  projects = {LnI,SI,NLP}
+}
+
+@InProceedings{SRSRR08,
+author = {V. Srikumar and R. Reichart and M. Sammons and A. Rappoport and D. Roth},
+title = {Extraction of Entailed Semantic Relations Through Syntax-based Comma Resolution},
+booktitle = ACL,
+month = {Jun},
+year = {2008},
+address = {Columbus, OH, USA},
+publisher = {Association for Computational Linguistics},
+pages = {},
+projects = {TE},
+funding = {SoD,Boeing},
+url      = "http://l2r.cs.uiuc.edu/~danr/Papers/SRSRR08.pdf",
+comments = {recognize implicit relations; truth-maintaining sentence decomposition;
+rule learning; learn rules based on syntactic structure; syntactic transformation;
+Simplification; Relation Extraction; comma resolution corpus},
+}
+
+@InProceedings{GoldwasserRo08,
+author = {D. Goldwasser and D. Roth},
+title = {Active Sample Selection for Named Entity Transliteration},
+booktitle = {Proceedings of ACL-08: HLT, Short Papers},
+month = {Jun},
+year = {2008},
+address = {Columbus, OH, USA},
+publisher = {Association for Computational Linguistics},
+pages = {},
+projects = {AL,TL},
+funding = {Darpa},
+url      = "http://l2r.cs.uiuc.edu/~danr/Papers/GoldwasserRo08.pdf",
+comment  = {Named entity discovery; bilingual corpora; active sampling;
+data selection; domain adaptation; Russian transliteration; Hebrew transliteration}
+}
+
+@InProceedings{LRSS08,
+author = {B. Liebald and D. Roth and N. Shah and V. Srikumar},
+title = {Proactive Intrusion Detection},
+booktitle = AAAI,
+month = {July},
+year = {2008},
+pages = {},
+funding = {DARPA,Boeing},
+url       = "http://l2r.cs.uiuc.edu/~danr/Papers/LRSS08.pdf",
+comments = {Machine learning for security; Intrusion Detection; Game theory;
+Behavioral Biometrics; Feedback driven intrusion detection;},
+}
+
+@InProceedings{CRRS08,
+author = {M. Chang and L. Ratinov and D. Roth and V. Srikumar},
+title = {Importance of Semantic Represenation: Dataless Classification},
+booktitle = AAAI,
+month = {July},
+year = {2008},
+pages = {},
+projects = {DC},
+funding = {SoD,MIAS,Library,Boeing},
+url       = "http://l2r.cs.uiuc.edu/~danr/Papers/CRRS08.pdf",
+comments ={Text categorization; Feature representation based on document collections;
+Wikipedia for NLP; Explicit Semantic Analysis (ESA)},  }
+
+}
+
+@InProceedings{RothSm08,
+author = { D. Roth and K. Small},
+title = {Active Learning for Pipeline Models},
+booktitle = AAAI,
+month = {July},
+year = {2008},
+pages = {},
+projects = {AL,PL,NER},
+funding = {Darpa, DHS},
+url       = "http://l2r.cs.uiuc.edu/~danr/Papers/RothSm08.pdf",
+}
+
+@InProceedings{CRRR08,
+author = {M. Chang and L. Ratinov and N. Rizzolo and D. Roth},
+title = {Learning and Inference with Constraints},
+booktitle = AAAI,
+month = {July},
+year = {2008},
+pages = {},
+projects = {CCM,LBP},
+funding = {SoD,MIAS,Library,Boeing},
+url       = "http://l2r.cs.uiuc.edu/~danr/Papers/CRRR08.pdf",
+}
+
+@inproceedings{KlementievRoSm08,
+author   = {A. Klementiev and D. Roth and K. Small},
+  title    = {Unsupervised Rank Aggregation with Distance-Based Models},
+  booktitle = ICML,
+  month = {July},
+  year     = {2008},
+  pages    = {},
+  comment  = {We propose a mathematical and algorithmic framework for learning to
+  aggregate (partial) rankings without supervision.
+  We instantiate the framework   for the cases of combining permutations and combining top-k lists,
+  and propose  a novel metric for the latter.},
+  acceptance = {158/583 (27\%) (regular papers)},
+  url = "http://l2r.cs.uiuc.edu/~danr/Papers/KlementievRoSm08.pdf",
+  projects = {USS,RANK},
+  funding  = {ITR-EDU, BL, MIAS}
+  }
+
+
+@inproceedings{RahurkarRoHu08,
+  author  = {M. A. Rahurkar and D. Roth and T. S. Huang},
+  title   = {Which Apple are you talking about},
+  year    =       {2008},
+  pages   = {1197-1198},
+  url = "http://l2r.cs.uiuc.edu/~danr/Papers/RahurkarRoHu08.pdf",
+  booktitle = {Proceedings of WWW},
+  projects = {SEARCH},
+  funding  = {}
+  }
+
+@InProceedings{BrazAmRo08,
+    author = {R. de Salvo Braz and E. Amir and D. Roth},
+    title = {A Survey of First-Order Probabilistic Models},
+    booktitle = {Innovations in Bayesian Networks},
+    editor = {D.E. Holmes and L.C. Jain},
+    publisher = {Springer-Verlag},
+    pages   = {289--317},
+    year = {2008},
+    comment = {Lifted Probabilistic Inference},
+    projects = {FOPI},
+    funding = {ARDA, ITR-BI, SoD},
+    url = {http://l2r.cs.uiuc.edu/~danr/Papers/BrazAmRo08.pdf},
+ }
+
+
+%%%%%%%%%%%%%%
+%%%  2007  %%%
+%%%%%%%%%%%%%%
+
+@InProceedings{RothSa07,
+  author    = {D. Roth and M. Sammons},
+  title     = {Semantic and Logical Inference Model for Textual Entailment},
+  booktitle = {Proceedings of the ACL-PASCAL Workshop on Textual Entailment and Paraphrasing},
+  month     = {June},
+  year      = {2007},
+  address   = {Prague, Czech Republic},
+  publisher = {Association for Computational Linguistics},
+  pages     = {107--112},
+  comment   = {Textual Entailment; Compositional semantics; Search-based inference; Modular framework},
+  projects = {TE},
+  funding = {Boeing, ARDA, ACQUAINT, Google},
+  url       = {http://l2r.cs.uiuc.edu/~danr/Papers/RothSa07.pdf}
+}
+
+@InProceedings{ChangDoRo07,
+  author    = {M. Chang and Q. Do and  D. Roth},
+  title     = {Multilingual Dependency Parsing: A Pipeline Approach},
+booktitle   = {Recent Advances in Natural Language Processing},
+editor      = {Nicolas Nicolov and Kalina Bontcheva and Galia Angelova and Ruslan Mitkov},
+year        = {2006},
+ PUBLISHER  = {John Benjamins},
+  month     = {July},
+  year      = {2006},
+  pages     = {55--78},
+  comment   = {Analysis of A pipeline model with applications to dependency parsing.
+  Combines ACL'06 and CoNLL'06},
+  projects = {DP,PL},
+  funding = {ARDA,REFLEX,SoD},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/ChangDoRo06b.pdf",
+}
+
+
+@InProceedings{ChangRaRo07,
+  author    = {M. Chang and L. Ratinov and  D. Roth},
+  title     = {Guiding Semi-Supervision with Constraint-Driven Learning},
+  booktitle = ACL,
+  month     = {Jun},
+  year      = {2007},
+  address   = {Prague, Czech Republic},
+  publisher = {Association for Computational Linguistics},
+  pages     = {280--287},
+  comment   = {Semi-supervised learning with very little supervision; Constraints;
+  Constraints Driven Learning; Information Extraction},
+  projects = {USS,CCM,IE},
+  funding = {SoD,Boeing},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/ChangRaRo07.pdf",
+}
+
+@InProceedings{RizzoloRo07,
+  author    = {N. Rizzolo and D. Roth},
+  title     = {{Modeling Discriminative Global Inference}},
+  booktitle = {{Proceedings of the First International Conference on
+                Semantic Computing (ICSC)}},
+  month     = {September},
+  year      = {2007},
+  address   = {{Irvine, California}},
+  publisher = {{IEEE}},
+  pages     = {597-604},
+  comment   = {Learning Based Java: a Modeling language that facilitates developing
+  of systems with learning and inference componenets.},
+  projects  = {LBP,CCM},
+  funding   = {NSF-SoD, LBP},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/RizzoloRo07.pdf"
+}
+
+@inproceedings{ConnorRo07,
+  author   = {M. Connor and D. Roth},
+  title    = {Context Sensitive Paraphrasing with a Single Unsupervised Classifier},
+  booktitle = ECML,
+  month = {September},
+  year     = {2007},
+  pages    = {},
+  comment  = {Trains a single classifier to decided context sensitive paraphrases of verbs.
+  Bootstraps training set through unsupervised training of subtask classifiers and
+  confident example selection.},
+  acceptance = {69/592 (12\%) (regular papers)},
+  url = "http://l2r.cs.uiuc.edu/~danr/Papers/ConnorRo07.pdf",
+  projects = {NLP,LP,TE,USS},
+  funding  = {ITR-EDU,Psych}
+}
+
+@InProceedings{KlementievRoSm07,
+ author = {A. Klementiev and D. Roth and K. Small},
+ title = {An Unsupervised Learning Algorithm for Rank Aggregation},
+ booktitle = {Proc. of the European Conference on Machine Learning (ECML)},
+ month = {September},
+ year = {2007},
+ pages = {},
+ acceptance = {},
+ comment = {},
+ projects = {USS,RANK},
+ funding = {ITR-EDU, MIAS},
+ url =   "http://l2r.cs.uiuc.edu/~danr/Papers/KlementievRoSm07.pdf",
+ }
+
+
+@InProceedings{RothYi07,
+  author    = {D. Roth and W. Yih},
+  title     = {Global Inference for Entity and Relation Identification via a Linear Programming Formulation},
+  booktitle = {Introduction to Statistical Relational Learning},
+  editor = {Lise Getoor and Ben Taskar},
+  publisher = {MIT Press},
+  year      = {2007},
+  comment   = {Learning and Inference with Constraints; Integer Linear Programming for Information extraction;
+  Simultaneous recognition of entities and Relations},
+  projects = {LT,LINL,ILP,CCM,NER,PL},
+  funding = {ITR-BI,ARDA,XPRESSMP},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/RothYi07.pdf",
+}
+
+
+
+@InProceedings{BrazAmRo07,
+    author = {R. de Salvo Braz and E. Amir and D. Roth},
+    title = {Lifted First-Order Probabilistic Inference},
+    booktitle = {Introduction to Statistical Relational Learning},
+    editor = {Lise Getoor and Ben Taskar},
+    year = {2007},
+    publisher = {MIT Press},
+    year = {2007},
+    comment = {Relational Inference; Probabilistic Relational (first order) Models; First-order probabilistic inference without propositionalization; Lifted Probabilistic Inference},
+    projects = {FOPI},
+    funding = {ARDA, ITR-BI, SoD},
+    url = "http://l2r.cs.uiuc.edu/~danr/Papers/BrazAmRo07.pdf",
+ }
+
+@InProceedings{Har-PeledRoZi07,
+author = {Har-Peled, S. and D. Roth and D. Zimak},
+title = {Maximum Margin Coresets for Active and Noise Tolerant Learning},
+booktitle = IJCAI,
+ comment = {Learning large margin halfspaces using coresets;  algorithm and analysis;
+ applications include analysis of large margin active
+learning and an algorithm for agnostic learning in the presence of outlier noise.},
+ year = {2007},
+ acceptance = {212/1353 (16\%)},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/Har-PeledRoZi07.pdf",
+ projects = {IE,LINL,SP,ILP,AL},
+ funding = {KINDLE,REFLEX,MURI,XPRESSMP},
+ pages = {LT},
+}
+
+
+@article{ZTLHPRL07,
+  author  = {Z. Zeng and J. Tu and M. Liu and T. S. Huang and B. Pianfetti and D. Roth and S. Levinson},
+  title   = {Audio-Visual Affect Recognition},
+  journal = MM,
+  year    = {2007},
+  volume  = {9},
+  number  = {2},
+  pages   = {424-428},
+  comments = {},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/ZTLHPRL07.pdf",
+  projects = {},
+  funding = {ITR-BI},
+}
+
+
+%%%%%%%%%%%%%%
+%%%  2006  %%%
+%%%%%%%%%%%%%%
+
+@InProceedings{RothSm06a,
+  author    = {D. Roth and K. Small},
+  title     = {Margin-based Active Learning for Structured Output Spaces},
+  booktitle = ECML,
+  month     = {September},
+  year      = {2006},
+  publisher = {Springer},
+  pages     = {},
+  acceptance = {},
+  comment   = {Active Learning; Structured Output},
+  projects = {AL,SRL},
+  funding = {MOTOROLA,ITR-EDU},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/RothSm06a.pdf",
+}
+}
+
+@InProceedings{BrazAmRo06a,
+  author    = {R. de Salvo Braz and E. Amir and  D. Roth},
+  title     = {MPE and Partial Inversion in Lifted Probabilistic Variable Elimination},
+  booktitle = AAAI,
+  month     = {July},
+  year      = {2006},
+  pages     = {},
+  comment   = {Relational Inference; Probabilistic Relational (first order) Models;
+ First-order probabilistic inference without propositionalization; Lifted Probabilistic Inference},
+  projects = {FOPI},
+  funding = {ARDA,ITR-BI},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/BrazAmRo06a.pdf",
+}
+}
+
+@InProceedings{KlementievRo06a,
+  author    = {A. Klementiev and  D. Roth},
+  title     = {Weakly Supervised Named Entity Transliteration and Discovery from Multilingual
+  Comparable Corpora},
+  booktitle = ACL,
+  month     = {July},
+  year      = {2006},
+  pages     = {USS,TL,ADAPT},
+  comment   = {Multilingual named entities; multilingual search; multilingual named entities discovery and
+  recognition; discriminatory transliteration model; Fourier Transform for temporal sequence similarity},
+  projects = {REFLEX,USS,TL,ADAPT},
+  funding = {KINDLE,REFLEX},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/KlementievRo06a.pdf",
+}
+}
+
+@InProceedings{ChangDoRo06a,
+  author    = {M. Chang and Q. Do and  D. Roth},
+  title     = {Local Search for Bottom-Up Dependency Parsing},
+  booktitle = ACL,
+  month     = {July},
+  year      = {2006},
+  pages     = {},
+  comment   = {Analysis of A pipeline model with applications to dependency parsing},
+  projects = {DP},
+  funding = {ARDA,REFLEX},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/ChangDoRo06a.pdf",
+}
+
+
+@InProceedings{ChangDoRo06,
+  author    = {M. Chang and Q. Do  and  D. Roth},
+  title     = {A Pipeline Model for Bottom-Up Dependency Parsing (Shared Task Paper)},
+  booktitle = CoNLL,
+  month     = {June},
+  year      = {2006},
+  pages     = {186--190},
+  comment   = {Multilingual Dependency Parsing; a shift reduced parsing model;
+  study of shift reduced parsing as a pipeline model},
+  projects = {DP,PL},
+  funding = {KINDLE,REFLEX},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/ChangDoRo06.pdf",
+}
+
+
+@InProceedings{BrazAmRo06,
+  author    = {R. de Salvo Braz and E. Amir and D. Roth},
+  title     = {MPE and Partial Inversion in Lifted Probabilistic Variable Elimination},
+  booktitle = {ICML Workshop on Open Problems in Statistical Relational Learning},
+  month     = {June},
+  year      = {2006},
+  comment   = {Earlier Version of a AAAI'06 paper.},
+  projects = {FOPI},
+  funding = {ARDA},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/BrazAmRo06.pdf",
+}
+
+@InProceedings{RothSm06,
+  author    = {D. Roth and K. Small},
+  title     = {Active Learning with Perceptron for Structured Output},
+  booktitle = {ICML-06 Workshop on Learning in Structured Output Spaces},
+  month     = {June},
+  year      = {2006},
+  comment   = {Earlier Version of an ECML'06 paper},
+  projects = {AL},
+  funding = {MOTOROLA,ITR-EDU},
+  url       = "http://l2r.cs.uiuc.edu/~danr/Papers/RothSm06.pdf",
+}
+
+@InProceedings{KlementievRo06,
+  author    = {A. Klementiev and  D. Roth},
+  title     = {Named Entity Transliteration and Discovery from Multilingual Comparable Corpora},
+  booktitle = NAACL,
+  month     = {June},
+  year      = {2006},
+  pages     = {82--88},
+  comment   = {Multilingual named entities; multilingual search; multilingual named entities discovery and
+  recognition; discriminatory transliteration model; Fourier Transform for temporal sequence similarity},
+  projects = {REFLEX,TL,USS,ADAPT},
+  funding = {KINDLE,REFLEX},
+  url       = {http://l2r.cs.uiuc.edu/~danr/Papers/KlementievRo06.pdf}
+}
+
+@article{BGPRS06,
+  title   = {An Inference Model for Semantic Entailment in Natural Language},
+  author  = {R. de Salvo Braz and R. Girju and V. Punyakanok and D. Roth and M. Sammons},
+  editor    = {J. Qui{\~n}onero Candela and
+               I. Dagan and
+               B. Magnini and
+               F. d'Alch{\'e}-Buc},
+  booktitle     = {Machine Learning Challenges, Evaluating Predictive Uncertainty,
+               Visual Object Classification and Recognizing Textual Entailment,
+               First PASCAL Machine Learning Challenges Workshop, Revised Selected
+               Papers},
+  publisher = {Springer},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {3944},
+  year      = {2006},
+  comment = {Revised version of PASCAL RTE Challenge. Textual Entailment,
+integrating NLP text analyis, shallow semantic inference},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/BGPRS06.pdf",
+  funding = {ARDA,ITR-BI,TRECC,CLUSTER,XPRESSMP},
+  projects = {KINDLE,TE,KRNLP},
+  pages = {261--286},
+ comments = {Shallow semantics; rule-based sentence re-representation;
+hierarchical objective function; Textual Entailment},
+}
+
+@techreport{Har-PeledRoZi06a,
+author = {Har-Peled, S. and D. Roth and D. Zimak},
+title = {Maximum Margin Coresets for Active and Noise Tolerant Learning},
+institution = "UIUC Computer Science Department",
+  number      = "No. UIUCDCS-R-2006-2784",
+  month       = "Oct",
+  year        = {2006},
+  projects = {AL},
+  funding = {ITR-BI,ITR-MIT},
+  invisible = {true}
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/Har-PeledRoZi06.pdf",
+}
+
+
+@techreport{DoanLiRo06,
+author = {Doan, A. and X. Li and D. Roth},
+title = {{MEDIATE}: Learning to match entity mentions across text and data bases},
+institution = "UIUC Computer Science Department",
+  number      = "No. UIUCDCS-R-2006-2692",
+  month       = "Feb",
+  year        = {2006},
+  comment   = {UIUC Tech Report UIUCDCS-R-2006-2692.
+  Semantic Integration; Entity Uncertainty; Automatic matching of entity mentions across text and databases.},
+  projects = {MIRROR,COREF,NER},
+  funding = {MURI,ITR-BI},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/DoanLiRo06.pdf",
+  invisible = {false}
+}
+
+@article{MengshoelRoWi06,
+author=         {O. J. Mengshoel and D. Roth and D. C. Wilkins},
+title=          {Controlled generation of hard and easy Bayesian networks:
+Impact on maximal clique size in tree clustering},
+journal =       AI,
+year =          {2006},
+volume=         {},
+number =    {},
+pages=          {},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/MengshoelWiRo06.pdf",
+comment=           {},
+}
+
+%%%%%%%%%%%%%%
+%%%  2005  %%%
+%%%%%%%%%%%%%%
+
+
+@inproceedings{RothYi05,
+  author  = {D. Roth and W. Yih},
+  title   = {Integer Linear Programming Inference for Conditional Random Fields},
+  booktitle= ICML,
+  year    = {2005},
+  pages = {737--744},
+  comment = {Extending Conditional Random Fields with expressive, non-sequential, constraints.
+  Comparing multiple joint inference training paradigms for structure learning in the context of SRL.},
+  acceptance = {143/491 (29\%)},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/RothYi05.pdf",
+  projects = {LT,LINL,ILP,CCM},
+  funding = {MURI,ITR-BI,ITR-MIT,ARDA,XPRESSMP}
+}
+
+@inproceedings{PunyakanokRoYi05,
+ author = {V. Punyakanok and D. Roth and W. Yih},
+ title = {The Necessity of Syntactic Parsing for Semantic Role Labeling},
+ booktitle = IJCAI,
+ comment = {An Analysis of the impact of syntactic parsing on semantic role labeling.
+ Joint inference is used both to guarantee coherent SRL output and to combine several SRL systems.},
+ year = {2005},
+ acceptance = {240/1329 (18\%)},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRoYi05.pdf",
+ projects = {IE,LINL,SP,ILP,SRL},
+ funding = {KINDLE,REFLEX,MURI,XPRESSMP},
+ pages = {1117--1123},
+}
+
+@inproceedings{PRYZ05,
+ author = {V. Punyakanok and D. Roth and W. Yih and D. Zimak},
+ title = {Learning and Inference over Constrained Output},
+ booktitle = IJCAI,
+ year = {2005},
+ comment = {Structure Learning; Joint Inference;
+ Learning + Inference vs. Inference based Training Algorithms},
+ acceptance = {240/1329 (18\%)},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/PRYZ05.pdf",
+ projects = {LT,CCM},
+ funding = {KINDLE,REFLEX,MURI,XPRESSMP,ITR-BI},
+ pages = {1124--1129},
+}
+
+@inproceedings{BrazAmRo05,
+ author = "R. de Salvo Braz and E. Amir and D. Roth",
+ title = "Lifted First-order Probabilistic Inference",
+ booktitle = IJCAI,
+ year = "2005",
+ pages = {},
+ comment = {Relational Inference; Probabilistic Relational (first order) Models;
+ First-order probabilistic inference without propositionalization},
+ acceptance = {240/1329 (18\%)},
+ project = {ITR-BI,FOPI},
+ funding = {ITR-BI, CAREER},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/BrazAmRo05.pdf",
+ pages = {1319--1125},
+}
+
+@inproceedings{BGPRS05,
+  title   = {An Inference Model for Semantic Entailment in Natural Language},
+  author  = {R. Braz and R. Girju and V. Punyakanok and D. Roth and M. Sammons},
+  booktitle = AAAI,
+  year    = {2005},
+  comment = {Textual Entailment; Mapping sentences to a description logic based representation,
+  Pascal Entailment Task},
+  acceptance = {223/803 (28\%)},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/BGPRS05.pdf",
+  funding = {ARDA,ITR-BI,TRECC,CLUSTER,XPRESSMP},
+  projects = {KINDLE,TE,KRNLP},
+  pages = {1678--1679},
+}
+
+@inproceedings{BGPRS05a,
+  title   = {Knowledge Representation for Semantic Entailment and Question-Answering},
+  author  = {R. Braz and R. Girju and V. Punyakanok and D. Roth and M. Sammons},
+  booktitle = {IJCAI-05 Workshop on Knowledge and Reasoning for Question Answering},
+  year    = {2005},
+  pages = {},
+  comment = {Analysis of our Textual Entailment system},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/BGPRS05a.pdf",
+  funding = {ARDA,ITR-BI,TRECC,CLUSTER,XPRESSMP,TE},
+  projects = {KINDLE}
+}
+
+@inproceedings{BGPRS05b,
+  title   = {An Inference Model for Semantic Entailment in Natural Language},
+  author  = {R. de Salvo Braz and R. Girju and V. Punyakanok and D. Roth and M. Sammons},
+  booktitle = IJCAI,
+  year    = {2005},
+  note    = {Poster Presentation},
+  pages = {},
+  acceptance = {112/450 (25\%)},
+  comment = {Textual Entailment; Mapping sentences to a description logic based representation},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/BGPRS05b.pdf",
+  funding = {ARDA,ITR-BI,TRECC,CLUSTER,XPRESSMP},
+  projects = {KINDLE,TE}
+}
+
+@inproceedings{AlmRoSp05,
+author    = "C. O. Alm and D. Roth and R. Sproat",
+title     = "Emotions from text: machine learning for text-based emotion prediction.",
+booktitle = "Proceedings of HLT/EMNLP 2005",
+acceptance = {},
+pages = {},
+funding = {ITR-EDU},
+projects = {},
+url        = "http://l2r.cs.uiuc.edu/~danr/Papers/AlmRoSp05.pdf",
+year      = 2005
+}
+
+
+@inproceedings{AgarwalRo05,
+  author     = {S. Agarwal and D. Roth},
+  title      = {Learnability of Bipartite Ranking Functions},
+  booktitle  = COLT,
+  year       = {2005},
+  pages      = {16--31},
+  acceptance = {45/119 (37.8\%)},
+  url        = "http://l2r.cs.uiuc.edu/~danr/Papers/Agarwalro05.pdf",
+  funding    = {ITR-BI,ITR-MIT,TRECC},
+  projects   = {LT,RANK},
+}
+
+@inproceedings{AgarwalHaRo05,
+  author = {S. Agarwal and S. Har-Peled and D. Roth},
+  title = {A Uniform Convergence Bound for the {A}rea {U}nder the {ROC} Curve},
+  booktitle = AISTAT,
+  year = {2005},
+  pages = {1-8},
+  acceptance = {51/150 (34\%)},
+  comment = {Bipartite Ranking: uniform convergence properties of the AUC in terms of bipartite
+  rank-shatter coefficients.},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalHaRo05.pdf",
+  projects = {LT,RANK},
+  month = {Jan.},
+  funding = {ITR-BI,ITR-MIT,TRECC},
+}
+
+@inproceedings{AgarwalGrHeRo05,
+  author = {S. Agarwal and T. Graepel and  R. Herbrich and D. Roth},
+  title = {A Large Deviation Bound for the Area Under the ROC Curve},
+  booktitle = NIPS,
+  year = {2005},
+  pages = {9--16},
+  acceptance = {207/823 (25\%)},
+  comment = {Bipartite Ranking: bounding the expected accuracy of a ranking function
+  in terms of its empirical AUC.},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalGrHeRo05.pdf",
+  projects = {LT,RANK},
+  funding = {ITR-BI,ITR-MIT,TRECC},
+}
+
+@article{AgarwalGrHeHaRo05,
+ author     = {S. Agarwal and T. Graepel and R. Herbrich and S. Har-Peled and D. Roth},
+ title      = {Generalization Bounds for the Area Under the {ROC} Curve},
+ journal    = JMLR,
+ volume     = {6},
+ pages      = {393--425},
+ year       = {2005},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalGrHeHaRo05.pdf",
+ projects = {LT,RANK},
+ funding = {ITR-BI,ITR-MIT,TRECC},
+}
+
+@article{KhardonRoSe05,
+author=    {R. Khardon and D. Roth and R. Servedio},
+title=     {Efficiency versus Convergence of Boolean Kernels for On-Line Learning Algorithms},
+ journal    = JMLR,
+ volume     = {24},
+ pages      = {341-356},
+ year       = {2005},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/KhardonRoSe05.pdf",
+ projects = {KR,LT},
+funding = {ITR-MIT NSF98 CAREER},
+}
+
+@article{FungRo05,
+author=    {P. Fung and D. Roth},
+title=     {Guest Editors Introduction: Machine Learning in Speech and Language Technologies},
+journal =  ML,
+volume =   {60},
+number=    {1/2/3},
+pages =    {1-6},
+comments = {An Introduction to a Special Issue of the Machine Learning Journal; on Progress in
+Machine Learning of Natural Language. Trends in Learning in NLP; discriminative structure learning},
+year =     {2005},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/FungRo05.pdf",
+funding = {ITR-BI,CAREER,MURI},
+projects = {LNL,LT},
+}
+
+@article{Roth05,
+  author  = {Roth, D.},
+  title   = {Learning based Programming},
+  booktitle = {Innovations in Machine Learning: Theory and Applications},
+ editor = {L.C. Jain and D. Holmes},
+year      = {2005},
+publisher = {Springer-Verlag},
+comment   = {Suggests a paradigm and a programming language for the programming of
+learning intensive computer systems. Springer: http://dx.doi.org/10.1007/3-540-33486-6_3},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Roth05.pdf",
+projects = {LBP},
+funding = {ITR-BI,MURI,TRECC},
+}
+
+
+@inproceedings{GirjuRoSa05,
+  author = {R. Girju and D. Roth and M. Sammons},
+  title = {Token-level Disambiguation of VerbNet classes},
+  booktitle = {The Interdisciplinary Workshop on Verb Features and Verb Classes},
+  year = {2005},
+  pages = {},
+  comment = {Context Sensitive Identification of VerbNet Classes; Levin Classes.},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/GirjuRoSa05.pdf",
+  projects = {SM},
+  funding = {KINDLE,TRECC},
+}
+
+@article{LiMoRo05,
+  author= {X. Li and P. Morie and D. Roth},
+  title = {Semantic Integration in Text: From Ambiguous Names to Identifiable Entities},
+  journal = {AI Magazine. Special Issue on Semantic Integration},
+  year = {2005},
+  comment = {Named Entity Recognition; coreference resolution; entity identification;
+  matching Entities Mentions within and across documents.},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/LiMoRo05.pdf",
+  projects = {MIRROR,COREF,NER},
+  pages = {45--68},
+  funding = {MURI,TRECC,CLUSTER},
+}
+
+@inproceedings{ShenLiDo05,
+  title   = {Constraint-Based Entity Matching},
+  author  = {W. Shen and X. Li and A. Doan},
+  booktitle= AAAI,
+  comment = {Entity Identification, Generative Model, Record Linkage, Constraint, Relaxation Labeling},
+  year    = {2005},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/ShenLiDn05.pdf",
+  pages = {},
+  acceptance = {223/803 (28\%)},
+  projects = {MIRROR,NER,COREF},
+  funding = {MURI,ITR-MIT},
+}
+
+@inproceedings{LiRo05,
+author    = {X. Li and D. Roth},
+title     = {Discriminative Training of Clustering Functions: Theory and Experiments with Entity Identification},
+booktitle = CoNLL,
+editor = {Ido Dagan and Dan Gildea},
+year      = {2005},
+publisher = {Association for Computational Linguistics},
+pages     = {64--71},
+acceptance = {19/70 (27\%)},
+comment   = {Clustering; metric learning; training metrics; entity identification},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/LiRo05.pdf",
+projects = {MIRROR,NER},
+funding = {ITR-BI,MURI,TRECC},
+}
+
+@InProceedings{KPRY05,
+author  = {P. Koomen and V. Punyakanok and D. Roth and W. Yih},
+title   = {Generalized Inference with Multiple Semantic Role Labeling Systems (Shared Task Paper)},
+booktitle = CoNLL,
+editor  = {Ido Dagan and Dan Gildea},
+url     = "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRoYi05a.pdf",
+year    = {2005},
+pages   = {181-184},
+comment   = {Semantic Parsing; joint inference; integer linear programming;
+combining SRL systems via joint inference; Top system in CoNLL shared task},
+projects = {SM,KINDLE,SRL},
+funding = {MURI,KINDLE,CLUSTER,XPRESSMP},
+}
+
+@article{LiRo05a,
+author  = {X. Li and D. Roth},
+title   = {Learning Question Classifiers: The Role of Semantic Information},
+journal = NLE,
+comment = {Question Classification; Hierarchical classifiers; Sequential Model;
+Expressive Feature generation with semantic information.},
+url     = "http://l2r.cs.uiuc.edu/~danr/Papers/LiRo05a.pdf",
+year    = {2005},
+volume = {11},
+number = {4},
+pages = {},
+projects = {QA,MCR,TE},
+funding = {MURI,ITR-MIT},
+}
+
+@article{PunyakanokRo05,
+  author = {Punyakanok, V. and Roth, D.},
+  title = {Inference with Classifiers: The Phrase Identification Problem},
+  journal = CL,
+  year = {2005},
+  pages = {},
+  comment   = {Shallow Parsing; Chunking; HMMs, Conditional Models and
+  Constraint Satisfaction Models. Top results on phrase chunking},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/iwclong.pdf",
+  note = {In submission},
+  projects = {LnI,IE,NE,CCM},
+  funding = {CAREER,ITR-MIT,NSF98,KINDLE},
+}
+
+
+@InProceedings{ZDCR05,
+author  = {B. Ziebart and A. Dey and R. Campbell and D. Roth},
+title   = {Learning Automation Policies for Pervasive Computing Environments},
+booktitle = {ICAC'05, The IEEE International Conference on Autonomic Computing},
+url     = "http://l2r.cs.uiuc.edu/~danr/Papers/ZDRC05.pdf",
+year    = {2005},
+month    = Jun.,
+pages   = {204-215},
+acceptance   = {64/150 (43\%)},
+projects = {LBP},
+funding = {ITR-BI},
+}
+
+@inproceedings{LiRo05b,
+author = {X. Li and D. Roth},
+title = {Discriminative Training of Clustering Functions: Theory and Experiments with Entity Identification},
+booktitle = {The Second Midwest Computational Linguistics Colloquium (MCLC)},
+month = {May},
+year = {2005},
+pages = {},
+comment   = {Supervised Learning, Clustering, Metric Learning},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/LiRo05b.pdf",
+projects = {LT,NER},
+funding = {MURI,TRECC},
+invisible = {true}
+}
+
+%%%%%%%%%%%%%%
+%%%  2004  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{LiMoRo04,
+  title   = {Identification and Tracing of Ambiguous Names: Discriminative and Generative Approaches},
+  author  = {X. Li and P. Morie and D. Roth},
+  booktitle = AAAI,
+  year    = {2004},
+  pages = {419--424},
+  acceptance = {120/453 (26.5\%)},
+  comment = {Comparing discriminatory and generative models for entity identification; named entity recognition;
+  coreference resolution; matching entities mentions within and across documents;
+  distance metrics for named entities},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/LiMoRo04.pdf",
+  funding = {MURI,TRECC,CLUSTER},
+  projects = {MIRROR,COREF,NER}
+}
+
+@inproceedings{LiMoRo04a,
+  title   = {Robust Reading: Identification and Tracing of Ambiguous Names},
+  author  = {X. Li and P. Morie and D. Roth},
+  booktitle= NAACL,
+  year    =       {2004},
+  pages = {17--24},
+  acceptance = {},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/LiMoRo04a.pdf",
+  comment = {A generative model for entity identification; Named Entity Recognition; coreference resolution;
+  matching entities mentions within and across documents},
+  funding = {MURI,TRECC,CLUSTER},
+  projects = {MIRROR,NER,COREF}
+}
+
+@inproceedings{DayaRoWi04,
+  author=         {E. Daya, and D. Roth and S. Wintner},
+  title=          {Learning Hebrew Roots: Machine Learning with Linguistic Constraints},
+  booktitle=      EMNLP,
+  month=          {Jul},
+  pages=      {168--178},
+  year=       {2004},
+  acceptance = {},
+  comment = {Inference with Classifiers; Learning and Inference with Constraints; Hebrew Morphology},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/DayaRoWi04.pdf",
+  funding = {CAREER,MURI, REFLEX},
+  projects = {LnI,SI,NLP}
+}
+
+@inproceedings{RothYi04,
+  author    = {Roth, D.  and  W. Yih},
+  title     = {A Linear Programming Formulation for Global Inference in Natural Language Tasks},
+  booktitle = CoNLL,
+  editor = {Hwee Tou Ng and Ellen Riloff},
+  year      = {2004},
+  publisher = {Association for Computational Linguistics},
+  pages     = {1--8},
+  acceptance = {11/23 (48\%)},
+  comment   = {Simultaneous recognition of Named Entities and Relations between them.
+  Learning and Inference via an Integer Linear Programming framework; Structure Learning;
+  Avoiding Pipeline Processing},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/RothYi04.pdf",
+  projects = {IE,LnI,CCM,NER,PL},
+  funding = {ITR-BI,MURI,XPRESSMP},
+}
+
+@inproceedings{PRYZ04,
+author = {Punyakanok, V. and Roth, D. and Yih, W. and Zimak, D.},
+title = {Semantic Role Labeling via Integer Linear Programming Inference},
+booktitle = COLING,
+month = {August},
+year = {2004},
+pages = {1346--1352},
+acceptance = {},
+address = {Geneva, Switzerland},
+comment   = {Semantic Parsing; Structure Learning with Expressive Constraints;
+Constraint Optimization; Integer Linear Programming},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/PRYZ04.pdf",
+projects = {SP,LnI,CCM,SRL},
+funding = {ITR-BI,MURI,KINDLE,XPRESSMP},
+}
+
+@InProceedings{PRYZT04,
+author  = {V. Punyakanok and D. Roth and W. Yih and D. Zimak and Y. Tu},
+title   = {Semantic Role Labeling via Generalized Inference over Classifiers (Shared Task Paper)},
+booktitle = CoNLL,
+editor  = {Hwee Tou Ng and Ellen Riloff},
+url     = "http://l2r.cs.uiuc.edu/~danr/Papers/PRYZT04.pdf",
+year    = {2004},
+comment   = {Semantic Parsing; Structure Learning with Expressive Constraints;
+Constraint Optimization; Integer Linear Programming},
+pages   = {130--133},
+projects = {SM,SRL,CCM},
+funding = {CAREER,MURI,CAREER,KINDLE,CLUSTER,XPRESSMP},
+}
+
+
+@inproceedings{ZTKZRZHRL04,
+author=         {Z. Zeng and J. Tu and  M. Liu and T. Zhang and N. Rizzolo and Z. Zhang
+and T. S. Huang and D. Roth and S. Levinson},
+title=          {Bimodal HCI-related Affect Recognition},
+booktitle=  {ICMI'04, The 6th International Conference on Multimodal Interfaces},
+month=          {Oct},
+year=       {2004},
+pages = {137--143},
+acceptance = {56/257 (28\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ZTKZRZHRL04.pdf",
+funding = {TRECC,ITR-BI},
+}
+
+@unpublished{PunyakanokRoYi04,
+author = {V. Punyakanok and D. Roth and W. Yih},
+title = {Natural Language Inference via Dependency Tree Mapping: An Application to Question Answering},
+journal = {Computational Linguistics},
+year = {2004},
+pages = {},
+comment   = {Tree transformations; Answer selection via
+a mapping of dependency tree representations.},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRoYi04.pdf",
+note = {In submission},
+projects = {QA,KINDLE,TE},
+funding = {MURI,KINDLE,CLUSTER},
+}
+
+@inproceedings{LiRoSm04,
+ title   = {The Role of Semantic Information in Learning Question Classifiers},
+ author  = {X. Li and D. Roth and K. Small},
+ booktitle= IJCNLP,
+ comment = {Question Classification; Hierarchical classifiers; Sequential Model;
+ Expressive Feature Generation with semantic information.},
+ year    = {2004},
+ pages = {},
+ acceptance   = {67/211 (32\%)},
+ url = "http://l2r.cs.uiuc.edu/~danr/Papers/LiRoSm04.pdf",
+ projects = {QA,MCR,TE},
+ funding = {MURI,ITR-MIT},
+}
+
+@article{AgarwalAwRo04,
+  author  = {Agarwal, S. and A. Awan and D. Roth},
+  title   = {Learning to Detect Objects in Images via a Sparse, Part-Based Representation},
+  journal = PAMI,
+  year    = {2004},
+  volume  = {20},
+  number  = {11},
+  pages   = {1475--1490},
+  comments = {Sparse representation of objects in images; expressive relational features;
+  discriminative approach.},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalAwRo04.pdf",
+  projects = {LV,KR},
+  funding = {CAREER,ITR-MIT},
+}
+
+
+@inproceedings{YihChKi04,
+ author = {W. Yih and P. Chang and W. Kim},
+ title = {Mining Online Deal Forums for Hot Deals},
+ booktitle = {Web Intelligence},
+ publisher = {IEEE Computer Society},
+ year      = {2004},
+ pages     = {384--390},
+ comment = {Applying topic and sentiment text classification to online web forums},
+ url = "http://scottyih.org/YihChKi-wi04.pdf",
+ projects = {IIA},
+ funding = {ITR-BI,MURI}
+}
+
+@inproceedings{RothYi04a,
+author = {D. Roth and W. Yih},
+title = {A Linear Programming Formulation for Global Inference in Natural Language Tasks},
+booktitle = {Proceedings of AI \& Math},
+year = {2004},
+pages = {1--8},
+comment = {An early version of the CoNLL paper},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/RothYi04a.pdf",
+projects = {IE,LnI,CCM},
+funding = {ITR-BI,MURI,CLUSTER,XPRESSMP},
+invisible = {true},
+}
+
+@unpublished{PunyakanokRoYi04a,
+  author  = {V. Punyakanok and D. Roth and W. Yih},
+  title   = {Mapping Dependencies Trees: An Application to Question Answering},
+  booktitle = {Proceedings of AI \& Math},
+  year    = {2004},
+  pages = {},
+  acceptance   = {30-64 (47\%)},
+  comment   = {An earlier version of the CL submission.},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRoYi04a.pdf",
+  projects = {QA,KINDLE,TE},
+  funding = {MURI,KINDLE},
+  invisible = {true},
+}
+
+@inproceedings{LiRo04b,
+author = {X. Li and D. Roth},
+title = {Supervised Discriminative Clustering},
+booktitle = {NIPS Workshop on Learning Structured Output},
+month = {Dec.},
+year = {2004},
+pages = {},
+comment   = {Supervised Learning, Clustering, Metric Learning},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/LiRo04b.pdf",
+projects = {LT},
+funding = {MURI,TRECC},
+invisible = {true}
+}
+
+@inproceedings{PRYZ04a,
+author = {Punyakanok, V. and Roth, D. and Yih, W. and Zimak, D.},
+title = {Learning via Inference over Structurally Constrained Output},
+booktitle = {NIPS Workshop on Learning Structured Output},
+month = {Dec.},
+year = {2004},
+pages = {},
+comment   = {Learning + Inference vs. Inference based Training Algorithms},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/PRYZ04a.pdf",
+projects = {LT,CCM},
+funding = {ITR-BI,ITR-MIT,MURI,KINDLE,XPRESSMP},
+invisible = {true}
+}
+
+@techreport{BrazRo04,
+  author      = "R. de Salvo Braz and D. Roth",
+  title       = "Functional Subsumption in Feature Description Logic",
+  institution = "UIUC Computer Science Department",
+  number      = "No. UIUCDCS-R-2004-2423)",
+  month       = "April",
+  year        = {2004},
+  projects = {KINDLE,KR},
+  funding = {ITR-BI,CAREER},
+  invisible = {true}
+}
+
+@techreport{HannekeRo04,
+author=         {S. Hanneke and D. Roth},
+title=          {Iterative Labeling for Semi-Supervised Learning},
+institution=    {UIUC Computer Science Department},
+year=           {2004},
+month=          {June},
+number=         {UIUCDCS-R-2004-2442},
+url=            "http://l2r.cs.uiuc.edu/~danr/Papers/HannekeRo04.pdf",
+projects = {LP,USS},
+funding = {ITR-MIT,MURI,TRECC,CLUSTER},
+invisible = {true}
+}
+
+@techreport{BrazRoAm04,
+  author      = {R. de Salvo Braz and D. Roth and E. Amir},
+  title       = {First-order probabilistic inference revisited},
+  institution = {UIUC Computer Science Department},
+  year        = {2004},
+  month       = {Jun},
+  number      ={UIUCDCS-R-2004-2443},
+  url         = "http://l2r.cs.uiuc.edu/~danr/Papers/BrazRoAm04.pdf",
+  comment     = {First order Probabilistic Inference without grounding.},
+  projects = {KR,FOPI},
+  funding = {ITR-BI},
+  invisible = {true}
+}
+
+%%%%%%%%%%%%%%
+%%%  2003  %%%
+%%%%%%%%%%%%%%
+
+
+@InProceedings{Har-PeledRoZi03,
+  author  =   {S. Har-Peled and D. Roth and D. Zimak},
+  title   =   {Constraint Classification for Multiclass Classification and Ranking},
+  booktitle=  NIPS,
+  PUBLISHER=  {MIT Press},
+  year    =   {2003},
+  pages   = {785--792},
+  acceptance = {207/694 (30\%)},
+  comments=   {Expressive setting for multiclass classification; multi label classification; ranking
+  margin for multiclass; comparing with one vs. all},
+  url     =   "http://l2r.cs.uiuc.edu/~danr/Papers/nips02.pdf",
+  projects = {CCR,LT,MC},
+  funding =   {ITR-MIT ITR-BI CAREER},
+}
+
+@inproceedings{CumbyRo03,
+  author = {C. Cumby and D. Roth},
+  title = {On Kernel Methods for Relational Learning},
+  booktitle = ICML,
+  year = {2003},
+  pages   = {107--114},
+  acceptance   = {118-371 (32\%)},
+  comment = {Parameterized kernels over structures. Relational Kernels.
+  Advantages and disadvantages of graph kernels.},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/CumbyRo03.pdf",
+  projects = {LT,KR},
+  funding = {NSF98,ITR-BI,CAREER},
+}
+
+@inproceedings{GargRo03,
+  author  = {A. Garg and D. Roth},
+  title   = {Margin Distribution and Learning Algorithms},
+  booktitle= ICML,
+  year    = {2003},
+pages   = {210--217},
+acceptance   = {118/371 (32\%)},
+  comment = {Linear classifiers that optimize the margin distribution},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/GargRo03.pdf",
+  projects = {LT,LCC},
+  funding = {ITR-BI,ITR-MIT,CAREER}
+}
+
+@inproceedings{LiRoTu03,
+  author  = "Li, X. and D. Roth and Y. Tu",
+  title   = "Phrasenet: towards context sensitive lexical semantics",
+  booktitle = CoNLL,
+  editor  = "Walter Daelemans and Miles Osborne",
+  publisher = "Edmonton, Canada",
+  pages   = "87--94",
+  year    = "2003",
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/LiRoTu.pdf",
+  comment = {Extending WordNet to taxonomy over phrases},
+  projects = {NLP, PHRASENET,LS},
+  funding = {MURI,ITR-BI},
+}
+
+@inproceedings{CumbyRo03a,
+  author  = {C. Cumby and D. Roth},
+  title   = {Feature Extraction Languages for Propositionalized Relational Learning},
+  booktitle={IJCAI Workshop on Learning Statistical Models from Relational Data},
+  year    = {2003},
+acceptance   = {33/40 (83\%)},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/CumbyRo03a.pdf",
+  projects = {LT,KR,KINDLE},
+  funding = {NSF98,ITR-BI,CAREER},
+}
+
+
+@inproceedings{BrazRo03,
+author = {Rodrigo de Salvo Braz and Dan Roth},
+title = {Functional subsumption in Description Logics},
+booktitle = {NIPS Workshop on Feature Extraction and Selection},
+month = {Dec.},
+year = {2003},
+comment   = {Relational Feature Extraction; Feature Description Logic},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/BrazRo03.pdf",
+projects = {KR,KINDLE},
+funding = {ITR-BI,CAREER},
+invisible = {true}
+}
+
+
+@techreport{LiMoRo03,
+author=         {X. Li and P. Morie and D. Roth},
+title=          {Robust Reading of Ambiguous Writing},
+institution=    {UIUC Computer Science Department},
+year=           {2003},
+month=          {Aug},
+number=         {UIUCDCS-R-2003-2371},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/LiMoRo03.pdf",
+projects = {MIRROR,COREF,NER},
+funding = {MURI,ITR-BI},
+invisible = {true}
+}
+
+@techreport{CumbyRo03c,
+  author=         {C. Cumby and D. Roth},
+  title=          {Kernel Methods for Relational Learning},
+  institution=    {UIUC Computer Science Department},
+  year=           {2003},
+  month=          {May},
+  number=         {UIUCDCS-R-2003-2345},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/CumbyRo03c.pdf",
+  projects = {LT,KR},
+  funding = {NSF98,ITR-BI,CAREER},
+  invisible = {true}
+}
+
+@techreport{CumbyRo03b,
+author=         {C. Cumby and D. Roth},
+title=          {Feature Extraction Languages for Propositionalized Relational Learning},
+institution=    {UIUC Computer Science Department},
+year=           {2003},
+month=          {May},
+number=         {UIUCDCS-R-2003-2346},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/CumbyRo03b.pdf",
+  projects = {LT,KR},
+  funding = {NSF98,ITR-BI,CAREER},
+invisible = {true}
+}
+
+@techreport{AgarwalRo03,
+author=         {S. Agarwal and D. Roth},
+title=          {Minimum Risk Feature Transformations},
+institution=    {UIUC Computer Science Department},
+year=           {2003},
+month=          {Dec},
+comment   = {UIUC Tech Report UIUCDCS-R-2003-2627. A preliminary framework for Feature Generation},
+number=         {UIUCDCS-R-2003-2627},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalRo03.pdf",
+}
+
+%%%%%%%%%%%%%%
+%%%  2002  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{KhardonRoSe02,
+author=    {R. Khardon and D. Roth and R. Servedio},
+title=     {Efficiency versus Convergence of Boolean Kernels for On-Line Learning Algorithms},
+booktitle= NIPS,
+PUBLISHER =    {MIT Press},
+year =      {2001},
+comment = {Kernel Perceptron with Exponentially Many mistakes; Hardness of Kernel Winnow.},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/kernels01.pdf",
+funding = {ITR-MIT NSF98 CAREER},
+projects = {KR,LT},
+}
+
+
+@inproceedings{GargHaRo02,
+  author  = {A. Garg and S. Har-Peled and D. Roth},
+  title   = {On generalization bounds, projection profile, and margin distribution},
+  booktitle=ICML,
+  year    = {2002},
+pages   = {171--178},
+acceptance   = {86/261 (33\%)},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/icml02.pdf",
+  comment = {Random Projection; Generalization Bounds for Linear Classifiers.},
+  projects = {LCC,LT},
+  funding = {ITR-MIT ITR-BI CAREER}
+}
+
+@inproceedings{CumbyRo02,
+author=         {C. Cumby and D. Roth},
+title=          {Learning with Feature Description Logics},
+booktitle =     ILP,
+year=           {2002},
+pages   = {32-47},
+comment = {A Description Logic based Formalism for Feature Extraction; Expressive Features;
+A language for Feature Extraction},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ilp02.pdf",
+projects = {KR,KINDLE},
+funding = {NSF98 ITR-MIT CAREER}
+}
+
+
+@inproceedings{RothYi02,
+  title   = {Probabilistic Reasoning for Entity and Relation Recognition},
+  author  = {D. Roth and W. Yih},
+  booktitle= COLING,
+  year    = {2002},
+  pages   = {835--841},
+acceptance   = {198-435 (45\%)},
+  url     = "http://l2r.cs.uiuc.edu/~danr/Papers/er-coling02.pdf",
+  comment = {Entity And Relation Recognition. Simultaneous Identification of Entities and Relations.},
+  funding = {MURI ITR-MIT},
+  projects = {IE,NE,LnI,NER},
+}
+
+@inproceedings{LiRo02,
+title=      {Learning Question Classifiers},
+author=     {X. Li and D. Roth},
+booktitle=      COLING,
+year=       {2002},
+pages=         {556--562},
+acceptance   = {198-435 (45\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/qc-coling02.pdf",
+comment = {Classifying Answer Type for Question Answering. Sequential Classification. Multiclass Classification.},
+projects = {CCR,QA,TE},
+funding = {NSF98,MURI,ITR-MIT}
+}
+
+@inproceedings{CMPR02,
+author=         {X. Carreras and  L. M\`arquez and V. Punyakanok  and D. Roth},
+title=          {Learning and Inference for Clause Identification},
+booktitle =     ECML,
+year =      {2002},
+acceptance = {80/218 (37\%)},
+pages =     {35--47},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ecml02.pdf",
+comment ={Shallow Parsing; Chunking and Clause identification.},
+projects = {LnI,SI,IE},
+funding = {MURI SBC-MIT CAREER}
+}
+
+@InProceedings{Har-PeledRoZi02,
+author =       {S. Har-Peled and D. Roth and D. Zimak},
+title =        {Constraint Classification: a new approach to Multiclass Classification},
+booktitle =    ALT,
+publisher =    {Springer-Verlag},
+year =         {2002},
+pages =         {135--150},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Har-PeledRoZi02.pdf",
+acceptance = {21/42 (50\%)},
+  projects = {CCR,LT,MC},
+  funding =   {ITR-MIT ITR-BI CAREER},
+}
+
+@inproceedings{AgarwalRo02,
+author=    {Agarwal, S. and D. Roth},
+title=     {Learning a Sparse Representation for Object Detection},
+booktitle= ECCV,
+year=      {2002},
+pages =        {113--128},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalRo02.pdf",
+acceptance = {45/600 (7.5\%) Oral Presentations; 225/600 (37\%) overall},
+projects = {LV,KR},
+funding = {MURI SBC-MIT CAREER}
+}
+
+
+@inproceedings{YangRoAh02,
+author=    {Yang, M-H and D. Roth and N. Ahuja},
+title=     {A Tale of Two Classifiers: SNoW vs. SVM in Visual Recognition},
+booktitle= ECCV,
+year=      {2002},
+pages =        {685--700},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/YangRoAh02.pdf",
+acceptance = {45/600 (7.5\%) Oral Presentations; 225/600 (37\%) overall},
+  projects = {LT,LV},
+  funding = {NSF98,ITR-MIT},
+}
+
+
+@article{RothYaAh02,
+author=    {Roth, D. and M-H. Yang and N. Ahuja},
+title=     {Learning to Recognize 3D Objects},
+journal=   {Neural Computation},
+volume=    {14},
+number=    {5},
+pages=     {1071--1104},
+year=      {2002},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/objectsJ.pdf",
+  projects = {LT,LV},
+  funding = {NSF98,ITR-MIT},
+}
+
+@inproceedings{RCLMNPRSY02,
+title=      {Question-Answering via Enhanced Understanding of Questions},
+author=     {D. Roth and C. Cumby and X. Li, and P. Morie and R. Nagarajan, and
+V. Punyakanok, and N. Rizzolo, and K. Small and W. Yih},
+booktitle=      TREC,
+year=       {2002},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/trec02.pdf",
+projects = {QA,TE},
+funding = {NSF98,MURI,ITR-MIT},
+}
+
+@article{GreinerGrRo02,
+author =    {R. Greiner and A. Grove and D. Roth},
+title =     {Learning Cost-Sensitive Active Classifiers},
+journal=    AI,
+year =      {2002},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/activeJ.pdf",
+pages=      {137--174},
+year =      {2002},
+volume=     {139},
+number =    {2},
+funding = {NSF98 CAREER},
+projects = {DPL,LT,LP},
+comment = {Earlier version appeared in ICML'96}
+}
+
+%%%%%%%%%%%%%%
+%%%  2001  %%%
+%%%%%%%%%%%%%%
+
+
+@inproceedings{PunyakanokRo01,
+author=    {V. Punyakanok and D. Roth},
+title=     {The Use of Classifiers in Sequential Inference},
+booktitle= NIPS,
+PUBLISHER =    {MIT Press},
+pages =        {995--1001},
+year=      {2001},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/nips01.pdf",
+acceptance = {25/514 (4.8\%) Oral Presentations; 152/514 (29\%) overall},
+funding = {NSF98 CAREER},
+projects = {LnI,SI,IE,NE,NLP,CCM},
+comment = {Structured, sequential output; Sequence Prediction:
+HMM with classifiers, Conditional Models, Constraint Satisfaction}
+}
+
+
+@inproceedings{RothYi01,
+author=         {D. Roth and W. Yih},
+title=          {Relational Learning via Propositional Algorithms: An Information Extraction Case Study},
+booktitle =     IJCAI,
+year =          {2001},
+pages=          {1257--1263},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ijcai01.pdf",
+comment = {Expressive, Relational Features for Information Extraction},
+acceptance = {197/796 (25\%)},
+projects = {KR,IE,NE},
+funding = {ITR-MIT NSF98 MURI}
+}
+
+@inproceedings{Roth01,
+author=         {D. Roth},
+title=          {Reasoning with Classifiers},
+booktitle =     ECML,
+year =      {2001},
+comment =   {Paper written to accompany an invited talk at {ECML}'01.
+           Sequential Inference: Conditional Models, Constraint Satisfaction},
+pages =     {506--510},
+acceptance   = {197/796 (25\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Talks/ecml02.pdf",
+projects = {LnI,SI,IE,NE},
+funding = {ITR-MIT NSF98 CAREER}
+}
+
+
+@inproceedings{GargRo01,
+author=         {A. Garg and D. Roth},
+title=          {Understanding Probabilistic Classifiers},
+booktitle =     ECML,
+year =      {2001},
+pages =     {179--191},
+acceptance = {90/240 (37.5\%)},
+comment = {An Information Theory based explanation of the good performance of naive Bayes},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ecml01.pdf",
+funding =  {ITR-MIT ITR-BI CAREER NSF98},
+projects = {DPL,LT},
+}
+
+@InProceedings{GargRo01a,
+author =       {A. Garg and D. Roth},
+title =        {Learning Coherent Concepts},
+booktitle =    ALT,
+publisher =    {Springer-Verlag},
+year =         {2001},
+pages =         {135--150},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/alt01.pdf",
+acceptance = {21/42 (50\%)},
+funding =  {ITR-MIT ITR-BI CAREER},
+projects = {LCC,LT},
+}
+
+
+@inproceedings{LiRo01,
+  author=    {X. Li and D. Roth},
+  title=     {Exploring Evidence for Shallow Parsing},
+  booktitle= CoNLL,
+  year = {2001},
+  pages=  {107--110},
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/conll01.pdf",
+  comment = {Learning Shallow Parsers vs. Full Parsers for Chunking tasks},
+  funding = {ITR-MIT NSF98 MURI},
+  projects = {LnI,SI,IE,NE,NLP},
+}
+
+@inproceedings{Even-ZoharRo01,
+title=      {A Sequential Model for Multi Class Classification},
+author=     {Y. Even-Zohar and D. Roth},
+booktitle=  SIGDAT,
+year=       {2001},
+pages=      {10-19},
+acceptance   = {21/65 (32\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/emnlp01.pdf",
+comment = {Multiclass classification: reducing the number of candidate classes; part-of-speech (POS) tagging},
+funding = {ITR-MIT NSF98 KDI},
+projects = {MCR,LT,MC},
+}
+
+@inproceedings{ChuangRo01a,
+author=    {J. Chuang and D. Roth},
+title=     {Gene Recognition based on DAG shortest paths},
+booktitle= ISMB,
+year=      {2001},
+month=         Jul,
+pages   = {1-9},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ismb01.pdf",
+comments = {Phrase Identification Approach to Splice Site D},
+acceptance = {40/180 (22\%)},
+funding = {NSF98 CAREER},
+projects = {LnI,SI,LT},
+}
+
+@article{ChuangRo01,
+author= {J. Chuang and D. Roth},
+title=      {Gene Recognition based on DAG shortest paths},
+journal=    {Bioinformatics},
+volume=     {17},
+number =    {1},
+pages=      {S56--S64},
+year =      {2001},
+month=      {Jul},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ismb01.pdf",
+funding = {NSF98 CAREER},
+projects = {LnI,SI,LT},
+}
+
+@inproceedings{CarlsonRoRo01,
+author=    {A. J. Carlson and J. Rosen and D. Roth},
+title=     {Scaling Up Context Sensitive Text Correction},
+booktitle=     IAAI,
+year=      {2001},
+pages=     {45--50},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/iaai01.pdf",
+comments = {Context Sensitive Spelling Correction; AAAI Innovative Applications of AI Award},
+acceptance = {12/37 (32\%)},
+funding = {NSF98 CAREER IBM},
+projects = {LT,NLP},
+}
+
+
+@inproceedings{RKLNPRYAM01,
+title=      {Learning Components for a Question Answering System},
+author=     {D. Roth and G. Kao and X. Li and R. Nagarajan and V. Punyakanok
+and N. Rizzolo and W. Yih and C. O. Alm and L. G. Moran},
+booktitle=      TREC,
+year=       {2001},
+pages   = {539-548},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/trec01.pdf",
+  projects = {QA,TE},
+  funding = {NSF98,MURI,ITR-MIT},
+}
+
+@InProceedings{YangRoAh01,
+author =      {M-H Yang and D. Roth and N. Ahuja},
+title =       {Face Detection Using Large Margin Classifiers},
+booktitle =   {Proceedings of IEEE International Conference on
+                Image Processing},
+OPTpages =    {665--668},
+year =   {2001},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/YangRoAh01.pdf",
+  projects = {LV,LT},
+  funding = {NSF98,ITR-MIT,CAREER},
+}
+
+@techreport{RothYi01a,
+author=         {D. Roth and W. Yih},
+title=          {Relational Learning via Propositional Algorithms: An Information Extraction Case Study},
+institution=    {UIUC Computer Science Department},
+year=           {2001},
+month=          {Mar},
+number=         {UIUCDCS-R-2001-2206},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/RothYi01.pdf",
+projects = {KR,IE,NE},
+funding = {NSF98,MURI,ITR-MIT},
+invisible = {true}
+}
+
+%% ITR-MIT, NSF98, MURI
+
+@techreport{KhardonRoSe01a,
+author=         {R. Khardon and D. Roth and R. Servedio},
+title=          {Efficiency versus Convergence of Boolean Kernels for On-Line
+Learning Algorithm},
+institution=    {UIUC Computer Science Department},
+year=           {2001},
+month=          {Jun},
+number=         {UIUCDCS-R-2001-2233},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/KhardonRoSe01a.pdf",
+funding = {ITR-MIT NSF98 CAREER},
+projects = {KR,LT},
+invisible = {true}
+}
+
+@article{GroveRo01,
+author=    {A. Grove and D. Roth},
+title=     {Linear concepts and hidden variables},
+journal =  ML,
+volume =   {42},
+number=    {1/2},
+pages =    {123--141},
+comments = {Margin Winnow (Perceptron); Discriminative vs. Generative models},
+year =     {2001},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/hiddenJ.pdf",
+funding = {NSF98 CAREER},
+projects = {DPL,LT},
+}
+
+@techreport{GargRo01b,
+author=         {A. Garg and D. Roth},
+title=          {Understanding Probabilistic Classifiers},
+institution=    {UIUC Computer Science Department},
+year=           {2001},
+month=          {Mar},
+number=         {UIUCDCS-R-2001-2205},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/GargRo01b.pdf",
+funding =  {ITR-MIT ITR-BI CAREER NSF98},
+projects = {DPL,LT},
+invisible = {true}
+}
+
+@techreport{GargHaRo01,
+author=         {A. Garg and S. Har-Peled and D. Roth},
+title=          {Generalization Bounds for Linear Learning Algorithms},
+institution=    {UIUC Computer Science Department},
+year=           {2001},
+month=          {Jun},
+number=         {UIUCDCS-R-2001-2232},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/GargHaRo01.pdf",
+funding =  {ITR-MIT ITR-BI CAREER},
+projects = {LCC,LT},
+invisible = {true}
+}
+
+@unpublished{Cumby01,
+author =    {C. M. Cumby},
+title  =    {Learning family relationships via propositional means},
+year =      {2001},
+month =         {May},
+comment=          {Senior Thesis, UIUC, Dept. of Computer Science},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/family.pdf",
+funding = {NSF98 KDI},
+projects = {KR,LT},
+invisible = {true}
+}
+
+
+@unpublished{Carlson01,
+author =    {A. Carlson},
+title  =    {Learning Based Programming - An Implementation},
+year =      {2001},
+month =     {May},
+comment=    {Senior Thesis, UIUC, Dept. of Computer Science},
+invisible = {true}
+}
+
+@unpublished{AgarwalRo01,
+author=         {S. Agarwal and D. Roth},
+title=          {Detecting objects by learning relations over parts},
+institution=    {UIUC Computer Science Department},
+year=           {2001},
+month=          {Jun},
+number=         {UIUCDCS-R-2001-2231},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/AgarwalRo03.pdf",
+invisible = {true}
+
+}
+
+%%%%%%%%%%%%%%
+%%%  2000  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{RothZe00,
+author=    {Roth, D. and D. Zelenko},
+title=     {Towards a theory of Coherent Concepts},
+booktitle=     AAAI,
+pages=     {639--644},
+year=      {2000},
+comments = {Extending the perceptron convergence theorem; learning with constraints},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/aaai00.pdf",
+acceptance = {141/430 (33\%)}
+}
+
+@inproceedings{KDDKKPR00,
+title=         {Applying System Combination to Base Noun Phrase Identification},
+author= {E. F. T. Kim-Sang and W. Daelemans and H. Dejean and R. Koeling and Y. Krymolowski and
+V. Punyakanok and D. Roth},
+booktitle=      {COLING-ACL, The 18th International
+Conference on Computational Linguistics},
+year=       {2000},
+pages=         {857--863},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/KDDKKPR00.pdf",
+funding = {NSF98 KDI}
+}
+%NSF98 and SBR 98-73450
+
+@inproceedings{Even-ZoharRo00,
+title=      {A classification approach to word prediction},
+author=     {Y. Even-Zohar and D. Roth},
+booktitle=      NAACL,
+year=       {2000},
+pages=      {124-131},
+acceptance   = {43/166 (26\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Abstracts/naacl00.html",
+comment = {Learning with expressive features; dependency parse based features; verb prediction},
+funding = {NSF98 KDI},
+projects = {LT,MCR}
+}
+
+@inproceedings{CumbyRo00,
+author=         {C. Cumby and D. Roth},
+title=          {Relational Representations that facilitate learning},
+booktitle =     KR,
+pages=          {425--434},
+year=           {2000},
+acceptance   = {62/172 (36\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/kr00.pdf",
+comment = {FEX: feature extraction language; relational features; relational generation functions},
+funding = {NSF98 KDI},
+projects = {LT,KR}
+}
+
+
+@inproceedings{Roth00,
+  author = "D. Roth",
+  title = "Learning in Natural Language: Theory and Algorithmic Approaches",
+  booktitle = CoNLL,
+  pages=  {1--6},
+  year = {2000},
+  address = "Lisbon, Portugal",
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/lnlp-conll.pdf",
+  comment = {A paper written to accompany and invited talk at {CoNLL}.},
+funding = {ITR-MIT NSF98 KDI}
+}
+
+
+
+@inproceedings{YangRoAh00b,
+author=    {Yang, M-H. and D. Roth and N. Ahuja},
+title=     {A {SNoW}-based Face Detector},
+booktitle= NIPS,
+PUBLISHER =    {MIT Press},
+pages =        {855--861},
+year=      {2000},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/nips00.pdf",
+acceptance = {151/467 (32\%)},
+funding = {NSF98}
+}
+
+@inproceedings{YangRoAh00a,
+author=    {Yang, M-H and D. Roth and N. Ahuja},
+title=     {Learning To Recognize 3D Objects With {SNoW}},
+booktitle= ECCV,
+year=      {2000},
+month = {Jun},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/YangRoAh00a.pdf",
+acceptance = {43/266 (16\%) Oral Presentations; 115/266 (43\%) overall)}
+}
+
+@inproceedings{YangRoAh00,
+author=    {Yang, M-H and D. Roth and N. Ahuja},
+title=     {View-Based 3D Object Recognition Using {SNoW}},
+booktitle= ACCV,
+year=      {2000},
+month = {Jan},
+volume=    {2},
+pages =        {830--835},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/accv00.ps.gz",
+acceptance = {172/268 (64\%)}
+}
+
+@inproceedings{RothYaAh00,
+author=    {Roth, D. and M-H. Yang and N. Ahuja},
+title=     {Learning to Recognize Objects},
+booktitle= CVPR,
+year=      {2000},
+pages=     {724--731},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/cvpr00.pdf",
+acceptance = {200/466 (43\%)},
+funding = {NSF98}
+}
+
+@techreport{Roth00a,
+author=         {D. Roth},
+title=          {Learning in Natural Language},
+institution=    {UIUC Computer Science Department},
+year=           {2000},
+month=          {Jul},
+number=         {UIUCDCS-R-2000-2180},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Roth00a.pdf",
+invisible = {true}
+}
+
+
+@techreport{PunyakanokRo00a,
+author=         {V. Punyakanok and D. Roth},
+title=          {The Use of Classifiers in Sequential Inference},
+institution=    {UIUC Computer Science Department},
+year=           {2000},
+month=          {Jul},
+number=         {UIUCDCS-R-2000-2181},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRo00a.pdf",
+invisible = {true}
+}
+
+@inproceedings{PunyakanokRo00,
+  author = {V. Punyakanok and D. Roth},
+  title = "Shallow Parsing by Inferencing with Classifiers",
+  booktitle = CoNLL,
+  pages=  {107--110},
+  year = {2000},
+  address = "Lisbon, Portugal",
+  url= "http://l2r.cs.uiuc.edu/~danr/Papers/PunyakanokRo00.pdf",
+funding = {ITR-MIT NSF98},
+}
+
+@techreport{MengshoelRoWi00b,
+author=         {Mengshoel, O. J. and D. Roth and D. Wilkins},
+title=          {Hard and Easy Bayesian Networks for Computing the Most Probable Explanation},
+institution=    {UIUC Computer Science Department},
+year=           {2000},
+month=          {Jan},
+number=         {UIUCDCS-R-2000-2147},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/MengshoelRoWi00b.pdf",
+invisible = {true}
+}
+
+@unpublished{MengshoelRoWi00a,
+author=     {O. J. Mengshoel and D. Roth and D. Wilkins},
+title=      {Hard and Easy Bayesian Networks for Computing the Most Probable Explanation},
+journal=    {Journal of Artificial Intelligence Research},
+comment=           {Submitted for publication},
+year= {2000},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/MengshoelRoWi00a.pdf",
+invisible = {true}
+}
+
+@unpublished{MengshoelRoWi00,
+author=     {O. J. Mengshoel and D. Roth and D. Wilkins},
+title=      {Stochastic Greedy Search: Efficiently Computing a Most Probable Explanation in Bayesian Networks},
+journal=    AI,
+comment=    {Submitted for publication},
+year= {2000},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/MengshoelRoWi00.pdf",
+invisible = {true}
+}
+
+
+%%%%%%%%%%%%%%
+%%%  1999  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{Roth99,
+title=      {Learning in Natural Language},
+author=     {D. Roth},
+booktitle =     IJCAI,
+year =          {1999},
+pages=          {898--904},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ijcai99r.pdf",
+acceptance = {195/760 (26\%)},
+comment = {Probabilistic classifiers (Naive Bayes; HMM) as linear models; generative vs. discriminative;
+Best Paper Award},
+funding = {NSF98 KDI},
+projects = {LT,DPL}
+}
+
+@inproceedings{MPRZ99a,
+author=         {M. Munoz and V. Punyakanok and D. Roth and D. Zimak},
+title=          {A Learning Approach to Shallow Parsing},
+booktitle=  {EMNLP-VLC, the Joint SIGDAT Conference on Empirical Methods
+               in Natural Language Processing and Very Large Corpora},
+month=          {Jun},
+pages=      {168--178},
+year=       {1999},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/shallow-long.ps.gz",
+funding = {NSF98 KDI},
+projects = {LnI,SI,NLP}
+}
+
+@inproceedings{KhardonRoVa99,
+title=      {Relational Learning for {NLP} using Linear Threshold Elements},
+author=     {R. Khardon and D. Roth and L. G. Valiant},
+booktitle =     IJCAI,
+year=       {1999},
+pages=          {911--917},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/ijcai99krv.pdf",
+acceptance = {195/750 (26\%)},
+funding = {NSF98 KDI},
+projects = {KR,LT,NLP}
+}
+
+@article{KhardonRo99,
+author =    {Khardon, R. and  D. Roth},
+title =     {Learning to Reason with a Restricted View},
+journal =   ML,
+volume =   {35},
+number=    {2},
+pages =    {95--117},
+year =      {1999},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/partialJ.pdf"
+}
+
+@article{KhardonMaRo99,
+author=         {Khardon, R. and H. Mannila and D. Roth},
+title=          {Reasoning with Examples: Propositional Formulae and Database Dependencies},
+journal=    {Acta Informatica},
+volume=     {36},
+number =    {4},
+pages=      {267--286},
+year =      {1999},
+month=      {Jul},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/db.pdf"
+}
+
+@article{GoldingRo99,
+author =    {A. R. Golding and D. Roth},
+title =     {A {W}innow based approach to Context-Sensitive Spelling Correction},
+journal =   ML,
+volume =    {34},
+number =        {1-3},
+pages =         {107--130},
+year =      {1999},
+comment=          {Special Issue on Machine Learning and Natural Language.},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/spellJ.pdf",
+funding = {NSF98 KDI},
+projects = {KR,LT,NLP}
+}
+
+
+@incollection{RothZe99,
+author =    {Roth, D. and D. Zelenko},
+title=      {Coherent Concepts, Robust Learning (Invited)},
+booktitle=  {SOFSEM 99: Theory and Practice of Informatics},
+editor=     {J. Pavelka and G. Tel and  M. Bartosek},
+publisher=  {Springer-verlag},
+year =      {1999},
+comment=    {Lecture notes in Artificial Intelligence, vol. 1725},
+pages=      {260--272},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/RothZe99.pdf",
+}
+
+@techreport{Roth99c,
+author=         {D. Roth},
+title=          {Learning Based Programming},
+institution=    {UIUC Computer Science Department},
+year=           {1999},
+month=          {Oct},
+number=         {UIUCDCS-R-99-2127},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Roth99c.pdf",
+invisible = {true}
+}
+
+@techreport{Roth99b,
+author=         {D. Roth},
+title=          {Relational Knowledge Representations that Facilitate Learning},
+institution=    {UIUC Computer Science Department},
+year=           {1999},
+month=          {Oct},
+number=         {UIUCDCS-R-99-2126},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Roth99b.pdf",
+invisible = {true}
+}
+
+@techreport{Roth99a,
+author=         {D. Roth},
+title=          {Memory Based Learning in {NLP}},
+institution=    {UIUC Computer Science Department},
+year=           {1999},
+month=          {Mar},
+number=         {UIUCDCS-R-99-2125},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/mbl.pdf",
+invisible = {false}
+}
+
+@article{MavronicolasRo99,
+author=         {M. Mavronicolas and D. Roth},
+title=          {Linearizable Read/Write Objects},
+journal=    TCS,
+volume=     {220},
+number =    {1},
+pages=      {267--319},
+year =      {1999},
+month=      {Jun},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/linearJ.ps.gz"
+}
+
+@techreport{MPRZ99b,
+author=         {M. Munoz and V. Punyakanok and D. Roth and D. Zimak},
+title=          {A Learning Approach to Shallow Parsing},
+institution=    {UIUC Computer Science Department},
+year=           {1999},
+month=          {Apr},
+number=         {UIUCDCS-R-99-2087},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/MPRZ99b.pdf",
+invisible = {true}
+}
+
+
+@inproceedings{Even-ZoharRoZe99,
+  author = "Y. Even-Zohar and D. Roth and D. Zelenko",
+  title = "Word Clustering via Classification",
+  booktitle = "BISFAI99",
+  year = {1999},
+acceptance   = {78/160 (48\%)},
+  address = "Bar-Ilan, Israel",
+  funding = {NSF98 KDI}
+}
+
+%% NSF98  KDI
+@techreport{CCRR99,
+author=         {Carlson, A. and C. Cumby and  J. Rosen and D. Roth},
+title=          {The {SNoW} Learning Architecture},
+institution=    {UIUC Computer Science Department},
+year=           {1999},
+month=          {May},
+number=         {UIUCDCS-R-99-2101},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/CCRR99.pdf",
+}
+
+%%%%%%%%%%%%%%
+%%%  1998  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{RothZe98,
+title=      {Part of Speech Tagging Using a Network of Linear Separators},
+author=     {D. Roth and D. Zelenko},
+booktitle=      {COLING-ACL, The 17th International
+Conference on Computational Linguistics},
+year=       {1998},
+pages=         {1136--1142},
+acceptance   = {137/550(25\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/pos.pdf",
+funding = {NSF98 KDI},
+projects = {SI,NLP}
+}
+
+@inproceedings{Roth98,
+title=      "Learning to Resolve Natural Language Ambiguities: {A} Unified Approach",
+author=     {D. Roth},
+booktitle=  AAAI,
+pages=          {806--813},
+year=       {1998},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/aaai98.pdf",
+acceptance = {143/475 (30\%)},
+comment = {Many Natural Language Classifiers are Linear; including probabilistic classifiers;
+argues for a discriminative approach; SNoW},
+funding = {NSF98 KDI},
+projects = {DPL,NLP}
+}
+
+
+@incollection{Roth98a,
+author =    {Roth, D.},
+title=      {Learning and Reasoning with Connectionist Representations},
+booktitle=  {Neural Computing Surveys},
+editor=     {A. Jagota, T. Plate, L. Shastri, R. Sun},
+publisher=  {Lawrence Erlbaum Associates},
+year =      {1998},
+comment=        {A contribution to ``Connectionist Symbol Processing: Dead or Alive''},
+pages=          {1--40}
+}
+
+
+
+@inproceedings{KrymolowskiRo98,
+title=      {Incorporating Knowledge in Natural Language Learning: A Case Study},
+author=     {Y. Krymolowski and D. Roth},
+booktitle=      {COLING-ACL workshop on the Usage of WordNet in Natural
+              Language Processing Systems},
+pages=      {121--127},
+year=       {1998},
+comment =   {Prepositional Phrase Attachment (PPA); using WordNet to generate expressive features.},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/pp-wn.pdf",
+funding = {NSF98 KDI},
+projects = {NLP}
+}
+
+@inproceedings{GroveRo98,
+author=    {A. Grove and D. Roth},
+title=     {Linear concepts and hidden variables: An empirical study},
+booktitle= NIPS,
+year=      {1998},
+PUBLISHER =    {MIT Press},
+pages =        {500--506},
+comment = {Margin Winnow (Perceptron); discriminative vs. generative},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/nips98.ps.gz",
+acceptance = {150/491 (30\%)}
+}
+
+@inproceedings{BasriRoJa98,
+author=         {Basri, R. Roth, D. and D. Jacobs},
+title=          {Clustering Appearances of 3D Objects},
+booktitle=  CVPR,
+pages=      {414-420},
+year =          {1998},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/cvpr98.pdf",
+comment = {Clustering of Curves},
+acceptance = {136/450 (30\%)},
+}
+
+@article{ABKKPR98,
+author =        {Aizenstein, H and Blum, A. and Khardon, R. and Kushilevitz, A. and Pitt, L. and Roth, D.},
+title =         {On learning read-k satisfy-j {DNF}},
+journal =   SIJC,
+volume=     {27},
+number =    {6},
+pages=      {1515--1530},
+year =      {1998},
+month=      {July},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/rksjJ.pdf"
+}
+
+%%%%%%%%%%%%%%
+%%%  1997  %%%
+%%%%%%%%%%%%%%
+
+@incollection{Roth97,
+author =    {Roth, D.},
+title=      {Learning to perform knowledge intensive inferences
+              (Invited Abstract)},
+booktitle=  {MSCS: Mathematical Foundations of Computer Science},
+editor=     {I. Privara  and P. Ruzicka},
+publisher=  {Springer-verlag},
+year =      {1997},
+comment=        {Lecture notes in  Computer Science (LNCS) 1295},
+pages=          {108--109}
+}
+
+@article{KhardonRo97a,
+author=     {Khardon, R. and  D. Roth},
+title=      {Defaults and Relevance in Model Based Reasoning},
+journal=    AI,
+month=      {Dec},
+year=       {1997},
+volume=         {97},
+number =    {1-2},
+pages=          {169--193},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/relevanceJ.pdf"
+}
+
+@article{KhardonRo97,
+author=     {Khardon, R. and  D. Roth},
+title=      {Learning to Reason},
+journal=    JACM,
+month=      {Sep},
+year=       {1997},
+volume=         {44},
+number =    {5},
+pages=          {697--725},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/l2rJ.pdf"
+}
+
+@article{DanielsMiRo97,
+author=         {K. Daniels and V. J. Milenkovic and D. Roth},
+title=          {Finding the Maximum Area Axis-Parallel Rectangle in a Polygon},
+journal=    {Computational Geometry: Theory and Applications},
+volume=     {7},
+number =    {1-2},
+pages=      {125--148},
+year =      {1997},
+month=      {Jan},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/maaprJ.ps.gz"
+}
+
+@inproceedings{DaganKaRo97,
+title=      {Mistake-Driven Learning in Text Categorization},
+author=     {I. Dagan and Y. Karov and D. Roth},
+booktitle=  EMNLP,
+pages=      {55-63},
+year=       {1997},
+month =     {Aug},
+comments =  {Margin Winnow (Perceptron) used for Text Categorization},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/Abstracts/categ.html"
+}
+
+%%%%%%%%%%%%%%
+%%%  1996  %%%
+%%%%%%%%%%%%%%
+
+@article{Roth96,
+author =    {Roth, D.},
+title =     {On the hardness of approximate reasoning},
+journal=    AI,
+volume=     {82},
+number =    {1-2},
+pages=      {273--302},
+year =      {1996},
+month=      {Apr},
+comment =   {Hardness of Reasoning with Bayesian Networks; Exact inference is #P-Complete;
+Approximate Reasoning is NP-Hard.},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/hardJ.pdf"
+
+}
+
+@article{KushilevitzRo96,
+author =    {Kushilevitz, E. and D. Roth},
+title =     {On Learning Visual Concepts and {DNF} Formulae},
+journal=    {Machine Learning},
+volume=     {24},
+number=     {1},
+pages=      {65--85},
+year=       {1996},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/visualJ.pdf"
+}
+
+@article{KhardonRo96,
+author=         {Khardon, R. and  D. Roth},
+title=          {Reasoning with Models},
+journal =       AI,
+year =          {1996},
+volume=         {87},
+number =    {1-2},
+pages=          {187--213},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/modelsJ.pdf",
+comment=           {Characteristic Models of Boolean Functions},
+}
+
+@inproceedings{GreinerGrRo96,
+author =    {R. Greiner and A. Grove and D. Roth},
+title =     {Learning Active Classifiers},
+booktitle =     ICML,
+year =      {1996},
+pages =     {207--215},
+acceptance   = {63/257 (24\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/active.ps.gz"
+}
+
+@inproceedings{GoldingRo96,
+author =    {A. R. Golding and D. Roth},
+title =     {Applying {W}innow to Context-Sensitive Spelling Correction},
+booktitle =     ICML,
+pages=      {182--190},
+year =      {1996},
+acceptance = {63/257 (24\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/spell.pdf"
+}
+
+
+@inproceedings{Roth96d,
+author=     {D. Roth},
+title=      {Learning in Order to Reason (Invited)},
+booktitle=  {AAAI Fall Symposium on Learning Complex Behaviors in Adaptive Intelligent Systems},
+pages =     {46-52},
+year=       {1996},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/approach.pdf"
+}
+
+@incollection{Roth96c,
+author =    {Roth, D.},
+title=      {Learning in Order to Reason: The Approach},
+booktitle=  {SOFSEM: Theory and Practice of Informatics},
+editor=     {K. G. Jeffery and J. Kral and M. Bartosek},
+publisher=  {Springer-verlag},
+year =      {1996},
+comment=        {Lecture notes in Computer Science, vol. 1175},
+pages=          {113--124},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/approach.pdf"
+}
+
+@inproceedings{Roth96b,
+author=     {D. Roth},
+title=      {On the hardness of approximate reasoning},
+booktitle=  {AAAI Fall Symposium on {AI} and {NP} Hard Problems},
+pages =     {137-143},
+year=       {1996},
+url = "http://l2r.cs.uiuc.edu/~danr/Papers/hardJ.pdf"
+}
+
+@inproceedings{Roth96a,
+author=         {D. Roth},
+title=          {A Connectionist Framework for Reasoning: Reasoning with
+Examples},
+booktitle =     AAAI,
+pages=          {1256--1261},
+year=           {1996},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/nreason.pdf",
+acceptance = {197/640 (31\%)}
+}
+%comment=        {Acceptance Rate: 197/640 (31\%)},
+
+
+%%%%%%%%%%%%%%
+%%%  1995  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{Roth95,
+author=         {D. Roth},
+title=          {Learning to Reason: The Non-Monotonic Case},
+booktitle =     IJCAI,
+year =          {1995},
+month =         {August},
+pages=          {1178--1184},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/nonmon.pdf",
+acceptance = {249/1112 (22\%)}
+}
+
+@techreport{KhardonRo95b,
+author=     {Khardon, R. and  D. Roth},
+title=      {Defaults and Relevance in Model Based Reasoning},
+institution=    {Dept. of App. Math. and Computer Science, Weizmann Institute of Science},
+year=           {1995},
+month=          {Oct},
+number=         {CS95-30},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/KhardonRo95b.ps"
+}
+
+@inproceedings{KhardonRo95a,
+author=     {Khardon, R. and  D. Roth},
+title=      {Learning to Reason with a Restricted View},
+booktitle = COLT,
+year =      {1995},
+month =     {Jul},
+pages =     {301--310},
+acceptance = {24/74 (32\%)},
+}
+
+@inproceedings{KhardonRo95,
+author=     {Khardon, R. and  D. Roth},
+title=      {Default-Reasoning with Models},
+booktitle =     IJCAI,
+year =          {1995},
+month =         {August},
+pages =         {319--325},
+acceptance = {249/1112 (22\%)}
+}
+
+%%%%%%%%%%%%%%
+%%%  1994  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{KhardonRo94e,
+author=     {Khardon, R. and  D. Roth},
+title=      {A note on {H}orn Theories},
+comment=        {Manuscript.},
+year=       {1994},
+}
+
+@techreport{KhardonRo94d,
+author=     {Khardon, R. and  D. Roth},
+title=      {Learning to Reason},
+institution=    {Aiken Computation Lab., Harvard University},
+year=       {1994},
+month=      {Jan},
+number=     {TR-2-94},
+invisible = {true}
+}
+
+@techreport{KhardonRo94c,
+author=     {Khardon, R. and  D. Roth},
+title=      {Reasoning with Models},
+institution=    {Aiken Computation Lab., Harvard University},
+year=       {1994},
+month=      {Jan},
+number=     {TR-1-94},
+invisible = {true}
+}
+
+@inproceedings{KhardonRo94b,
+author=     {Khardon, R. and  D. Roth},
+title=      {Exploiting Relevance through Model-based reasoning},
+booktitle=  {AAAI Fall Symposium on Relevance},
+pages =     {109-114},
+year=       {1994},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/relevanceP.ps.gz"
+}
+
+@inproceedings{KhardonRo94a,
+author=     {Khardon, R. and  D. Roth},
+title=      {Learning to Reason},
+booktitle=  AAAI,
+pages=      {682--687},
+year=       {1994},
+acceptance = {222/725 (31\%)}
+}
+%comment=           {Acceptance Rate: 222/725 (31\%)}
+
+@inproceedings{KhardonRo94,
+author=     {Khardon, R. and  D. Roth},
+title=      {Reasoning with Models},
+pages=      {1148--1153},
+booktitle=  AAAI,
+year=       {1994},
+acceptance = {222/725 (31\%)}
+}
+%comment=           {Acceptance Rate: 222/725 (31\%)}
+
+@inproceedings{BKKPR94,
+author =        {Blum, A. and Khardon, R. and Kushilevitz, A. and Pitt, L. and Roth, D.},
+title =         {On learning read-k satisfy-j {DNF}},
+booktitle =     COLT,
+year =          {1994},
+pages=          {110--117},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/BKKPR94.pdf"
+}
+
+%%%%%%%%%%%%%%
+%%%  1993  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{Roth93,
+author =    {Roth, D.},
+title =     {On the hardness of approximate reasoning},
+booktitle = IJCAI,
+year =      {1993},
+month =     {August},
+pages =     {613--618},
+comment =   {Hardness of Reasoning with Bayesian Networks; Exact inference is #P-Complete;
+Approximate Reasoning is NP-Hard.},
+acceptance = {220/876 (25\%)}
+}
+%comment=          {Acceptance Rate = 220/876 (25\%)},
+
+@inproceedings{KushilevitzRo93,
+author =    {Kushilevitz, E. and D. Roth},
+title =     {On Learning Visual Concepts and {DNF} Formulae},
+booktitle =     COLT,
+year =      {1993},
+pages =     {317--326},
+acceptance = {30/83 (37\%)},
+}
+
+@inproceedings{DanielsMiRo93,
+author=    {K. Daniels and V. J. Milenkovic and D. Roth},
+title=     {Finding the Maximum Area Axis-Parallel Rectangle in a Simple Polygon},
+booktitle= {CCCG, the Fifth Canadian Conference on Computational Geometry},
+year=      {1993},
+pages =        {322--327},
+}
+
+%%%%%%%%%%%%%%
+%%%  1992  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{MavronicolasRo92,
+author=    {M. Mavronicolas and D. Roth},
+title=     {Efficient, Strongly Consistent Implementation of Shared Memory},
+booktitle= {WDAG, CCCG, the 6th International Workshop on Distributed Algorithms},
+year=      {1992},
+pages =        {346--361},
+acceptance = {24/38 (63\%)},
+url= "http://l2r.cs.uiuc.edu/~danr/Papers/wdagP.ps.gz"
+}
+
+%%%%%%%%%%%%%%
+%%%  1991  %%%
+%%%%%%%%%%%%%%
+
+@inproceedings{MavronicolasRo91,
+author=    {M. Mavronicolas and D. Roth},
+title=     {Sequential Consistency and Linearizability: Read/Write Objects},
+booktitle= {In Proceedings of the 29th Annual Allerton Conference on Communication, Control and Computing},
+year=      {1991},
+pages =        {683--692},
+acceptance = {32/77 (42\%)},
+}

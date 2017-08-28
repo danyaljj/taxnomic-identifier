@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+	<!--  Quang's parameters go here! -->
+
+	<property>
+		<name>cogcomp.parser.yahooanswers.lowerboundlength</name>
+		<value>15</value>
+		<description>Each document to be indexed needs at least N words in its content.</description>
+	</property>
+
+	<property>
+		<name>cogcomp.parser.lowerboundlength</name>
+		<value>100</value>
+		<description>Each document to be indexed needs at least N words in its content.</description>
+	</property>
+	
+	<property>
+		<name>cogcomp.parser.numoflink</name>
+		<value>5</value>
+		<description>Each document to be indexed needs at least N links (outgoing for now) in its content.</description>
+	</property>
+	
+	<property>
+		<name>cogcomp.indexer.stopwords</name>
+		<value>i,a,about,an,are,as,at,be,by,com,de,en,for,from,how,in,is,it,la,of,on,or,that,the,this,to,was,what,when,where,who,will,with,und,the,www</value>
+	</property>
+
+	<property>
+		<name>cogcomp.wnsim.host</name>
+		<value>hefty.cs.uiuc.edu</value>
+	</property>
+
+	<property>
+		<name>cogcomp.wnsim.port</name>
+		<value>13579</value>
+	</property>
+
+	<property>
+		<name>cogcomp.wnsim.cache</name>
+		<value>true</value>
+	</property>
+
+	<property>
+		<name>cogcomp.wnsim.simcachename</name>
+		<value>simCache</value>
+	</property>
+
+	<property>
+		<name>cogcomp.wnsim.morphcachename</name>
+		<value>morphCache</value>
+	</property>
+
+	<property>
+		<name>cogcomp.similarity.numtoptokens</name>
+		<value>400</value>
+	</property>
+	
+	<property>
+		<name>cogcomp.similarity.offline</name>
+		<value>/home/roth/cogcomp/vsrikum2/Descartes/data/WNSimWUP/index.nounverb.score.filtered088</value>
+	</property>
+
+	<property>
+		<name>cogcomp.similarity.validwords</name>
+		<value>/home/roth/cogcomp/vsrikum2/Descartes/data/WNSimWUP/index.nounverb.uniqued</value>
+	</property>
+
+	<property>
+		<name>cogcomp.reranking.keepexistingdirectory</name>
+		<value>true</value>
+		<description>true: don't delete the existing directory; false: delete</description>
+	</property>
+
+	<property>
+		<name>cogcomp.widipedia.idf</name>
+		<value>/home/roth/cogcomp/vsrikum2/Descartes/data/wikipedia/idf_unnormalized.txt.uniqued</value>
+	</property>
+
+	<!--  Vivek's parameters go here! -->
+
+	<property>
+		<name>cogcomp.retriever.verbose</name>
+		<value>false</value>
+		<description>Should the retriever be verbose?</description>
+	</property>
+
+	<property>
+		<name>cogcomp.retriever.useTitleAndText</name>
+		<value>false</value>
+		<description>Should the retriever use both the title and text for generating the results?</description>
+	</property>
+	
+	<property>
+		<name>cogcomp.retriever.useNGrams</name>
+		<value>true</value>
+		<description>Should the retriever expand the text with ngrams while retrieving?</description>
+	</property>
+
+
+	<property>
+		<name>cogcomp.retriever.useBooleanQueryMaxSize</name>
+		<value>true</value>
+		<description>Should the boolean query size be Integer.Maxvalue</description>
+	</property>
+
+
+	
+</configuration> 

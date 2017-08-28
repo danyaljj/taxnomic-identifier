@@ -1,0 +1,77 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.7)
+The top-level auxiliary file: jupiter.aux
+The style file: coling.bst
+Database file #1: ccg.bib
+I was expecting a `,' or a `}'---line 406 of file ccg.bib
+ : 
+ : projects = {AL,NER},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 443 of file ccg.bib
+ :  
+ :  URL = "http://l2r.cs.uiuc.edu/~danr/Papers/PasternackRo09.pdf",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 512 of file ccg.bib
+ :     
+ :     comment  = {Transliteration; Constrained optimization;
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 531 of file ccg.bib
+ :     
+ :     funding = {Boeing,SoD},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 1013 of file ccg.bib
+ : hierarchical 
+ :              objective function; Textual Entailment},
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1026 of file ccg.bib
+ :   
+ :   url= "http://l2r.cs.uiuc.edu/~danr/Papers/Har-PeledRoZi06.pdf",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #2: cited.bib
+Database file #3: jupiter.bib
+You've used 19 entries,
+            2507 wiz_defined-function locations,
+            756 strings with 9733 characters,
+and the built_in function-call counts, 6801 in all, are:
+= -- 643
+> -- 350
+< -- 0
++ -- 101
+- -- 98
+* -- 443
+:= -- 1108
+add.period$ -- 76
+call.type$ -- 19
+change.case$ -- 123
+chr.to.int$ -- 19
+cite$ -- 19
+duplicate$ -- 325
+empty$ -- 566
+format.name$ -- 124
+if$ -- 1443
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 19
+newline$ -- 116
+num.names$ -- 58
+pop$ -- 185
+preamble$ -- 1
+purify$ -- 144
+quote$ -- 0
+skip$ -- 213
+stack$ -- 0
+substring$ -- 98
+swap$ -- 53
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 146
+warning$ -- 0
+while$ -- 38
+width$ -- 23
+write$ -- 249
+(There were 6 error messages)

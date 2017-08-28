@@ -1,0 +1,280 @@
+\ignore{Many data and knowledge management problems require some sort
+  of textual inference. These range from query expansion and
+  interpretation in information retrieval to query schema matching and
+  question answering. \ignore{Especially, in advanced web search and
+    contextual advertising, textual inference plays an important role
+    as the core technique to finding related information that can
+    attract users' interest. For instance, while searching for the
+    reviews of {\em Nikon D90}, one may also be interested in reading
+    the reviews for other {\em Nikon's cameras}, or {\em cameras} in
+    general. To satisfy users' interest, advanced search engines need
+    to be equipped with textual inference techniques that can perform
+    search on related concepts in the index of web documents.}}
+
+Structured knowledge bases like taxonomies and ontologies play
+important roles in many computational linguistics tasks, such as
+\cite{HSS03,673659}. Recently, the Textual Entailment challenge
+~\cite{DaganGlMa06} has shown that taxonomic relations can greatly
+help textual inference which requires the use of large amounts of
+background knowledge. For example, it may be important to know that a
+{\em blue Toyota} is neither a {\em red Toyota} nor a {\em blue
+  Honda}, but that all are cars, and even Japanese cars. Work in
+Textual Entailment has argued quite convincingly,
+(e.g.~\cite{maccartney-manning:2008:PAPERS}), that many inferences are
+largely compositional and depend on the ability of models to recognize
+taxonomic relations between noun phrases.
+
+In this paper, we focus on identifying two general types of taxonomic
+relations - {\em ancestor} and {\em sibling}. An ancestor relation and
+its directionality can help us deduce that a statement with respect to
+the child (e.g. {\em cannabis}) holds for an ancestor (e.g. {\em
+  drugs}) as in the following example, taken from the textual
+entailment challenge dataset:
+
+{\small
+  \begin{quote}
+    {\bf T}: Nigeria's NDLEA has seized 80 metric tonnes of {\em
+      cannabis} in one of its largest ever hauls, officials say.
+
+    {\bf H}: Nigeria seizes 80 tonnes of {\em drugs}.
+  \end{quote}
+}
+
+Similarly, it is important to know of a sibling relation to infer that
+a statement about {\em Taiwan} may (without additional information)
+contradict an similar statement with respect to {\em Japan} since
+these are different countries, as in the following:
+
+{\small
+  \begin{quote}
+
+    {\bf T}: A strong earthquake struck off the southern tip of {\em
+      Taiwan} at 12:26 UTC, triggering a warning from Japan's
+    Meteorological Agency that a 3.3 foot tsunami could be heading
+    towards Basco, in the Philippines.
+
+    {\bf H}: An earthquake strikes {\em Japan}.
+  \end{quote}
+}
+
+Several work has been devoted to acquiring structured taxonomies and
+ontologies resulting in structured knowledge bases such as the {\em
+  augmented WordNet} \cite{Snow2006} and \textsc{Yago}
+\cite{suchanek2007WWW}, which represent taxonomic information of
+individual concepts. We believe that these acquired structured
+knowledge bases are important resources to support classification of
+taxonomic relations. However, these resources usually suffer from
+noise and, especially, uncertainty with respect to each concept,
+making it difficult to support robust classification of taxonomic
+relations between two given concepts.
+
+\ignore{A lot of work has been devoted to acquiring semantic taxonomies and
+ontologies \cite{Snow2006,wikitaxo07,suchanek2007WWW} resulting in
+structured knowledge bases such as {\em augmented WordNet} and
+\textsc{Yago} which represent taxonomic information about individual
+concepts (See Sec.~\ref{sec:related-work}). However, as we show, these
+suffer from limited coverage and, more importantly, need to represent
+uncertainty with respect to each concept, making it difficult to
+support robust classification of taxonomic relations between two given
+concepts.}
+
+% In this paper, we present a novel approach to the fundamental
+% problem of recognizing taxonomic relations between two given
+% concepts.
+
+\ignore{Identifying and classifying taxonomic relations between two
+  given concepts serves a different purpose and is distinct from that
+  of Open Information Extraction \cite{BCSBE07}, On-Demand Information
+  Extraction \cite{Sekine06} and other effort to recognize {\em easy
+    to find} facts in a given
+  corpus~~\cite{davidov-rappoport:2008:ACLMain2,pacsca-vandurme:2008:ACLMain}--capitalizing
+  on local co-occurrence of concepts to generate databases of
+  open-ended facts. It is also different from the supervised relation
+  extraction~\cite{RothYi04} effort which requires additional
+  supervised data to learn new relations.}
+
+%
+%
+% The key reason is that the knowledge acquisition methods alluded to
+% know of {\em X} and {\em Y} only if they have occurred in an
+% explicit way and in close proximity in a sentence.  Indeed, we know
+% of no successful application of the large scale existential
+% knowledge acquisition efforts to textual inference.
+
+
+
+\ignore{There is a need to fuse information from multiple sources,
+  including unstructured text (e.g., the web) in order to determine
+  the taxonomic relation between a pair of concepts.}
+
+\ignore{ This paper proposes to address the problem of on-the-fly
+  taxonomic relation identification and classification in a form that
+  is directly applicable to textual inference. In the paper of
+  \cite{maccartney-manning:2008:PAPERS}, it is shown that taxonomic
+  relations are key relations for textual inference. In their work,
+  {\em sibling} relation is referred as {\em alternation}, and {\em
+    ancestor} (or {\em is-a}) relation is referred as {\em forward
+    entailment} and {\em backward entailment}. Following their
+  argument, we expect that the resource developed in this work can be
+  used compositionally to support robust textual inference.  }
+\ignore{Specifically, our system accepts two input concepts as
+  arguments (these could be entities or noun phrases) and identifies
+  the relation between them \ignore{along with its possible
+    label}. For example, we identify that {\em global warming} and
+  {\em food crisis} are in a {\em sibling} relation, and the concept
+  of {\em economic problems} is in an {\em ancestor} relation with
+  both of them. We focus here on the {\em ancestor} (or {\em is-a})
+  relation and the {\em sibling} relation that were identified as key
+  relations also in \cite{maccartney-manning:2008:PAPERS} (they call a
+  {\em sibling} relation an {\em alternation}, and our {\em ancestor}
+  relation {\em forward entailment} and {\em backward
+    entailment}). Following their argument, we expect that the
+  resource developed in this work can be used compositionally to
+  support robust textual inference.}
+
+\ignore{ Our approach can discover whether two input entities pose an
+  alternation (or non-exhaustive exclusion) relation ({\em red} $|$
+  {\em green}), forward entailment ({\em Mel Gibson} $\sqsubset$ {\em
+    actor}), reverse entailment ({\em flower} $\sqsupset$ {\em lily}),
+  or independence ({\em Boeing 747} $\#$ {\em Valentine}). }
+
+In this paper, we present our system to identify taxonomic relations
+using machine learning-based approach. More importantly, we describe
+our constraint-based inference model that incorporates relational
+constraints as prior knowledge to accurately identify taxonomic
+relations. Furthermore, we present a novel approach to leveraging an
+existing knowledge base, which is by itself weaker than our system in
+identifying taxonomic relations, to provide useful information to our
+inference model.
+
+\ignore{Constrained optimization-based decision algorithm to construct
+  an effective taxonomic relation classifier. We show that our
+  approach significantly improves taxonomic relation identification
+  relative to existing structured knowledge sources.}
+
+\ignore{Our key technical contribution is a constraint-based framework
+  that makes use of relational constraints in a global inference
+  process that accurately identifies taxonomic relations. Our
+  inference algorithm makes use of an accurate classifier we develop,
+  which returns, for a given pair of concepts, a distribution over
+  possible taxonomic relations; this classifier is applied multiple
+  times, on an automatically generated network of concepts that are
+  related to the target pair, and the constrained optimization
+  technique is used to force these decisions to cohere across the
+  network. This results in improving the accuracy of each of the
+  predicted relations in the network.}
+%
+\ignore{Our basic classifier makes use of Wikipedia and its category
+  structure. On one hand, this guarantees growing coverage but, on the
+  other, necessitates taking into account the non-uniformity and level
+  of noise in this resource.  Our algorithmic approach therefore
+  treats Wikipedia and its category structure as an open resource and
+  uses statistical text mining techniques to gather robust
+  information. And, while Wikipedia has broad coverage, there is a
+  need to go beyond it.  We suggest a simple but efficient technique
+  to accomplish this using web search, and show its effectiveness when
+  at least one of the target concepts is not mentioned in Wikipedia.}
+
+%
+\ignore{For example, the concept {\em Ford} appears many times in
+  Wikipedia and is part of a large number of categories. As a {\em
+    president}, mentions of {\em Ford} are consistent with mentions of
+  other presidents. However, {\em Ford} also appears in other senses,
+  for example, related to the {\em car} industry.  We need to
+  disambiguate it, determine which category it belongs to and, within
+  this category, which specific concept is intended. In order to
+  disambiguate it, we make use of the context provided by the concept
+  pair---{\em Ford} in ({\em Ford}, {\em Nixon}) is probably different
+  than the one in ({\em Ford}, {\em Chevrolet}) as well as the one in
+  ({\em Ford}, {\em Iacocca}).}
+%
+\ignore{Textual inference is driven by background
+  knowledge. Therefore, the notion of {\em prominence} is
+  essential. Most people know that {\em Michael Jordan} is a former
+  NBA player, but they most likely do not know the {\em Michael
+    Jordan} who attends school with the authors.  Consequently, unless
+  additional knowledge is given, a textual inference system should
+  assume that {\em Michael Jordan} is a basketball player. This is why
+  we use Wikipedia as our background knowledge source. Moreover, under
+  the assumption that in textual inference applications we are in
+  search of some notion of ``common sense'' knowledge, we make use of
+  a notion of prominence with respect to a given text collection (in
+  this case, with respect to Wikipedia itself).}
+  %
+
+
+\ignore{Our key technical contribution is a novel approach that makes
+  use of constraint-based inference with relational constraints to
+  accurately identify relations; we make use of our machine learning
+  approach multiple times, on automatically generated network of
+  concepts that are related to the target pair, and use constrained
+  optimization techniques to force these decisions to be coherent,
+  thus improving the accuracy of the decision.}
+
+\ignore{We measure the performance of our system over a large number
+  of pairs chosen from over 40 semantic classes. We compare it with
+  other large scale efforts to identify relations between
+  concepts. For example we show that, even when all concepts are
+  covered by the {\em extended WordNet}~\cite{Snow2006}, our system
+  still significantly outperforms that system. }
+%
+% We also show examples indicating the contribution of our relation
+% identification to textual inference.
+
+\ignore{ In summary, the contributions of this paper are:
+
+  \begin{enumerate}
+    % \item The definition of a taxonomic relation identification
+    %   problem so that it is directly relevant to supporting textual
+    %   inference
+  \item The development of a robust and accurate machine
+    learning-based approach to classify taxonomic relations.
+  \item A constraint-based inference model that leverages relational
+    constraints as prior knowledge to accurately identify taxonomic
+    relations.
+  \item An approach to make use of an existing knowledge base, which
+    by itself is weaker than our relation identifier, to provide
+    useful information to the inference process.
+  \end{enumerate}
+}
+
+\ignore{ In an extensive experimental study we show that our approach
+  significantly improves taxonomic relation identification relative to
+  existing structured knowledge sources.}
+
+The rest of this paper is organized as follows:
+Sec. \ref{sec:overview-algorithm} gives an overview of our approach.
+We then present our learning component in Sec. \ref{sec:learning}.
+Sec. \ref{sec:inference} describes our inference model that leverages
+global relational constraints to infer taxonomic
+relations. Sec. \ref{sec:experiments} presents our experimental study,
+and Sec. \ref{sec:related-work} describes related work.
+
+\ignore{In Sec. \ref{sec:inference} we present the constraint-based
+  inference model that makes used of global relational constraints to
+  infer concepts' taxonomic relations. As shown, in order to generate
+  a network of related concepts for the inference process we leverage
+  the \textsc{Yago} ontology. Our machine learning-based component is
+  used to make local prediction on taxonomic relations and is
+  described in Sec. \ref{sec:learning}. Sec. \ref{sec:experiments}
+  presents our experimental evaluation, and
+  Sec. \ref{sec:related-work} describes some of the related work.}
+% We conclude the paper in Sec. \ref{sec:conclusions}.
+
+ \ignore{Notably, our algorithmic approach is trained with a small
+  number of annotated examples and generalizes well across semantic
+  classes.}
+
+\ignore{The rest of this paper is organized as follows. In
+  Section~\ref{sec:relatedwork}, we briefly mention about previous
+  work that inspired our approach.  Section~\ref{sec:approach}
+  formalizes the problem and describes our algorithmic approach to
+  relation detection and classification. Our experiments and results
+  are described in Section \ref{sec:experiments}. Discussion and
+  future work are in Section \ref{sec:discussion}.}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "jupiter"
+%%% End:

@@ -1,0 +1,81 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.7)
+The top-level auxiliary file: jupiter.aux
+The style file: acl.bst
+Database file #1: jupiter.bib
+Database file #2: ccg.bib
+I was expecting a `,' or a `}'---line 294 of file ccg.bib
+ :     url= URL 
+ :              = "http://l2r.cs.uiuc.edu/~danr/Papers/CGRT.pdf"
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 313 of file ccg.bib
+ :  
+ :  URL = "http://l2r.cs.uiuc.edu/~danr/Papers/PasternackRo09.pdf",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 324 of file ccg.bib
+ :   url= URL 
+ :            = "http://l2r.cs.uiuc.edu/~danr/Papers/RothSmTi09.pdf"
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 356 of file ccg.bib
+ :     
+ :     comment  = {Transliteration; Constrained optimization;
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 375 of file ccg.bib
+ :     
+ :     funding = {Boeing,SoD},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 905 of file ccg.bib
+ :   
+ :   url= "http://l2r.cs.uiuc.edu/~danr/Papers/Har-PeledRoZi06.pdf",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #3: cited.bib
+Repeated entry---line 54085 of file cited.bib
+ : @inproceedings{Pereira93distributionalclustering
+ :                                                 ,
+I'm skipping whatever remains of this entry
+Warning--empty school in pantel03phd
+You've used 20 entries,
+            2490 wiz_defined-function locations,
+            780 strings with 11863 characters,
+and the built_in function-call counts, 9431 in all, are:
+= -- 1057
+> -- 286
+< -- 15
++ -- 95
+- -- 92
+* -- 622
+:= -- 1399
+add.period$ -- 94
+call.type$ -- 20
+change.case$ -- 123
+chr.to.int$ -- 20
+cite$ -- 21
+duplicate$ -- 463
+empty$ -- 751
+format.name$ -- 119
+if$ -- 2113
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 19
+newline$ -- 124
+num.names$ -- 61
+pop$ -- 159
+preamble$ -- 1
+purify$ -- 146
+quote$ -- 0
+skip$ -- 367
+stack$ -- 0
+substring$ -- 514
+swap$ -- 162
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 154
+warning$ -- 1
+while$ -- 82
+width$ -- 22
+write$ -- 313
+(There were 7 error messages)

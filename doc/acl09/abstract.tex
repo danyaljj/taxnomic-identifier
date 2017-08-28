@@ -1,0 +1,89 @@
+%The problem of relation extraction that captures related entities in unstructured text has been studied broadly in both open and traditional approaches.
+%However, if we position it to provide background knowledge for the textual entailment task, it is difficult to apply the extracted facts directly to do inference. Especially, this limitation is more obvious when one wants to perform natural language inference based on the model of natural logic which uses lexical entailment relations to do inference.
+
+%In this paper, we propose a novel approach to detect relations between entities that can support textual inference on the fly. Our system accepts pairs of entity and detects both relations and their potential classes in real time. Furthermore, we also present a method to apply our system directly to textual inference by disambiguating the entities using the context of the text and hypothesis.
+
+%We evaluate our system separately on a set of 40 classes of instances and report the achievement in relation detection over 80\% of accuracy, which outperforms the baseline system over 40\%. Moreover, we also show the advantages of using our system in doing natural language inference by the examples extracted from the FraCaS test suite, and all RTE data sets.
+
+%------------
+
+%The problem of relation extraction that captures related entities in unstructured text has been studied broadly in both open and traditional approaches. However, if we want to redirect it to provide background knowledge for the textual entailment task, it is difficult to apply the extracted facts directly to do inference. This limitation is more obvious when one wants to do natural language inference based on the model of natural logic which utilizes lexical entailment relations to identify valid inference.
+
+%In this paper, we propose a novel approach to detect relations between entities that can support textual inference efficiently. Our system accepts a pair of entities and detects both relations and potential classes of the input entities on-the-fly. Our model utilizes the background knowledge extracted directly from Wikipedia. Our system first disambiguates the input entities by using prominence-based search approach, and then applies lexical matching techniques on the possible categories of the entities to determine the relation.
+
+%We evaluate our system separately on a set of 40 target classes of instances and report the accuracy in relation detection of over 80\%, which outperforms the baseline systems by over 40\%. Moreover, we also show the advantages of using our system in the textual entailment task by applying our detector on the entities extracted from the examples in all RTE data sets. 
+
+%--------------
+
+%Inference in natural language requires the use of large amounts
+%of background knowledge. In the context of Textual Entailment,
+%for example, it has been argued (e.g.,
+%\cite{maccartney-manning:2008:PAPERS}) that many inferences are largely
+%compositional and depend on the ability to recognize relations
+%between entities, noun phrases, verbs, adjectives etc. For
+%example, it may be important to know that a {\em blue Toyota}
+%is not a {\em red Toyota} nor a {\em blue Honda} but that
+%all are cars, and even Japanese made cars. This problem is
+%different than several variation of relation extraction studied
+%in the literature, that aim at extracting relations between two
+%pieces of text the co-occur in a given snippet of text.
+
+%In this paper, we propose a novel approach to detect and
+%classify relations between entities and other text phrases in
+%support of textual entailment. Given a pair of entities or
+%phrases we identify possible relations that might exist between
+%them and label them. E.g., we could say that {\em red} and {\em
+%blue} in the above example are different colors and that Honda
+%and Toyota are types of Japanese cars. Our method makes use of
+%wikipedia as a source for background knowledge and
+%disambiguates among multiple senses given the context supplied
+%in the provided pair, along with a notion of prominence with
+%respect to a given text collection.
+
+%We evaluate our system on a large set of pairs of instances
+%taken from over 40 classes, showing accuracy of over 80\%. We
+%also exhibit the usefulness of our approach on examples from
+%the RTE data sets.
+
+%--------------
+{\small
+%Inference in natural language requires the use of large amounts
+%of background knowledge.
+In the context of Textual Entailment,
+%for example, 
+it has been argued
+(e.g.,\cite{maccartney-manning:2008:PAPERS}) that many
+inferences are largely compositional and depend on the ability
+to recognize relations between entities, noun phrases, verbs,
+adjectives etc. For example, it may be important to know that a
+{\em blue Toyota} is not a {\em red Toyota} nor a {\em blue
+Honda} but that all are cars, and even Japanese made cars. This
+is a different problem than variations of relation extraction
+studied in the literature, that aim at extracting relations
+between entities that co-occur in a given snippet of text.
+
+In this paper, we propose a novel approach to detect and
+classify relations between entities and other phrases in
+support of textual entailment. Given a pair of entities or
+phrases we identify relations that might exist between
+them and give them labels if possible.
+%E.g., we could say that {\em red} and {\em
+%blue} in the above example are {\em different colors} and that
+%Honda and Toyota are {\em types of Japanese cars}.
+Our method makes use of Wikipedia as a source for background knowledge and
+disambiguates among concepts referring to input entities,
+%given the context supplied in the provided pair,
+along with a notion of prominence with
+respect to a given text collection.
+
+We evaluate our system on a large set of pairs of instances
+taken from 40 classes, and significantly achieve an improvement over 29\%  in average F1-score
+compared to systems that use existing resources. We also show that, our system also significantly outperforms the
+existing resources even when input entities are covered in those resources.
+%showing accuracy of over 80\% and
+%illustrating significant improvement over the use of existing
+%resources.
+%We also exhibit the usefulness of the extracted
+%knowledge on examples from the RTE data sets.
+
+}

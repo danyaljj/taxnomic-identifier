@@ -1,0 +1,103 @@
+\begin{algorithm*}[!htb]
+  
+  \caption{Unsuperivsed training algorithm for relation recognition.}
+  \begin{algorithmic}[1]
+    \STATE {\bf Input}: A pool of entities $\mathcal{E}$.
+    \STATE {\bf Output}: A multi-class classifier for relation recognition.
+    \STATE
+    \STATE Initializing weight vector $\mathcal{W}$ = [1];
+    \STATE $\mathcal{S} = \{ (x,y) | \forall x, \forall y \neq x \in \mathcal{E} \}$;
+    \FOR {each $(x,y) \in \mathcal(S)$}
+    \STATE Generate a feature vector $\mathcal{F}(x,y)$;
+    \ENDFOR
+    \WHILE {not converged}
+    \FOR {each $(x,y) \in \mathcal{S}$}
+    \STATE $\text{score}(x,y) \leftarrow \mathcal{W}^\top \mathcal{F}(x,y)$;
+    \ENDFOR
+    \STATE $\mathcal{D} \leftarrow \emptyset$;
+    \FOR {each $x \in \mathcal{E}$}
+    \STATE $\mathcal{T}_{top} = \{$ $(x,y)$ | $(x,y)$ in top $K$ pairs in the ranked list using score$(x,y) \}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(+_{x \rightarrow y}, (x,y))$ | $(x,y) \in T_{top} \wedge \sigma_L(x,y) > 0$ $\}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(+_{y \rightarrow x}, (y,x))$ | $(y,x) \in T_{top} \wedge \sigma_L(y,x) > 0$ $\}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(+_{x \leftrightarrow y}, (x,y))$ | $(x,y) \in T_{top} \wedge [\sigma_C(x,y)-\sigma_L(x,y)] \times [\sigma_C(x,y)-\sigma_L(y,x)] > 0$ $\}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(-, (x,y))$ | $(x,y) \in$ the last top $K$ pairs in the ranked list using score $(x,y)$ $\}$;
+    \ENDFOR
+    \STATE $\mathcal{W} \leftarrow \text{train}(\mathcal{D})$;
+    \ENDWHILE
+    \RETURN A trained classifier for relation classification.
+  \end{algorithmic}
+  \label{alg:unsup}
+\end{algorithm*}
+
+\begin{algorithm*}[!htb]
+  
+  \caption{Unsuperivsed training algorithm for relation recognition.}
+  \begin{algorithmic}[1]
+    \STATE {\bf Input}: A pool of entities $\mathcal{E}$.
+    \STATE {\bf Output}: A multi-class classifier for relation recognition.
+    \STATE
+    \STATE $\mathcal{S} = \{ (x,y) | x, y \in \mathcal{E}, x \neq y \}$;
+    \FOR {each $(x,y) \in \mathcal(S)$}
+    \STATE Generate a feature vector $\mathcal{F}(x,y)$;
+    \ENDFOR
+    \WHILE {not converged}
+    \FOR {each $(x,y) \in \mathcal{S}$}
+    \STATE $\text{score}(x,y) \leftarrow \mathcal{W}^\top \mathcal{F}(x,y)$;
+    \ENDFOR
+    \STATE $\mathcal{D} \leftarrow \emptyset$;
+    \FOR {each $x \in \mathcal{E}$}
+    \STATE $\mathcal{T}_{top} = \{$ $(x,y)$ | $(x,y)$ in top $K$ pairs in the ranked list using score$(x,y) \}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(+_{x \rightarrow y}, (x,y))$ | $(x,y) \in T_{top} \wedge \sigma_L(x,y) > 0$ $\}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(+_{y \rightarrow x}, (y,x))$ | $(y,x) \in T_{top} \wedge \sigma_L(y,x) > 0$ $\}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(+_{x \leftrightarrow y}, (x,y))$ | $(x,y) \in T_{top} \wedge [\sigma_C(x,y)-\sigma_L(x,y)] \times [\sigma_C(x,y)-\sigma_L(y,x)] > 0$ $\}$;
+    \STATE $\mathcal{D} = \mathcal{D} \cup \{$ $(-, (x,y))$ | $(x,y) \in$ the last top $K$ pairs in the ranked list using score $(x,y)$ $\}$;
+    \ENDFOR
+    \STATE $\mathcal{W} \leftarrow \text{train}(\mathcal{D})$;
+    \ENDWHILE
+    \RETURN A trained classifier for relation classification.
+  \end{algorithmic}
+  \label{alg:unsup}
+\end{algorithm*}
+
+We want to take advantage from Wikipedia articles to build a relation
+classifier which is trained using unsupervised approach. Assume that
+we have a pool of entities. There are several pairs of entities in the
+pool hold ancestor or cousin relation. In the unsupervised model, we
+do not know the correct relation hold by the pairs in training
+phase. In evaluation, the correct labels are used to get the accuracy
+of the classifier. We use several training iteration to learn the
+model. The details of the learning algorithm are described in
+Algorithm \ref{alg:unsup}.
+
+Our unsupervised learning algorithm get a pool of entities
+$\mathcal{E}$ as input. The goal is to learn a multi-class classifier
+to make decision on a set of pre-defined relations. We use a set of
+features defined in section \ref{sec:super-approach} to score the
+entity pairs created from $\mathcal{E}$. Each feature is assigned a
+weight $w \in \mathbb{R}$ representing the importance of the feature.
+
+We start the learning process by initializing the weight vector
+$\mathcal{W}$ to vector $[1]$. A set of entity pairs is also created
+by pairing each entity in $\mathcal{E}$ with other entities in the
+pool. Each pair is then extracted its features that are used to score
+in next steps. After that, the learning algorithm start iterating
+over several iterations to update the weight vector and the
+classifier.
+
+Given a list of entity pairs $\{(x,y)\}$, a scoring procedure is used
+to score each pair by calculating the dot product between the weight
+vector and the feature vectors. Each entity $x \in \mathcal{E}$ is
+then associated with a ranked list of its relevant entities in the
+pool from the highest to the lowest score. We now come to the stage to
+create a training set by picking positive and negative examples from
+the ranked list of each example. We take top $K$ pairs from the top
+and another $K$ pairs from the bottom of the ranked list. The $K$
+pairs from the bottom are simply considered negative pairs. On the
+other hand, each example in the top $K$ pairs is considered to become
+a positive example of different types of relation by checking the
+corresponding pre-defined constraints.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "jupiter"
+%%% End: 
