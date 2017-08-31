@@ -1,5 +1,9 @@
 # Illinois Relation Identifier
 
+## Task:
+
+Given two strings, determine their relationship - one is an ancestor of the other or vice versa, siblings, or no relation.
+
 ## Programmatic usage: 
 
 ```import edu.illinois.cs.cogcomp.cikm09.learning.MainRelationIdentification;```
