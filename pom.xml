@@ -33,7 +33,7 @@
         <dependency>
             <groupId>edu.illinois.cs.cogcomp</groupId>
             <artifactId>LBJava-NLP-tools</artifactId>
-            <version>3.1.19</version>
+            <version>3.1.31</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -67,13 +67,6 @@
             <artifactId>lbjava-maven-plugin</artifactId>
             <version>${lbjavaVersion}</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>javatools</groupId>
-            <artifactId>javatools</artifactId>
-            <version>20120110</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>xmlrpc</groupId>
             <artifactId>xmlrpc-client</artifactId>
