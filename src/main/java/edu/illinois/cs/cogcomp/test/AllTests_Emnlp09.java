@@ -30,7 +30,6 @@ import edu.illinois.cs.cogcomp.utils.IOManager;
  */
 
 public class AllTests_Emnlp09 {
-
 	@CommandDescription(description = "TextFieldSearch <indexDirectory> <maxCount>\n"
 			+ "Examples: TextFieldSearch ../data/wikipedia/pages_xml_indexed_jupiter 100")
 	public static void TextFieldSearch(String indexDirectory, String maxCount)
@@ -55,7 +54,6 @@ public class AllTests_Emnlp09 {
 			return;
 
 		do {
-
 			if (query.length() != 0) {
 				ArrayList<ILuceneResult> results = searcher.search(query,
 						maxCountVal);
@@ -71,7 +69,6 @@ public class AllTests_Emnlp09 {
 					if (i > maxCountVal)
 						break;
 				}
-
 			}
 
 			System.out.println("Total hits: " + searcher.getTotalHits());

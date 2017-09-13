@@ -13,10 +13,8 @@ import java.util.ArrayList;
  * 
  * @author dxquang Feb 2, 2009
  */
-
 public class IOManager {
 
-	// =======
 	public static boolean isDirectoryExist(String dirPath) {
 		File dir = new File(dirPath);
 		if (!dir.isDirectory())
@@ -26,7 +24,6 @@ public class IOManager {
 
 	}
 
-	// ====================
 	public static String[] listDirectory(String dirPath) {
 		try {
 			File dir = new File(dirPath);
@@ -37,7 +34,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static boolean deleteDirectory(String dirPath) {
 		File dir = new File(dirPath);
 		if (dir.exists()) {
@@ -53,7 +49,6 @@ public class IOManager {
 		return (dir.delete());
 	}
 
-	// ====================
 	public static BufferedReader openReader(String fname) {
 		BufferedReader reader;
 		try {
@@ -66,7 +61,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static boolean closeReader(BufferedReader reader) {
 		try {
 			reader.close();
@@ -77,7 +71,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static BufferedWriter openWriter(String fname) {
 		BufferedWriter writer;
 		try {
@@ -90,7 +83,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static boolean closeWriter(BufferedWriter writer) {
 		try {
 			writer.close();
@@ -101,7 +93,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static BufferedWriter openAppender(String fname) {
 		BufferedWriter appender;
 		try {
@@ -114,7 +105,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static boolean closeAppender(BufferedWriter appender) {
 		try {
 			appender.close();
@@ -125,7 +115,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static boolean moveFile(String fileName, String directoryName) {
 		File file = new File(fileName);
 		File dir = new File(directoryName);
@@ -136,7 +125,6 @@ public class IOManager {
 		return success;
 	}
 
-	// ====================
 	public static String readContent(String contentFileName) {
 		BufferedReader reader = openReader(contentFileName);
 		String line;
@@ -158,7 +146,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static String readContentAddingPeriod(String contentFileName) {
 		BufferedReader reader = openReader(contentFileName);
 		String line;
@@ -181,7 +168,6 @@ public class IOManager {
 		}
 	}
 
-	// ====================
 	public static Object[] readContent2Array(String contentFileName) {
 		BufferedReader reader = openReader(contentFileName);
 		String line;
@@ -202,7 +188,6 @@ public class IOManager {
 		}
 	}
 
-	// ======================
 	public static void writeContent(String content, String outputFileName) {
 		BufferedWriter writer = IOManager.openWriter(outputFileName);
 		try {
@@ -215,7 +200,6 @@ public class IOManager {
 		IOManager.closeWriter(writer);
 	}
 
-	// =====================
 	public static ArrayList<String> readLines(String fileName) {
 		BufferedReader reader = openReader(fileName);
 		String line;
@@ -280,7 +264,6 @@ public class IOManager {
 		IOManager.closeWriter(writer);	
 	}
 
-	// =====================
 	public static void sleepingChild(int numSeconds) {
 		try {
 			Thread.sleep(numSeconds * 1000);
@@ -289,7 +272,6 @@ public class IOManager {
 		}
 	}
 
-	// =====================
 	public static boolean isFileExist(String filePath) {
 		File file = new File(filePath);
 		if (!file.isFile())
@@ -297,7 +279,6 @@ public class IOManager {
 		return file.exists();
 	}
 
-	// =====================
 	public static boolean deleteFile(String filePath) {
 		boolean success = true;
 		if (isFileExist(filePath)) {
@@ -307,7 +288,6 @@ public class IOManager {
 		return success;
 	}
 
-	// ================
 	public static boolean createDirectory(String dirPath) {
 		if (isDirectoryExist(dirPath)) {
 			deleteDirectory(dirPath);
@@ -316,7 +296,6 @@ public class IOManager {
 		return dir.mkdir();
 	}
 
-	// ================
 	public static boolean createDirectoryNotDelete(String dirPath) {
 		if (isDirectoryExist(dirPath)) {
 			return true;
